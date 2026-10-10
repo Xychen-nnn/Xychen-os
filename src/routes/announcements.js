@@ -1,1 +1,3 @@
-const router=require('express').Router(),{requireAdmin}=require('../middleware/auth'),a=require('../services/announcements'),{clean}=require('../utils/validation');router.get('/',(req,res)=>res.json({announcements:a.published()}));router.post('/',requireAdmin,(req,res)=>{const title=clean(req.body.title,2,120),content=clean(req.body.content,2,4000);if(!title||!content)return res.status(400).json({error:'Title and content are required'});res.status(201).json({announcement:a.create(title,content,req.user.id)})});module.exports=router;
+const router=require('express').Router(),a=require('../services/announcements');
+router.get('/',(req,res)=>res.json({announcements:a.published()}));
+module.exports=router;
