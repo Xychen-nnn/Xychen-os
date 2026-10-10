@@ -1,1 +1,0 @@
-fetch('/api/admin/overview').then(r=>r.ok?r.json():Promise.reject()).then(d=>document.getElementById('overview').textContent=JSON.stringify(d,null,2)).catch(()=>document.getElementById('overview').textContent='Admin access required.');
