@@ -1,7 +1,0 @@
-const {get}=require('../database'),{newToken}=require('../utils/ids');const COOKIE='xy_sid',TTL=14*24*60*60*1000;
-function attachUser(req,res,next){const token=req.cookies[COOKIE];if(!token)return next();const row=get().prepare("SELECT u.id,u.username,u.email,u.role,u.created_at,s.expires_at FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=?").get(token);if(!row)return next();if(Date.parse(row.expires_at)<=Date.now()){get().prepare('DELETE FROM sessions WHERE token=?').run(token);res.clearCookie(COOKIE);return next()}req.user=row;req.sessionToken=token;next()}
-function requireAuth(req,res,next){if(!req.user)return res.status(401).json({error:'Authentication required'});next()}function requireAdmin(req,res,next){if(!req.user||req.user.role!=='admin')return res.status(403).json({error:'Admin access required'});next()}
-function setSessionCookie(res,token){res.cookie(COOKIE,token,{httpOnly:true,sameSite:'lax',secure:process.env.NODE_ENV==='production',maxAge:TTL,path:'/'});}
-function createSession(userId){const token=newToken(),expires=new Date(Date.now()+TTL).toISOString();get().prepare('INSERT INTO sessions(token,user_id,expires_at) VALUES(?,?,?)').run(token,userId,expires);return token}
-function clearSession(req,res){if(req.sessionToken)get().prepare('DELETE FROM sessions WHERE token=?').run(req.sessionToken);res.clearCookie(COOKIE,{path:'/'});}
-module.exports={attachUser,requireAuth,requireAdmin,setSessionCookie,createSession,clearSession};

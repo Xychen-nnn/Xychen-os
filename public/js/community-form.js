@@ -1,1 +1,25 @@
-const form=document.querySelector('form[data-community]'),type=form.dataset.community;async function load(){const r=await fetch('/api/'+type);if(r.ok){const d=await r.json();const items=d[type==='support'?'tickets':type]||[];document.getElementById('list').innerHTML=items.map(x=>'<article><b>'+x.public_id+'</b><p>'+((x.title||x.subject)||'')+'</p><small>'+x.status+'</small></article>').join('')}}form.addEventListener('submit',async e=>{e.preventDefault();const body=Object.fromEntries(new FormData(form));const r=await fetch('/api/'+type,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(r.status===401){location.href='/login.html';return}if(r.ok){form.reset();load()}else alert((await r.json()).error||'Request failed')});load();
+const form=document.querySelector('form[data-community]');
+if(form){
+  const status=document.createElement('p');
+  status.id='community-status';
+  status.setAttribute('role','status');
+  form.appendChild(status);
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();
+    const button=form.querySelector('button[type="submit"],button:not([type])');
+    if(button)button.disabled=true;
+    status.textContent='Sending…';
+    try{
+      const body=Object.fromEntries(new FormData(form));
+      const response=await fetch('/api/'+form.dataset.community,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.error||'Unable to submit right now.');
+      form.reset();
+      status.textContent='Submitted successfully. No account was needed.';
+    }catch(error){
+      status.textContent=error.message||'Unable to submit right now.';
+    }finally{
+      if(button)button.disabled=false;
+    }
+  });
+}
