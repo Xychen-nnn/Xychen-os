@@ -1,1 +1,0 @@
-const crypto=require('crypto');function newId(prefix){return prefix+Date.now().toString(36).toUpperCase()+crypto.randomBytes(5).toString('hex').toUpperCase()}function newToken(){return crypto.randomBytes(32).toString('hex')}module.exports={newId,newToken};
