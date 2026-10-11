@@ -1,1 +1,30 @@
-const router=require('express').Router();router.get('/',(req,res)=>res.json({name:'Xychen OS',tagline:'Your digital space, built your way.',version:'1.0.2',release:'public-no-auth',features:{accounts:false,dashboard:false,community:true,admin:false,toolkit:false,integrations:false},links:{about:'/about.html',features:'/features.html',foundation:'/foundation.html',updates:'/updates.html',status:'/status.html',community:'/community.html'}}));module.exports=router;
+const router = require('express').Router();
+
+router.get('/', (req, res) => {
+  res.json({
+    name: 'Xychen OS',
+    tagline: 'A personal digital space, built by Xychen.',
+    version: '1.1.0',
+    release: 'personal-platform',
+    features: {
+      projects: true,
+      browserTools: true,
+      playground: true,
+      themeSwitching: true,
+      accounts: false,
+      communitySubmissions: false,
+      admin: false,
+      externalIntegrations: false
+    },
+    links: {
+      home: '/',
+      about: '/about.html',
+      projects: '/projects.html',
+      tools: '/tools.html',
+      playground: '/playground.html',
+      links: '/links.html'
+    }
+  });
+});
+
+module.exports = router;
