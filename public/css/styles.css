@@ -15,3 +15,5 @@ footer{width:min(1080px,100%);margin:0 auto;padding:24px;border-top:1px solid va
 @media(max-width:820px){.site-header{justify-content:space-between}.site-header nav{order:3;width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}.site-header nav a{white-space:nowrap}.card{grid-column:span 6}.two-column{grid-template-columns:1fr}main{padding-top:44px}}
 @media(max-width:540px){.site-header{top:6px;margin-top:6px;width:calc(100% - 12px);padding:10px;border-radius:18px;gap:10px}.brand{font-size:.95rem}.brand-mark{width:31px;height:31px}.theme-toggle{padding:8px 10px;font-size:.82rem}.site-header nav a{font-size:.84rem;padding:7px 9px}main{padding:42px 17px 62px}.hero{min-height:60vh;padding-top:40px;padding-bottom:45px}h1{font-size:clamp(2.6rem,14vw,4rem)}.card,.card-wide{grid-column:1/-1}.card,.panel,article,section{padding:19px;border-radius:21px}.stat-grid{grid-template-columns:1fr 1fr}footer{padding:20px 17px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.stack > .card{grid-column:auto}
