@@ -1,7 +1,8 @@
 (() => {
   const root = document.documentElement;
   const key = 'xychen-os-theme';
-  const saved = localStorage.getItem(key);
+  let saved = null;
+  try { saved = localStorage.getItem(key); } catch (_) {}
   const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : preferred;
 
