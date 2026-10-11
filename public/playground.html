@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Small interactive toys and random discoveries in Xychen OS."><title>Playground — Xychen OS</title><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme.js"></script></head>
+<body>
+<header class="site-header"><a class="brand" href="/"><span class="brand-mark">X</span><span>Xychen OS</span></a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/tools.html">Tools</a><a href="/playground.html" aria-current="page">Playground</a><a href="/links.html">Links</a></nav><div class="header-actions"><button class="theme-toggle" type="button" data-theme-toggle>🌙 Dark</button></div></header>
+<main>
+<header class="page-heading"><p class="eyebrow">A little bit of fun</p><h1>Playground</h1><p class="page-intro">Tiny interactions and random discoveries. Nothing serious—just a few small things to play with.</p></header>
+<div class="grid">
+<section class="card card-wide"><span class="card-icon" aria-hidden="true">✦</span><h2>Surprise me</h2><p>Not sure where to go? Let the site pick something for you.</p><div class="output" id="surprise-result" aria-live="polite">Your next little discovery is waiting.</div><button type="button" id="surprise-button">Surprise me ↗</button></section>
+<section class="card card-wide"><span class="card-icon" aria-hidden="true">◉</span><h2>Coin flip</h2><p>Make a quick random pick.</p><div class="output" id="coin-result" aria-live="polite">Ready when you are.</div><button type="button" id="coin-button">Flip coin</button></section>
+<section class="card card-wide"><span class="card-icon" aria-hidden="true">⚄</span><h2>Dice roller</h2><p>Roll a six-sided die.</p><div class="output" id="dice-result" aria-live="polite">Roll a 1–6.</div><button type="button" id="dice-button">Roll dice</button></section>
+<section class="card card-wide"><span class="card-icon" aria-hidden="true">☁</span><h2>Idea spark</h2><p>Need a tiny creative prompt?</p><div class="output" id="idea-result" aria-live="polite">Generate a random prompt to get unstuck.</div><button type="button" id="idea-button">Give me an idea</button></section>
+</div>
+</main>
+<footer><span>© <span data-current-year></span> Xychen OS</span><div class="footer-links"><a href="/tools.html">Tools</a><a href="/projects.html">Projects</a></div></footer>
+<script>
+(() => {
+  const discoveries = [
+    {label:'Try a tool', detail:'Open the text counter or JSON formatter.', href:'/tools.html'},
+    {label:'Explore the project', detail:'See what Xychen OS is building toward.', href:'/projects.html'},
+    {label:'Read the story', detail:'Learn why this personal platform exists.', href:'/about.html'},
+    {label:'Browse links', detail:'Visit the project source and useful destinations.', href:'/links.html'}
+  ];
+  const prompts = [
+    'Make one small thing that saves you a minute every day.',
+    'What would your ideal personal dashboard show first?',
+    'Build a tiny tool that solves one annoying problem.',
+    'Choose one old idea and give it a fresh, simpler version.',
+    'Make a page that feels delightful without adding clutter.',
+    'What is one useful feature you can finish in an afternoon?'
+  ];
+  document.getElementById('surprise-button').addEventListener('click', () => {
+    const item = discoveries[Math.floor(Math.random() * discoveries.length)];
+    const result = document.getElementById('surprise-result');
+    result.replaceChildren();
+    const strong = document.createElement('strong'); strong.textContent = item.label;
+    const p = document.createElement('p'); p.textContent = item.detail;
+    const a = document.createElement('a'); a.href = item.href; a.textContent = 'Go there ↗';
+    result.append(strong, p, a);
+  });
+  document.getElementById('coin-button').addEventListener('click', () => {
+    document.getElementById('coin-result').textContent = Math.random() < .5 ? 'Heads ✨' : 'Tails 🌙';
+  });
+  document.getElementById('dice-button').addEventListener('click', () => {
+    document.getElementById('dice-result').textContent = 'You rolled a ' + (Math.floor(Math.random() * 6) + 1) + ' 🎲';
+  });
+  document.getElementById('idea-button').addEventListener('click', () => {
+    document.getElementById('idea-result').textContent = prompts[Math.floor(Math.random() * prompts.length)];
+  });
+})();
+</script>
+</body></html>
