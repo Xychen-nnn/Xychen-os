@@ -1,1 +1,12 @@
-const router=require('express').Router(),{get}=require('../database');router.get('/health',(req,res)=>{let database='operational';try{get().prepare('SELECT 1').get()}catch(e){database='down'}res.json({version:'1.0.1',website:'operational',api:'operational',authentication:'operational',database})});module.exports=router;
+const router = require('express').Router();
+
+router.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    version: '1.1.0',
+    website: 'operational',
+    api: 'operational'
+  });
+});
+
+module.exports = router;
