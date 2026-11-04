@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Free browser-based text and JSON utilities in Xychen OS."><title>Tools — Xychen OS</title><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme.js"></script></head>
-<body>
-<header class="site-header"><a class="brand" href="/"><span class="brand-mark">X</span><span>Xychen OS</span></a><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/tools.html" aria-current="page">Tools</a><a href="/playground.html">Playground</a><a href="/links.html">Links</a></nav><div class="header-actions"><button class="theme-toggle" type="button" data-theme-toggle>🌙 Dark</button></div></header>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Free browser-based text and JSON utilities in Xychen OS."><title>Tools — Xychen OS</title><link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme.js"></script><script src="/js/components.js" defer></script></head>
+<body data-page="tools">
+<div data-site-header></div>
 <main>
 <header class="page-heading"><p class="eyebrow">Useful by design</p><h1>Tools</h1><p class="page-intro">Lightweight utilities that run in your browser. Your input stays on this page; these tools don’t need an account.</p></header>
 <div class="grid">
@@ -11,52 +11,6 @@
 </div>
 <p class="notice section">More tools can be added over time. The goal is to keep each utility focused, fast, and genuinely useful.</p>
 </main>
-<footer><span>© <span data-current-year></span> Xychen OS</span><div class="footer-links"><a href="/projects.html">Projects</a><a href="/playground.html">Playground</a></div></footer>
-<script>
-(() => {
-  const textInput = document.getElementById('text-input');
-  const words = document.getElementById('word-count');
-  const chars = document.getElementById('char-count');
-  const lines = document.getElementById('line-count');
-  function countText() {
-    const value = textInput.value;
-    words.textContent = (value.trim().match(/\S+/g) || []).length;
-    chars.textContent = value.length;
-    lines.textContent = value.length ? value.split(/\r\n|\r|\n/).length : 0;
-  }
-  textInput.addEventListener('input', countText);
-  document.getElementById('uppercase').addEventListener('click', () => { textInput.value = textInput.value.toUpperCase(); countText(); });
-  document.getElementById('lowercase').addEventListener('click', () => { textInput.value = textInput.value.toLowerCase(); countText(); });
-  document.getElementById('clear-text').addEventListener('click', () => { textInput.value = ''; countText(); textInput.focus(); });
-
-  const jsonInput = document.getElementById('json-input');
-  const jsonOutput = document.getElementById('json-output');
-  const jsonStatus = document.getElementById('json-status');
-  function transformJson(spaces) {
-    try {
-      const parsed = JSON.parse(jsonInput.value);
-      const result = JSON.stringify(parsed, null, spaces);
-      jsonOutput.textContent = result;
-      jsonStatus.textContent = 'Valid JSON. Result ready.';
-      jsonStatus.style.color = 'var(--success)';
-    } catch (error) {
-      jsonOutput.textContent = '';
-      jsonStatus.textContent = 'Invalid JSON: ' + error.message;
-      jsonStatus.style.color = 'var(--muted)';
-    }
-  }
-  document.getElementById('format-json').addEventListener('click', () => transformJson(2));
-  document.getElementById('minify-json').addEventListener('click', () => transformJson(0));
-  document.getElementById('copy-json').addEventListener('click', async () => {
-    const result = jsonOutput.textContent;
-    if (!result.trim()) { jsonStatus.textContent = 'There is no result to copy yet.'; return; }
-    try {
-      await navigator.clipboard.writeText(result);
-      jsonStatus.textContent = 'Copied to clipboard.';
-    } catch (_) {
-      jsonStatus.textContent = 'Clipboard access is unavailable in this browser. Select the result and copy it manually.';
-    }
-  });
-})();
-</script>
+<div data-site-footer></div>
+<script src="/js/pages/tools.js" defer></script>
 </body></html>
