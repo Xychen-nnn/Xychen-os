@@ -39,3 +39,8 @@ main[id]{scroll-margin-top:24px}
   .skip-link,.card,.panel,.site-header,button,a{border:1px solid CanvasText}
   :focus-visible{outline:2px solid Highlight}
 }
+
+
+/* Phase 05: styles used by tool status messages and the home hero. */
+.hero-tags{margin-top:24px}
+.tool-result.is-success{color:var(--success)}

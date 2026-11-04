@@ -23,11 +23,11 @@
       const result = JSON.stringify(parsed, null, spaces);
       jsonOutput.textContent = result;
       jsonStatus.textContent = 'Valid JSON. Result ready.';
-      jsonStatus.style.color = 'var(--success)';
+      jsonStatus.classList.add('is-success');
     } catch (error) {
       jsonOutput.textContent = '';
       jsonStatus.textContent = 'Invalid JSON: ' + error.message;
-      jsonStatus.style.color = 'var(--muted)';
+      jsonStatus.classList.remove('is-success');
     }
   }
   document.getElementById('format-json').addEventListener('click', () => transformJson(2));
