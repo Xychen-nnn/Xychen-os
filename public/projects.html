@@ -20,30 +20,31 @@
   <script src="/js/theme-init.js"></script>
   <script src="/js/theme.js" defer></script>
   <script src="/js/components.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
 </head>
 <body data-page="projects">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/explore.html">Explore</a><a href="/links.html">Links</a></nav></noscript></div>
   <main id="main-content">
     <header class="page-heading">
-      <p class="eyebrow">What is being built</p>
-      <h1>Projects</h1>
-      <p class="page-intro">A focused list of projects with real descriptions and working destinations. Only projects ready to be shared belong here.</p>
+      <p class="eyebrow" data-i18n="projects.eyebrow">What is being built</p>
+      <h1 data-i18n="projects.title">Projects</h1>
+      <p class="page-intro" data-i18n="projects.intro">A focused list of projects with real descriptions and working destinations. Only projects ready to be shared belong here.</p>
     </header>
     <section class="grid" aria-label="Current projects">
       <article class="card card-full">
         <span class="card-icon" aria-hidden="true">◈</span>
-        <div class="tag-row"><span class="tag">Website</span><span class="tag"><span class="status-dot"></span>In development</span></div>
-        <h2>Xychen OS</h2>
-        <p>A personal digital platform that brings project information, selected links, and an editorial library of topics into one website.</p>
-        <p class="muted">The current release focuses on the public website, shared interface, project information, and a content system for reviewed articles.</p>
+        <div class="tag-row"><span class="tag" data-i18n="projects.tagWebsite">Website</span><span class="tag"><span class="status-dot"></span><span data-i18n="projects.tagStatus">In development</span></span></div>
+        <h2 data-i18n="projects.projectTitle">Xychen OS</h2>
+        <p data-i18n="projects.projectText1">A personal digital platform that brings project information, selected links, and an editorial library of topics into one website.</p>
+        <p class="muted" data-i18n="projects.projectText2">The current release focuses on the public website, shared interface, project information, and a content system for reviewed articles.</p>
         <div class="actions">
-          <a class="button" href="https://github.com/Xychen-nnn/Xychen-os" target="_blank" rel="noopener noreferrer">View source ↗</a>
-          <a class="button-secondary" href="/">Open website</a>
+          <a class="button" href="https://github.com/Xychen-nnn/Xychen-os" target="_blank" rel="noopener noreferrer" data-i18n="projects.source">View source ↗</a>
+          <a class="button-secondary" href="/" data-i18n="projects.open">Open website</a>
         </div>
       </article>
     </section>
-    <p class="notice section">More projects will appear here when there is something real and ready to share.</p>
+    <p class="notice section" data-i18n="projects.note">More projects will appear here when there is something real and ready to share.</p>
   </main>
   <div data-site-footer></div>
 </body>
