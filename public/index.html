@@ -14,18 +14,7 @@
   <meta name="twitter:title" content="Xychen OS — Your personal digital space">
   <meta name="twitter:description" content="Xychen OS is a personal digital platform for projects, useful tools, and resources.">
   <meta name="theme-color" content="#f4f6fb"><title>Xychen OS — Your personal digital space</title>
-  <link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script>
-  (() => {
-    const root = document.documentElement;
-    try {
-      const saved = localStorage.getItem('xychen-os-theme');
-      const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : preferred;
-    } catch (_) {
-      root.dataset.theme = 'light';
-    }
-  })();
-</script>
+  <link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme-init.js"></script>
 <script src="/js/theme.js" defer></script><script src="/js/components.js" defer></script>
 </head>
 <body data-page="home">
@@ -37,7 +26,7 @@
     <h1>A little corner of the internet, built by Xychen.</h1>
     <p class="lead">Projects I’m building, tools worth using, and useful resources to explore. One useful piece at a time.</p>
     <div class="actions"><a class="button" href="/projects.html">Explore projects <span aria-hidden="true">↗</span></a><a class="button-secondary" href="/tools.html">Open the tools</a></div>
-    <div class="tag-row" style="margin-top:24px"><span class="tag">Personal</span><span class="tag">Useful</span><span class="tag">Always evolving</span></div>
+    <div class="tag-row hero-tags"><span class="tag">Personal</span><span class="tag">Useful</span><span class="tag">Always evolving</span></div>
   </section>
   <section class="section">
     <div class="section-heading"><h2>Explore the space</h2><span class="muted">Pick a place to start</span></div>
