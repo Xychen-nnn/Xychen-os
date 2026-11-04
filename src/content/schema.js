@@ -49,14 +49,13 @@ function validateCategories(input) {
       ids.add(category.id);
     }
 
-    if (typeof category.name !== 'string' || !category.name.trim()) {
-      errors.push(prefix + '.name must be a non-empty string.');
-    }
-
-    if (typeof category.description !== 'string' ||
-        !category.description.trim() ||
-        category.description.length > 180) {
-      errors.push(prefix + '.description must be a non-empty string of at most 180 characters.');
+    for (const field of ['name', 'nameFil', 'description', 'descriptionFil']) {
+      const maxLength = field.startsWith('description') ? 180 : 80;
+      if (typeof category[field] !== 'string' ||
+          !category[field].trim() ||
+          category[field].length > maxLength) {
+        errors.push(prefix + '.' + field + ' must be a non-empty string of at most ' + maxLength + ' characters.');
+      }
     }
 
     if (!Number.isInteger(category.order) || category.order < 1) {
@@ -89,6 +88,10 @@ function validateArticleMetadata(metadata, options = {}) {
 
   if (typeof metadata.title !== 'string' || !metadata.title.trim() || metadata.title.length > 160) {
     errors.push('title must be a non-empty string of at most 160 characters.');
+  }
+  if (metadata.titleFil !== undefined &&
+      (typeof metadata.titleFil !== 'string' || !metadata.titleFil.trim() || metadata.titleFil.length > 160)) {
+    errors.push('titleFil must be a non-empty string of at most 160 characters.');
   }
 
   if (expectedSlug && metadata.slug !== expectedSlug) {
@@ -144,6 +147,10 @@ function validateArticleMetadata(metadata, options = {}) {
   if (metadata.summary !== undefined &&
       (typeof metadata.summary !== 'string' || metadata.summary.length > 320)) {
     errors.push('summary must be a string of at most 320 characters.');
+  }
+  if (metadata.summaryFil !== undefined &&
+      (typeof metadata.summaryFil !== 'string' || metadata.summaryFil.length > 320)) {
+    errors.push('summaryFil must be a string of at most 320 characters.');
   }
 
   if (metadata.sources !== undefined) {
