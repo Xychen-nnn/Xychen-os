@@ -81,6 +81,9 @@ test('content API exposes categories and an honest empty published library', asy
 
   assert.equal(categoriesResponse.status, 200);
   assert.ok(categoriesBody.categories.length > 0);
+  assert.ok(categoriesBody.categories.every((category) =>
+    typeof category.description === 'string' && category.description.trim().length > 0
+  ));
   assert.equal(articlesResponse.status, 200);
   assert.deepEqual(articlesBody.articles, []);
 });
