@@ -4,7 +4,7 @@ router.get('/', (req, res) => {
   res.json({
     name: 'Xychen OS',
     tagline: "A personal digital space for projects, tools, and resources.",
-    version: '1.2.0',
+    version: '1.3.0',
     release: 'personal-platform',
     features: {
       projects: true,
