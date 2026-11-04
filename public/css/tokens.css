@@ -2,6 +2,7 @@
   color-scheme: light;
   --bg: #f3f5fb;
   --bg-glow: rgba(119, 139, 244, .22);
+  --page-overlay: rgba(243, 245, 251, .88);
   --text: #1d2337;
   --muted: #68718a;
   --surface: rgba(255, 255, 255, .72);
@@ -22,6 +23,7 @@
   color-scheme: dark;
   --bg: #0c1020;
   --bg-glow: rgba(91, 103, 220, .24);
+  --page-overlay: rgba(8, 12, 27, .78);
   --text: #f0f2ff;
   --muted: #a5abc4;
   --surface: rgba(25, 30, 51, .76);
