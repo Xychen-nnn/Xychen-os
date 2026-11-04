@@ -116,7 +116,7 @@
         createCard(
           article.title,
           article.summary || 'Open this article to read the full explanation and its sources.',
-          '/article.html?slug=' + encodeURIComponent(article.slug),
+          '/articles/' + encodeURIComponent(article.slug),
           'Read article ↗'
         )
       ));
