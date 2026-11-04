@@ -1,6 +1,6 @@
 {
   "name": "xychen-os",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "description": "Xychen OS — a personal digital platform for projects, browser tools, and resources.",
   "main": "server.js",

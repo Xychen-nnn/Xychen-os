@@ -1,12 +1,35 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Free browser-based text and JSON utilities in Xychen OS."><title>Tools — Xychen OS</title><link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme.js"></script><script src="/js/components.js" defer></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Free browser-based text and JSON utilities in Xychen OS.">
+  <link rel="canonical" href="https://xychen-os.vercel.app/tools.html">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Xychen OS">
+  <meta property="og:title" content="Tools — Xychen OS">
+  <meta property="og:description" content="Free browser-based text and JSON utilities in Xychen OS.">
+  <meta property="og:url" content="https://xychen-os.vercel.app/tools.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tools — Xychen OS">
+  <meta name="twitter:description" content="Free browser-based text and JSON utilities in Xychen OS."><title>Tools — Xychen OS</title><link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script>
+  (() => {
+    const root = document.documentElement;
+    try {
+      const saved = localStorage.getItem('xychen-os-theme');
+      const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : preferred;
+    } catch (_) {
+      root.dataset.theme = 'light';
+    }
+  })();
+</script>
+<script src="/js/theme.js" defer></script><script src="/js/components.js" defer></script></head>
 <body data-page="tools">
-<div data-site-header></div>
-<main>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/tools.html">Tools</a><a href="/links.html">Links</a></nav></noscript></div>
+<main id="main-content">
 <header class="page-heading"><p class="eyebrow">Useful by design</p><h1>Tools</h1><p class="page-intro">Lightweight utilities that run in your browser. Your input stays on this page; these tools don’t need an account.</p></header>
 <div class="grid">
-<section class="card card-wide tool-card"><span class="card-icon" aria-hidden="true">Aa</span><h2>Text counter</h2><p>Count words, characters, and lines as you type. You can also switch text to uppercase or lowercase.</p><label class="field-label" for="text-input">Your text</label><textarea id="text-input" placeholder="Type or paste text here…"></textarea><div class="stat-grid" aria-live="polite"><div class="stat"><strong id="word-count">0</strong><span>Words</span></div><div class="stat"><strong id="char-count">0</strong><span>Characters</span></div><div class="stat"><strong id="line-count">0</strong><span>Lines</span></div></div><div class="tool-actions"><button type="button" id="uppercase">UPPERCASE</button><button type="button" id="lowercase">lowercase</button><button type="button" id="clear-text">Clear</button></div></section>
+<section class="card card-wide tool-card"><span class="card-icon" aria-hidden="true">Aa</span><h2>Text counter</h2><p>Count words, characters, and lines as you type. You can also switch text to uppercase or lowercase.</p><label class="field-label" for="text-input">Your text</label><textarea id="text-input" placeholder="Type or paste text here…"></textarea><div class="stat-grid" role="status" aria-live="polite" aria-atomic="true"><div class="stat"><strong id="word-count">0</strong><span>Words</span></div><div class="stat"><strong id="char-count">0</strong><span>Characters</span></div><div class="stat"><strong id="line-count">0</strong><span>Lines</span></div></div><div class="tool-actions"><button type="button" id="uppercase">UPPERCASE</button><button type="button" id="lowercase">lowercase</button><button type="button" id="clear-text">Clear</button></div></section>
 <section class="card card-wide tool-card"><span class="card-icon" aria-hidden="true">{ }</span><h2>JSON formatter</h2><p>Validate JSON and format or minify it. Invalid JSON will show an error instead of silently changing your data.</p><label class="field-label" for="json-input">JSON input</label><textarea id="json-input" spellcheck="false" placeholder='{"hello":"world","active":true}'></textarea><div class="tool-actions"><button type="button" id="format-json">Format JSON</button><button type="button" id="minify-json">Minify JSON</button><button type="button" id="copy-json">Copy result</button></div><p id="json-status" class="tool-result" role="status">Your formatted result will appear below.</p><pre id="json-output" aria-live="polite"> </pre></section>
 </div>
 <p class="notice section">More tools can be added over time. The goal is to keep each utility focused, fast, and genuinely useful.</p>

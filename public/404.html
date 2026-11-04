@@ -1,8 +1,31 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="This page could not be found."><title>Not found — Xychen OS</title><link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme.js"></script><script src="/js/components.js" defer></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="This page could not be found.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Xychen OS">
+  <meta property="og:title" content="Not found — Xychen OS">
+  <meta property="og:description" content="This page could not be found.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Not found — Xychen OS">
+  <meta name="twitter:description" content="This page could not be found."><title>Not found — Xychen OS</title><link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script>
+  (() => {
+    const root = document.documentElement;
+    try {
+      const saved = localStorage.getItem('xychen-os-theme');
+      const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : preferred;
+    } catch (_) {
+      root.dataset.theme = 'light';
+    }
+  })();
+</script>
+<script src="/js/theme.js" defer></script><script src="/js/components.js" defer></script></head>
 <body data-page="not-found">
-<div data-site-header></div>
-<main class="hero"><p class="eyebrow">404 · Not found</p><h1>Looks like this page wandered off.</h1><p class="lead">The link may be outdated, or the page may have moved.</p><div class="actions"><a class="button" href="/">Back home</a><a class="button-secondary" href="/links.html">Useful links</a></div></main>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/tools.html">Tools</a><a href="/links.html">Links</a></nav></noscript></div>
+<main id="main-content" class="hero"><p class="eyebrow">404 · Not found</p><h1>Looks like this page wandered off.</h1><p class="lead">The link may be outdated, or the page may have moved.</p><div class="actions"><a class="button" href="/">Back home</a><a class="button-secondary" href="/links.html">Useful links</a></div></main>
 <div data-site-footer></div>
 </body></html>
