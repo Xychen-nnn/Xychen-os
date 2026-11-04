@@ -1,11 +1,11 @@
 {
   "categories": [
-    { "id": "technology", "name": "Technology", "description": "Software, the web, digital tools, and the ideas shaping how technology is built and used.", "order": 1 },
-    { "id": "science", "name": "Science", "description": "Scientific concepts, discoveries, experiments, and explanations of the world around us.", "order": 2 },
-    { "id": "astronomy", "name": "Astronomy", "description": "Space, planets, stars, galaxies, and the science of the universe.", "order": 3 },
-    { "id": "nature", "name": "Nature", "description": "Wildlife, ecosystems, the environment, and the processes that sustain life on Earth.", "order": 4 },
-    { "id": "gaming", "name": "Gaming", "description": "Game design, gaming culture, systems, and thoughtful looks at interactive experiences.", "order": 5 },
-    { "id": "guides", "name": "Guides", "description": "Practical walkthroughs and clear explanations for learning or completing a task.", "order": 6 },
-    { "id": "general-knowledge", "name": "General Knowledge", "description": "Interesting questions, useful context, and subjects that do not fit just one category.", "order": 7 }
+    { "id": "technology", "name": "Technology", "nameFil": "Teknolohiya", "description": "Software, the web, digital tools, and the ideas shaping how technology is built and used.", "descriptionFil": "Software, web, mga digital tool, at mga ideyang humuhubog sa paggawa at paggamit ng teknolohiya.", "order": 1 },
+    { "id": "science", "name": "Science", "nameFil": "Agham", "description": "Scientific concepts, discoveries, experiments, and explanations of the world around us.", "descriptionFil": "Mga konsepto, tuklas, eksperimento, at paliwanag tungkol sa mundong ginagalawan natin.", "order": 2 },
+    { "id": "astronomy", "name": "Astronomy", "nameFil": "Astronomiya", "description": "Space, planets, stars, galaxies, and the science of the universe.", "descriptionFil": "Kalawakan, mga planeta, bituin, galaxy, at agham tungkol sa uniberso.", "order": 3 },
+    { "id": "nature", "name": "Nature", "nameFil": "Kalikasan", "description": "Wildlife, ecosystems, the environment, and the processes that sustain life on Earth.", "descriptionFil": "Mga hayop at halaman, ecosystem, kapaligiran, at mga prosesong sumusuporta sa buhay sa Daigdig.", "order": 4 },
+    { "id": "gaming", "name": "Gaming", "nameFil": "Gaming", "description": "Game design, gaming culture, systems, and thoughtful looks at interactive experiences.", "descriptionFil": "Game design, kultura ng gaming, mga sistema, at pagsusuri sa interactive na karanasan.", "order": 5 },
+    { "id": "guides", "name": "Guides", "nameFil": "Mga Gabay", "description": "Practical walkthroughs and clear explanations for learning or completing a task.", "descriptionFil": "Mga praktikal na hakbang at malinaw na paliwanag para matuto o makatapos ng isang gawain.", "order": 6 },
+    { "id": "general-knowledge", "name": "General Knowledge", "nameFil": "Pangkalahatang Kaalaman", "description": "Interesting questions, useful context, and subjects that do not fit just one category.", "descriptionFil": "Mga kawili-wiling tanong, kapaki-pakinabang na impormasyon, at paksang hindi lang sa iisang kategorya nababagay.", "order": 7 }
   ]
 }
