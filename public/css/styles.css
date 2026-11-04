@@ -181,3 +181,7 @@ main[id] { scroll-margin-top: 24px; }
 .social-mark { display: grid; flex: 0 0 42px; width: 42px; height: 42px; place-items: center; border: 1px solid var(--border); border-radius: 14px; background: var(--accent-soft); font-size: 1.25rem; font-weight: 850; }
 .social-arrow { margin-left: auto; color: var(--muted); }
 .social-card:hover .social-arrow { color: var(--accent-strong); }
+
+.footer-social { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; width: 100%; padding-top: 12px; border-top: 1px solid var(--line); }
+.footer-social-link { color: var(--muted); font-size: .82rem; font-weight: 700; }
+.footer-social-link:hover { color: var(--accent-strong); }
