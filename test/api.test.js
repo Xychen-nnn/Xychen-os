@@ -254,7 +254,7 @@ test('browser scripts parse and every page translation key has a fallback', () =
   }
 
   const dictionary = fs.readFileSync(path.join(publicDir, 'js/i18n.js'), 'utf8');
-  const keys = new Set([...dictionary.matchAll(/'([^']+)'\\s*:/g)].map((match) => match[1]));
+  const keys = new Set([...dictionary.matchAll(/'([^']+)'\s*:/g)].map((match) => match[1]));
   const htmlFiles = fs.readdirSync(publicDir).filter((file) => file.endsWith('.html'));
 
   for (const file of htmlFiles) {
