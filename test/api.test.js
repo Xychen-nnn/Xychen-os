@@ -65,12 +65,30 @@ test('public pages are served successfully', async () => {
     assert.match(html, /<html lang="en"/);
     assert.match(html, /<title>[^<]+<\/title>/);
     assert.match(html, /<meta name="description"/);
-    assert.match(html, /rel="canonical"/);
+    if (page === '/article.html') {
+      assert.match(html, /<meta name="robots" content="noindex,follow"/);
+    } else {
+      assert.match(html, /rel="canonical"/);
+    }
     assert.match(html, /class="skip-link"/);
     assert.match(html, /id="main-content"/);
     assert.match(html, /<noscript><nav aria-label="Main navigation">/);
     assert.match(html, /src="\/js\/theme\.js" defer/);
   }
+});
+
+test('legacy article URLs redirect to the crawlable article route', async () => {
+  const response = await fetch(baseUrl + '/article.html?slug=sample-article', { redirect: 'manual' });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), '/articles/sample-article');
+});
+
+test('unknown article routes return a non-cacheable not-found page', async () => {
+  const response = await fetch(baseUrl + '/articles/not-a-published-article');
+  const html = await response.text();
+  assert.equal(response.status, 404);
+  assert.equal(response.headers.get('cache-control'), 'no-store');
+  assert.match(html, /404|not found/i);
 });
 
 test('content API exposes categories and an honest empty published library', async () => {
