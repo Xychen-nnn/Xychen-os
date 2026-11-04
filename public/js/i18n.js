@@ -37,7 +37,7 @@
       'projects.source': 'View source ↗', 'projects.open': 'Open website',
       'projects.note': 'More projects will appear here when there is something real and ready to share.',
       'links.eyebrow': 'Official destinations', 'links.title': 'Links',
-      'links.intro': 'A short list of verified places to visit the project or view its source.',
+      'links.intro': 'Find the public profiles, community, and project source in one place.',
       'links.githubTitle': 'GitHub repository', 'links.githubText': 'Browse the source code, project files, and development history.',
       'links.githubAction': 'github.com/Xychen-nnn/Xychen-os ↗',
       'links.liveTitle': 'Live website', 'links.liveText': 'Open the currently published version of Xychen OS.',
