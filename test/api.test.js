@@ -29,7 +29,7 @@ test('health endpoint reports the current service version', async () => {
 
   assert.equal(response.status, 200);
   assert.equal(body.status, 'ok');
-  assert.equal(body.version, '1.2.0');
+  assert.equal(body.version, '1.3.0');
   assert.equal(body.website, 'operational');
   assert.equal(body.api, 'operational');
 });
@@ -57,6 +57,11 @@ test('public pages are served successfully', async () => {
     assert.equal(response.status, 200, `${page} should return 200`);
     assert.match(response.headers.get('content-type') || '', /text\/html/);
     assert.match(html, /<html lang="en"/);
+    assert.match(html, /<title>[^<]+<\/title>/);
+    assert.match(html, /<meta name="description"/);
+    assert.match(html, /rel="canonical"/);
+    assert.match(html, /class="skip-link"/);
+    assert.match(html, /id="main-content"/);
   }
 });
 
@@ -74,4 +79,18 @@ test('unknown API routes return a JSON 404 response', async () => {
 
   assert.equal(response.status, 404);
   assert.deepEqual(body, { error: 'Not found' });
+});
+
+
+test('robots and sitemap are publicly available', async () => {
+  const robots = await fetch(`${baseUrl}/robots.txt`);
+  const sitemap = await fetch(`${baseUrl}/sitemap.xml`);
+  const sitemapXml = await sitemap.text();
+
+  assert.equal(robots.status, 200);
+  assert.match(await robots.text(), /Sitemap:\\s*https:\\/\\/xychen-os\\.vercel\\.app\\/sitemap\\.xml/);
+  assert.equal(sitemap.status, 200);
+  assert.match(sitemap.headers.get('content-type') || '', /xml/);
+  assert.match(sitemapXml, /<loc>https:\\/\\/xychen-os\\.vercel\\.app\\//);
+  assert.match(sitemapXml, /<loc>https:\\/\\/xychen-os\\.vercel\\.app\\/tools\\.html<\\/loc>/);
 });
