@@ -9,6 +9,8 @@ body {
   background:
     radial-gradient(ellipse at 8% 0%, var(--bg-glow), transparent 34rem),
     radial-gradient(ellipse at 92% 18%, rgba(191, 165, 255, .15), transparent 30rem),
+    linear-gradient(var(--page-overlay), var(--page-overlay)),
+    url("/assets/xychen-site-background.webp") center 24% / cover fixed,
     var(--bg);
   transition: background-color .25s, color .25s;
 }
@@ -185,3 +187,17 @@ main[id] { scroll-margin-top: 24px; }
 .footer-social { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; width: 100%; padding-top: 12px; border-top: 1px solid var(--line); }
 .footer-social-link { color: var(--muted); font-size: .82rem; font-weight: 700; }
 .footer-social-link:hover { color: var(--accent-strong); }
+
+/* Site identity artwork */
+.hero { overflow: hidden; border: 1px solid var(--line); border-radius: 32px; padding: clamp(30px, 5vw, 64px); background: var(--surface); box-shadow: var(--shadow); }
+.hero > :not(.hero-banner) { position: relative; z-index: 1; max-width: 62%; }
+.hero .actions, .hero .hero-tags { max-width: 62%; }
+.hero-banner { position: absolute; z-index: 0; top: 0; right: 0; width: 54%; height: 100%; object-fit: cover; object-position: 54% 30%; opacity: .94; mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 20%, #000 55%); }
+.hero::after { z-index: 0; right: 7%; opacity: .28; }
+@media (max-width: 760px) {
+  body { background-attachment: scroll; }
+  .hero { min-height: 0; padding: 32px 22px 28px; }
+  .hero > :not(.hero-banner), .hero .actions, .hero .hero-tags { max-width: 100%; }
+  .hero-banner { width: 100%; height: 58%; object-position: center 30%; opacity: .3; mask-image: linear-gradient(180deg, #000 0%, transparent 100%); }
+  .hero h1 { font-size: clamp(2.55rem, 12vw, 4.4rem); }
+}
