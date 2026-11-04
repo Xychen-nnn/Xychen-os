@@ -10,7 +10,7 @@
     const button = document.querySelector('[data-theme-toggle]');
     if (!button) return;
     const dark = root.dataset.theme === 'dark';
-    button.textContent = dark ? '☀️ Light' : '🌙 Dark';
+    button.textContent = dark ? 'Light mode' : 'Dark mode';
     button.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
     button.setAttribute('aria-pressed', String(dark));
   }
