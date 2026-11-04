@@ -121,6 +121,9 @@
       // Browser storage may be unavailable; use language detection instead.
     }
 
+    const cookieMatch = document.cookie.match(/(?:^|;\\s*)xychen-os-language=(en|fil)(?:;|$)/);
+    if (cookieMatch) return cookieMatch[1];
+
     const browserLanguages = navigator.languages && navigator.languages.length
       ? navigator.languages
       : [navigator.language || 'en'];
@@ -176,7 +179,10 @@
 
   const selector = document.querySelector('[data-language-select]');
   if (selector) {
-    selector.addEventListener('change', () => applyLanguage(selector.value, true));
+    selector.addEventListener('change', () => {
+      applyLanguage(selector.value, true);
+      if (window.location.pathname.startsWith('/articles/')) window.location.reload();
+    });
   }
   applyLanguage(detectLanguage());
 })();
