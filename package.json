@@ -5,6 +5,10 @@
   "description": "Xychen OS — a personal digital platform for projects, browser tools, and resources.",
   "main": "server.js",
   "engines": { "node": "22.x" },
-  "scripts": { "start": "node server.js", "dev": "node --watch server.js" },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
   "dependencies": { "express": "^4.19.2" }
 }
