@@ -20,6 +20,7 @@
   <script src="/js/theme-init.js"></script>
   <script src="/js/theme.js" defer></script>
   <script src="/js/components.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
   <script src="/js/pages/explore.js" defer></script>
 </head>
 <body data-page="explore">
@@ -27,25 +28,25 @@
   <div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/explore.html">Explore</a><a href="/links.html">Links</a></nav></noscript></div>
   <main id="main-content">
     <header class="page-heading">
-      <p class="eyebrow">Topics and knowledge</p>
-      <h1>Explore</h1>
-      <p class="page-intro">Choose a subject to browse. This library is designed for clear explainers, practical guides, and articles with sources—not filler or unreviewed posts.</p>
+      <p class="eyebrow" data-i18n="explore.eyebrow">Topics and knowledge</p>
+      <h1 data-i18n="explore.title">Explore</h1>
+      <p class="page-intro" data-i18n="explore.intro">Choose a subject to browse. This library is designed for clear explainers, practical guides, and articles with sources—not filler or unreviewed posts.</p>
     </header>
     <section class="section" aria-labelledby="categories-heading">
       <div class="section-heading">
-        <div><p class="eyebrow">Browse by subject</p><h2 id="categories-heading">Categories</h2></div>
+        <div><p class="eyebrow" data-i18n="explore.categoriesEyebrow">Browse by subject</p><h2 id="categories-heading" data-i18n="explore.categoriesTitle">Categories</h2></div>
         <span class="muted" id="category-count">Loading categories…</span>
       </div>
       <div class="grid" id="category-list" aria-live="polite"><p class="muted">Loading categories…</p></div>
     </section>
     <section class="section" aria-labelledby="articles-heading">
       <div class="section-heading">
-        <div><p class="eyebrow">The reading library</p><h2 id="articles-heading">Published articles</h2></div>
+        <div><p class="eyebrow" data-i18n="explore.articlesEyebrow">The reading library</p><h2 id="articles-heading" data-i18n="explore.articlesTitle">Published articles</h2></div>
         <span class="muted" id="article-count"></span>
       </div>
       <div class="grid" id="article-list" aria-live="polite"><p class="muted">Loading articles…</p></div>
     </section>
-    <p class="notice section">Articles are published after review. A category can be available before its first article is ready.</p>
+    <p class="notice section" data-i18n="explore.notice">Articles are published after review. A category can be available before its first article is ready.</p>
   </main>
   <div data-site-footer></div>
 </body>
