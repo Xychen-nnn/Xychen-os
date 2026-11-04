@@ -32,6 +32,7 @@
 
     const nav = document.createElement('nav');
     nav.setAttribute('aria-label', 'Main navigation');
+    nav.dataset.i18nAriaLabel = 'nav.main';
     navigation.forEach(([key, label, href, translationKey]) => {
       const link = createLink(label, href, '', translationKey);
       if (page === key || (page === 'article' && key === 'explore')) {
@@ -53,6 +54,7 @@
     languageSelect.className = 'language-select';
     languageSelect.dataset.languageSelect = '';
     languageSelect.setAttribute('aria-label', 'Language');
+    languageSelect.dataset.i18nAriaLabel = 'language.label';
     languageSelect.title = 'Language';
     [['en', 'EN'], ['fil', 'FIL']].forEach(([value, label]) => {
       const option = document.createElement('option');
