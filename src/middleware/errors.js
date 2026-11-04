@@ -1,4 +1,12 @@
+const fs = require('fs');
 const path = require('path');
+
+// Load the static 404 page once at startup instead of accessing the file system
+// for every unmatched request.
+const notFoundHtml = fs.readFileSync(
+  path.join(__dirname, '..', '..', 'public', '404.html'),
+  'utf8'
+);
 
 function notFound(req, res) {
   if (req.path === '/api' || req.path.startsWith('/api/')) {
@@ -6,7 +14,7 @@ function notFound(req, res) {
   }
 
   res.setHeader('Cache-Control', 'no-store');
-  return res.status(404).sendFile(path.join(__dirname, '..', '..', 'public', '404.html'));
+  return res.status(404).type('html').send(notFoundHtml);
 }
 
 function errorHandler(err, req, res, next) {
