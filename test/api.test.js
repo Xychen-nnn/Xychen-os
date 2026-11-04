@@ -44,7 +44,10 @@ test('site metadata describes only currently available features', async () => {
   assert.equal(response.status, 200);
   assert.equal(body.name, 'Xychen OS');
   assert.equal(body.features.projects, true);
-  assert.equal(body.features.browserTools, true);
+  assert.equal(body.features.informationHub, true);
+  assert.equal(body.features.browserTools, undefined);
+  assert.equal(body.links.explore, '/explore.html');
+  assert.equal(Object.hasOwn(body.links, 'tools'), false);
   assert.equal(body.features.accounts, false);
   assert.equal(body.features.communitySubmissions, false);
   assert.equal(body.features.admin, false);
@@ -53,7 +56,7 @@ test('site metadata describes only currently available features', async () => {
 });
 
 test('public pages are served successfully', async () => {
-  for (const page of ['/', '/about.html', '/projects.html', '/tools.html', '/links.html']) {
+  for (const page of ['/', '/about.html', '/projects.html', '/explore.html', '/article.html', '/links.html']) {
     const response = await fetch(baseUrl + page);
     const html = await response.text();
 
@@ -70,6 +73,18 @@ test('public pages are served successfully', async () => {
   }
 });
 
+test('content API exposes categories and an honest empty published library', async () => {
+  const categoriesResponse = await fetch(baseUrl + '/api/content/categories');
+  const articlesResponse = await fetch(baseUrl + '/api/content/articles');
+  const categoriesBody = await categoriesResponse.json();
+  const articlesBody = await articlesResponse.json();
+
+  assert.equal(categoriesResponse.status, 200);
+  assert.ok(categoriesBody.categories.length > 0);
+  assert.equal(articlesResponse.status, 200);
+  assert.deepEqual(articlesBody.articles, []);
+});
+
 test('removed Playground page returns the not-found page without caching it', async () => {
   const response = await fetch(baseUrl + '/playground.html');
   const html = await response.text();
@@ -78,6 +93,12 @@ test('removed Playground page returns the not-found page without caching it', as
   assert.match(response.headers.get('content-type') || '', /text\/html/);
   assert.equal(response.headers.get('cache-control'), 'no-store');
   assert.match(html, /404|not found/i);
+});
+
+test('retired Tools page and its old API metadata are no longer exposed', async () => {
+  const response = await fetch(baseUrl + '/tools.html');
+  assert.equal(response.status, 404);
+  assert.equal(response.headers.get('cache-control'), 'no-store');
 });
 
 test('unknown API routes return a JSON 404 response', async () => {
@@ -98,7 +119,8 @@ test('robots and sitemap are publicly available', async () => {
   assert.equal(sitemap.status, 200);
   assert.match(sitemap.headers.get('content-type') || '', /xml/);
   assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/</loc>'));
-  assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/tools.html</loc>'));
+  assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/explore.html</loc>'));
+  assert.ok(!sitemapXml.includes('/tools.html'));
 });
 
 test('security headers are applied to API responses', async () => {

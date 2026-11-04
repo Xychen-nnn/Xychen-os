@@ -40,6 +40,7 @@ app.use((req, res, next) => {
 
 app.use('/api', require('./src/routes/health'));
 app.use('/api/site', require('./src/routes/site'));
+app.use('/api/content', require('./src/routes/content'));
 
 app.use(express.static(path.join(__dirname, 'public'), {
   extensions: ['html'],

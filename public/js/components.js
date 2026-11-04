@@ -4,7 +4,7 @@
     ['home', 'Home', '/'],
     ['about', 'About', '/about.html'],
     ['projects', 'Projects', '/projects.html'],
-    ['tools', 'Tools', '/tools.html'],
+    ['explore', 'Explore', '/explore.html'],
     ['links', 'Links', '/links.html']
   ];
 
@@ -20,7 +20,6 @@
   if (headerMount) {
     const header = document.createElement('header');
     header.className = 'site-header';
-
     const brand = createLink('', '/', 'brand');
     brand.setAttribute('aria-label', 'Xychen OS home');
     const mark = document.createElement('span');
@@ -46,7 +45,6 @@
     themeButton.dataset.themeToggle = '';
     themeButton.textContent = 'Toggle theme';
     actions.append(themeButton);
-
     header.append(brand, nav, actions);
     headerMount.replaceWith(header);
   }
@@ -65,7 +63,8 @@
     links.append(
       createLink('About', '/about.html'),
       createLink('Projects', '/projects.html'),
-      createLink('Tools', '/tools.html'),
+      createLink('Explore', '/explore.html'),
+      createLink('Links', '/links.html'),
       createLink('GitHub ↗', 'https://github.com/Xychen-nnn/Xychen-os')
     );
     links.lastElementChild.target = '_blank';
