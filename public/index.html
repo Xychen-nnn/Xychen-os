@@ -14,7 +14,19 @@
   <meta name="twitter:title" content="Xychen OS — Your personal digital space">
   <meta name="twitter:description" content="Xychen OS is a personal digital platform for projects, useful tools, and resources.">
   <meta name="theme-color" content="#f4f6fb"><title>Xychen OS — Your personal digital space</title>
-  <link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme.js"></script><script src="/js/components.js" defer></script>
+  <link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script>
+  (() => {
+    const root = document.documentElement;
+    try {
+      const saved = localStorage.getItem('xychen-os-theme');
+      const preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.dataset.theme = saved === 'dark' || saved === 'light' ? saved : preferred;
+    } catch (_) {
+      root.dataset.theme = 'light';
+    }
+  })();
+</script>
+<script src="/js/theme.js" defer></script><script src="/js/components.js" defer></script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Skip to content</a>
