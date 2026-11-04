@@ -58,23 +58,25 @@ test('public pages are served successfully', async () => {
     const html = await response.text();
 
     assert.equal(response.status, 200, `${page} should return 200`);
-    assert.match(response.headers.get('content-type') || '', /text\/html/);
+    assert.match(response.headers.get('content-type') || '', /text\\/html/);
     assert.match(html, /<html lang="en"/);
-    assert.match(html, /<title>[^<]+<\/title>/);
+    assert.match(html, /<title>[^<]+<\\/title>/);
     assert.match(html, /<meta name="description"/);
     assert.match(html, /rel="canonical"/);
     assert.match(html, /class="skip-link"/);
     assert.match(html, /id="main-content"/);
     assert.match(html, /<noscript><nav aria-label="Main navigation">/);
-    assert.match(html, /src="\/js\/theme\.js" defer/);
+    assert.match(html, /src="\\/js\\/theme\\.js" defer/);
   }
 });
 
-test('removed Playground page returns the not-found page', async () => {
+test('removed Playground page returns the not-found page without caching it', async () => {
   const response = await fetch(`${baseUrl}/playground.html`);
   const html = await response.text();
 
   assert.equal(response.status, 404);
+  assert.match(response.headers.get('content-type') || '', /text\\/html/);
+  assert.equal(response.headers.get('cache-control'), 'no-store');
   assert.match(html, /404|not found/i);
 });
 
@@ -85,7 +87,6 @@ test('unknown API routes return a JSON 404 response', async () => {
   assert.equal(response.status, 404);
   assert.deepEqual(body, { error: 'Not found' });
 });
-
 
 test('robots and sitemap are publicly available', async () => {
   const robots = await fetch(`${baseUrl}/robots.txt`);
@@ -99,7 +100,6 @@ test('robots and sitemap are publicly available', async () => {
   assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/</loc>'));
   assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/tools.html</loc>'));
 });
-
 
 test('security headers are applied to API responses', async () => {
   const response = await fetch(`${baseUrl}/api/health`, {
@@ -133,7 +133,7 @@ test('all local links and asset references in public HTML resolve to files', () 
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
-    const references = [...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/g)];
+    const references = [...html.matchAll(/\\b(?:href|src)=["']([^"']+)["']/g)];
 
     for (const [, reference] of references) {
       const url = new URL(reference, `${origin}/${file}`);
@@ -199,8 +199,8 @@ test('theme bootstrap is loaded from a same-origin script on every public page',
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
-    assert.match(html, /src="\/js\/theme-init\.js"/, `${file} should load the theme bootstrap`);
-    assert.doesNotMatch(html, /<script>\s*\(\(\) =>/, `${file} should not contain an inline script`);
-    assert.doesNotMatch(html, /\sstyle=["']/, `${file} should not contain inline style attributes`);
+    assert.match(html, /src="\\/js\\/theme-init\\.js"/, `${file} should load the theme bootstrap`);
+    assert.doesNotMatch(html, /<script>\\s*\\(\\(\\) =>/, `${file} should not contain an inline script`);
+    assert.doesNotMatch(html, /\\sstyle=["']/, `${file} should not contain inline style attributes`);
   }
 });
