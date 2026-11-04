@@ -1,17 +1,16 @@
 # Xychen OS
 
-Xychen OS is a personal digital platform for projects, browser-based utilities, and useful online resources.
+Xychen OS is a personal digital platform for projects, selected public links, and an editorial library of topics worth exploring.
 
 ## Current website
 
-- Home, About, Projects, Tools, and Links pages
-- Shared header and footer components rendered by a small browser-side script
-- Shared light/dark theme tokens and responsive glass-inspired styling
-- Theme preference remembered in the visitor's browser
-- Text counter with word, character, and line counts
-- JSON formatter and minifier with validation feedback
-- Lightweight health and site-metadata API endpoints
-- No account, login, support-ticket, or community-submission system
+- Home, About, Projects, Explore, Article, and Links pages
+- Shared responsive navigation and footer
+- Light and dark themes with a saved visitor preference
+- Category-based content discovery
+- Git-managed article content with metadata and source validation
+- Lightweight health, site metadata, and content API endpoints
+- No user accounts, community submissions, or external integrations
 
 ## Run locally
 
@@ -25,23 +24,29 @@ Requires Node.js 22.x and npm.
 
 - `GET /api/health` — service health and version
 - `GET /api/site` — public site name, version, feature flags, and page links
+- `GET /api/content/categories` — category registry
+- `GET /api/content/articles` — published article metadata
+- `GET /api/content/articles/:slug` — one published article
 
 ## Project structure
 
 - `public/*.html` — website pages
-- `public/css/tokens.css` — shared theme and design tokens
+- `public/css/tokens.css` — shared design tokens and theme values
 - `public/css/styles.css` — shared layout and component styling
 - `public/js/components.js` — shared header and footer
-- `public/js/theme.js` — theme preference and footer year
-- `src/routes/` — small public API routes
+- `public/js/pages/` — page-specific browser behavior
+- `content/categories.json` — canonical category registry
+- `content/articles/` — reviewed article content and metadata
+- `src/content/` — content validation and rendering
+- `src/routes/` — public API routes
 - `server.js` — Express app and static file serving
 
-The shared shell is intentionally dependency-free. Pages keep their content in HTML, while the header and footer are generated from one shared source to avoid navigation drift.
+## Content standards
 
-## Design and scope
+Do not publish placeholder articles or unsupported claims. Each article should have a clear purpose, accurate information, source links, a review status, and publication details. The public library only displays content marked as published.
 
-Tools run in the visitor's browser and do not require a database. New pages and utilities should be added only when they serve a real purpose. Avoid fake project entries, dead buttons, unnecessary backend services, and features that are not ready to work.
+## Scope
 
-## Not included
+This release is a website, not a full operating system or connected app ecosystem. Features should be added only when they serve a real visitor need and can be maintained properly. Do not add dead buttons, invented project entries, or integrations that are not configured.
 
-User accounts, admin dashboards, public bug reports, feature-request submissions, support tickets, database storage, Playground, and external Discord/Roblox integrations are not part of the current release.
+User accounts, dashboards, public submissions, database-backed community features, and external Discord integrations are not part of the current release.
