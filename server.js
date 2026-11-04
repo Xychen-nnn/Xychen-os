@@ -42,6 +42,15 @@ app.use('/api', require('./src/routes/health'));
 app.use('/api/site', require('./src/routes/site'));
 app.use('/api/content', require('./src/routes/content'));
 
+// Keep the old query-based article URL working while moving to crawlable paths.
+app.get('/article.html', (req, res, next) => {
+  const slug = typeof req.query.slug === 'string' ? req.query.slug : '';
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) return next();
+  return res.redirect(301, '/articles/' + encodeURIComponent(slug));
+});
+
+app.use('/articles', require('./src/routes/articles'));
+
 app.use(express.static(path.join(__dirname, 'public'), {
   extensions: ['html'],
   setHeaders(res, filePath) {
