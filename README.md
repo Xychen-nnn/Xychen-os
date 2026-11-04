@@ -29,7 +29,6 @@ Requires Node.js 22.x and npm.
 ## Project structure
 
 - `public/*.html` — website pages
-- `public/components/` — reserved for future static component assets
 - `public/css/tokens.css` — shared theme and design tokens
 - `public/css/styles.css` — shared layout and component styling
 - `public/js/components.js` — shared header and footer
