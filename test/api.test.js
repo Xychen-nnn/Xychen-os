@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const { after, before, test } = require('node:test');
 const app = require('../server');
 const { errorHandler } = require('../src/middleware/errors');
@@ -235,6 +236,32 @@ test('error handler returns safe JSON for API failures and HTML for page failure
     assert.doesNotMatch(pageResponse.body, /private internal detail/);
   } finally {
     console.error = originalConsoleError;
+  }
+});
+
+test('browser scripts parse and every page translation key has a fallback', () => {
+  const publicDir = path.join(__dirname, '..', 'public');
+  const scriptFiles = [
+    'js/components.js',
+    'js/theme.js',
+    'js/i18n.js',
+    'js/pages/explore.js'
+  ];
+
+  for (const file of scriptFiles) {
+    const source = fs.readFileSync(path.join(publicDir, file), 'utf8');
+    assert.doesNotThrow(() => new vm.Script(source), file + ' should parse');
+  }
+
+  const dictionary = fs.readFileSync(path.join(publicDir, 'js/i18n.js'), 'utf8');
+  const keys = new Set([...dictionary.matchAll(/'([^']+)'\\s*:/g)].map((match) => match[1]));
+  const htmlFiles = fs.readdirSync(publicDir).filter((file) => file.endsWith('.html'));
+
+  for (const file of htmlFiles) {
+    const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
+    for (const [, key] of html.matchAll(/data-i18n(?:-aria-label)?="([^"]+)"/g)) {
+      assert.ok(keys.has(key), 'Missing translation key ' + key + ' in ' + file);
+    }
   }
 });
 
