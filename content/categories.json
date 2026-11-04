@@ -1,11 +1,11 @@
 {
   "categories": [
-    { "id": "technology", "name": "Technology", "order": 1 },
-    { "id": "science", "name": "Science", "order": 2 },
-    { "id": "astronomy", "name": "Astronomy", "order": 3 },
-    { "id": "nature", "name": "Nature", "order": 4 },
-    { "id": "gaming", "name": "Gaming", "order": 5 },
-    { "id": "guides", "name": "Guides", "order": 6 },
-    { "id": "general-knowledge", "name": "General Knowledge", "order": 7 }
+    { "id": "technology", "name": "Technology", "description": "Software, the web, digital tools, and the ideas shaping how technology is built and used.", "order": 1 },
+    { "id": "science", "name": "Science", "description": "Scientific concepts, discoveries, experiments, and explanations of the world around us.", "order": 2 },
+    { "id": "astronomy", "name": "Astronomy", "description": "Space, planets, stars, galaxies, and the science of the universe.", "order": 3 },
+    { "id": "nature", "name": "Nature", "description": "Wildlife, ecosystems, the environment, and the processes that sustain life on Earth.", "order": 4 },
+    { "id": "gaming", "name": "Gaming", "description": "Game design, gaming culture, systems, and thoughtful looks at interactive experiences.", "order": 5 },
+    { "id": "guides", "name": "Guides", "description": "Practical walkthroughs and clear explanations for learning or completing a task.", "order": 6 },
+    { "id": "general-knowledge", "name": "General Knowledge", "description": "Interesting questions, useful context, and subjects that do not fit just one category.", "order": 7 }
   ]
 }
