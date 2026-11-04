@@ -1,8 +1,6 @@
 'use strict';
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const os = require('node:os');
 const path = require('node:path');
 const { test } = require('node:test');
 const {
@@ -44,7 +42,7 @@ test('category validation rejects duplicate IDs and invalid ordering', () => {
   );
 });
 
-test('article metadata validation enforces required fields and known categories', () => {
+test('article metadata validation accepts a valid record and rejects unknown categories', () => {
   const validMetadata = {
     id: 'sample-guide',
     title: 'Sample guide',

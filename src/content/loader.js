@@ -50,31 +50,32 @@ function getArticleDirectory(slug, contentDir) {
   return articleDir;
 }
 
-function loadArticle(slug, contentDir = DEFAULT_CONTENT_DIR) {
+function readArticleMetadata(slug, contentDir, categoryIds) {
   const articleDir = getArticleDirectory(slug, contentDir);
-  const categories = loadCategories(contentDir);
-  const metadataPath = path.join(articleDir, 'metadata.json');
-  const metadata = readJson(metadataPath);
+  const metadata = readJson(path.join(articleDir, 'metadata.json'));
+  validateArticleMetadata(metadata, { categoryIds, expectedSlug: slug });
 
-  validateArticleMetadata(metadata, {
-    categoryIds: new Set(categories.map((category) => category.id)),
-    expectedSlug: slug
-  });
-
-  const englishPath = path.join(articleDir, 'content.md');
-  if (!fs.existsSync(englishPath)) {
+  if (!fs.existsSync(path.join(articleDir, 'content.md'))) {
     throw new ContentValidationError('Article is missing its required English content.md file.');
   }
 
-  const content = fs.readFileSync(englishPath, 'utf8');
+  if (metadata.languages.includes('fil') &&
+      !fs.existsSync(path.join(articleDir, 'content.fil.md'))) {
+    throw new ContentValidationError('Article lists Filipino as available but content.fil.md is missing.');
+  }
+
+  return { articleDir, metadata };
+}
+
+function loadArticle(slug, contentDir = DEFAULT_CONTENT_DIR) {
+  const categories = loadCategories(contentDir);
+  const categoryIds = new Set(categories.map((category) => category.id));
+  const { articleDir, metadata } = readArticleMetadata(slug, contentDir, categoryIds);
+  const content = fs.readFileSync(path.join(articleDir, 'content.md'), 'utf8');
   const translations = {};
 
   if (metadata.languages.includes('fil')) {
-    const filipinoPath = path.join(articleDir, 'content.fil.md');
-    if (!fs.existsSync(filipinoPath)) {
-      throw new ContentValidationError('Article lists Filipino as available but content.fil.md is missing.');
-    }
-    translations.fil = fs.readFileSync(filipinoPath, 'utf8');
+    translations.fil = fs.readFileSync(path.join(articleDir, 'content.fil.md'), 'utf8');
   }
 
   return {
@@ -92,14 +93,16 @@ function listArticles(contentDir = DEFAULT_CONTENT_DIR, options = {}) {
   const categories = loadCategories(contentDir);
   const categoryIds = new Set(categories.map((category) => category.id));
   const includeUnpublished = options.includeUnpublished === true;
+  const seenIds = new Set();
 
   return fs.readdirSync(articlesDir, { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .map((entry) => {
-      const slug = entry.name;
-      const articleDir = getArticleDirectory(slug, contentDir);
-      const metadata = readJson(path.join(articleDir, 'metadata.json'));
-      validateArticleMetadata(metadata, { categoryIds, expectedSlug: slug });
+      const { metadata } = readArticleMetadata(entry.name, contentDir, categoryIds);
+      if (seenIds.has(metadata.id)) {
+        throw new ContentValidationError('Article IDs must be unique across the content library.');
+      }
+      seenIds.add(metadata.id);
       return metadata;
     })
     .filter((metadata) => includeUnpublished || metadata.status === 'published')
