@@ -44,6 +44,8 @@
       'links.liveAction': 'xychen-os.vercel.app ↗',
       'links.moreEyebrow': 'More places', 'links.moreTitle': 'Public profiles will be listed when they are ready.',
       'links.moreText': 'Only links supplied and approved for public sharing will appear here. This keeps the page accurate and avoids sending visitors to the wrong account.',
+      'links.profilesEyebrow': 'Around the web', 'links.profilesTitle': 'Social profiles', 'links.profilesNote': 'Official accounts', 'links.facebookLabel': 'Facebook link',
+      'links.communityEyebrow': 'Community and source', 'links.communityTitle': 'Stay connected', 'links.discordTitle': 'Discord community', 'links.discordText': 'Join the community space.',
       'explore.eyebrow': 'Topics and knowledge', 'explore.title': 'Explore',
       'explore.intro': 'Choose a subject to browse. This library is designed for clear explainers, practical guides, and articles with sources—not filler or unreviewed posts.',
       'explore.categoriesEyebrow': 'Browse by subject', 'explore.categoriesTitle': 'Categories',
