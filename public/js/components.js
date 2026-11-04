@@ -88,7 +88,25 @@
     );
     links.lastElementChild.target = '_blank';
     links.lastElementChild.rel = 'noopener noreferrer';
-    footer.append(copyright, links);
+
+    const social = document.createElement('div');
+    social.className = 'footer-social';
+    social.setAttribute('aria-label', 'Social profiles');
+    [
+      ['TikTok', 'https://www.tiktok.com/@x1ychen'],
+      ['YouTube', 'https://www.youtube.com/@xychenxycz'],
+      ['Instagram', 'https://www.instagram.com/xychen.n'],
+      ['Facebook', 'https://www.facebook.com/share/r/1J6D51VMqP/'],
+      ['X', 'https://x.com/Xychen1nx'],
+      ['Discord', 'https://discord.com/invite/xychen-server-1417846380432719915']
+    ].forEach(([label, href]) => {
+      const item = createLink(label, href, 'footer-social-link');
+      item.target = '_blank';
+      item.rel = 'noopener noreferrer';
+      social.append(item);
+    });
+
+    footer.append(copyright, links, social);
     footerMount.replaceWith(footer);
   }
 })();
