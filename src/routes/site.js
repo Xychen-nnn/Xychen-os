@@ -4,12 +4,11 @@ router.get('/', (req, res) => {
   res.json({
     name: 'Xychen OS',
     tagline: "A personal digital space for projects, tools, and experiments.",
-    version: '1.1.0',
+    version: '1.2.0',
     release: 'personal-platform',
     features: {
       projects: true,
       browserTools: true,
-      playground: true,
       themeSwitching: true,
       accounts: false,
       communitySubmissions: false,
@@ -21,7 +20,6 @@ router.get('/', (req, res) => {
       about: '/about.html',
       projects: '/projects.html',
       tools: '/tools.html',
-      playground: '/playground.html',
       links: '/links.html'
     }
   });
