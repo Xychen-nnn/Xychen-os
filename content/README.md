@@ -14,7 +14,8 @@ No example or placeholder article is published. Add an article only when its con
 Required fields:
 
 - `id`: stable unique identifier using lowercase letters, numbers, and hyphens.
-- `title`: human-readable English title.\n- `titleFil`: optional Filipino title; English is used when it is unavailable.
+- `title`: human-readable English title.
+- `titleFil`: optional Filipino title; English is used when it is unavailable.
 - `slug`: URL-safe identifier; must match the article directory.
 - `category`: an ID from `categories.json`.
 - `tags`: unique lowercase tags.
