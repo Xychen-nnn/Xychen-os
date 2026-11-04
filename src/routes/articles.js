@@ -15,7 +15,7 @@ function sendNotFound(res) {
 
 function requestedLanguage(req) {
   const cookie = String(req.headers.cookie || '');
-  const match = cookie.match(/(?:^|;\\s*)xychen-os-language=(en|fil)(?:;|$)/);
+  const match = cookie.match(/(?:^|;\s*)xychen-os-language=(en|fil)(?:;|$)/);
   return match ? match[1] : 'en';
 }
 
