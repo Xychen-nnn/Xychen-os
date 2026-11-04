@@ -14,11 +14,16 @@
     'general-knowledge': '◎'
   };
 
+  const translate = (key, fallback) =>
+    window.XychenI18n ? window.XychenI18n.t(key) : fallback;
+  const language = () =>
+    window.XychenI18n ? window.XychenI18n.getLanguage() : 'en';
+
   function showMessage(container, message, actionHref, actionLabel) {
     const panel = document.createElement('div');
     panel.className = 'empty-state card-full';
     const title = document.createElement('h3');
-    title.textContent = 'Nothing published here yet';
+    title.textContent = translate('explore.emptyTitle', 'Nothing published here yet');
     const paragraph = document.createElement('p');
     paragraph.textContent = message;
     panel.append(title, paragraph);
@@ -74,13 +79,19 @@
         articlesResponse.json()
       ]);
 
+      const lang = language();
+      const categoryName = (category) =>
+        lang === 'fil' ? category.nameFil || category.name : category.name;
+      const categoryDescription = (category) =>
+        lang === 'fil' ? category.descriptionFil || category.description : category.description;
+
       categoryCount.textContent = categories.length + (categories.length === 1 ? ' category' : ' categories');
       categoryList.replaceChildren(...categories.map((category) =>
         createCard(
-          category.name,
-          category.description,
+          categoryName(category),
+          categoryDescription(category),
           '/explore.html?category=' + encodeURIComponent(category.id),
-          'Browse category ↗',
+          translate('explore.browseCategory', 'Browse category ↗'),
           categoryIcons[category.id] || '•'
         )
       ));
@@ -94,35 +105,40 @@
         : articles;
 
       document.getElementById('articles-heading').textContent = selected
-        ? selected.name + ' articles'
+        ? categoryName(selected) + (lang === 'fil' ? ' — Mga Artikulo' : ' articles')
         : selectedCategoryId
-          ? 'Category not found'
-          : 'Published articles';
+          ? translate('explore.invalidCategory', 'Category not found')
+          : translate('explore.articlesTitle', 'Published articles');
 
       articleCount.textContent = visibleArticles.length + (visibleArticles.length === 1 ? ' article' : ' articles');
 
       if (!visibleArticles.length) {
         const message = selected
-          ? 'There are no reviewed articles in this category yet. The category is ready, and articles will appear here once they are researched and published.'
+          ? translate('explore.categoryEmpty', 'There are no reviewed articles in this category yet.')
           : selectedCategoryId
-            ? 'That category does not exist. Return to the full category list to choose another topic.'
-            : 'The article library is being prepared. Published articles will appear here with summaries, dates, and source information.';
-        showMessage(articleList, message, selectedCategoryId ? '/explore.html' : '/about.html',
-          selectedCategoryId ? 'View all categories' : 'About this platform');
+            ? translate('explore.invalidCategory', 'That category does not exist.')
+            : translate('explore.libraryEmpty', 'The article library is being prepared.');
+        const actionHref = selectedCategoryId ? '/explore.html' : '/about.html';
+        const actionLabel = selectedCategoryId
+          ? translate('explore.viewAll', 'View all categories')
+          : translate('explore.aboutPlatform', 'About this platform');
+        showMessage(articleList, message, actionHref, actionLabel);
         return;
       }
 
       articleList.replaceChildren(...visibleArticles.map((article) =>
         createCard(
-          article.title,
-          article.summary || 'Open this article to read the full explanation and its sources.',
+          lang === 'fil' ? article.titleFil || article.title : article.title,
+          lang === 'fil'
+            ? article.summaryFil || article.summary || translate('explore.articleFallback', 'Open this article to read the full explanation and its sources.')
+            : article.summary || translate('explore.articleFallback', 'Open this article to read the full explanation and its sources.'),
           '/articles/' + encodeURIComponent(article.slug),
-          'Read article ↗'
+          translate('explore.readArticle', 'Read article ↗')
         )
       ));
     } catch {
-      showMessage(categoryList, 'The category list could not be loaded. Please try again later.');
-      showMessage(articleList, 'The article library could not be loaded. Please try again later.');
+      showMessage(categoryList, translate('explore.loadCategoriesError', 'The category list could not be loaded.'), '/explore.html', 'Retry');
+      showMessage(articleList, translate('explore.loadArticlesError', 'The article library could not be loaded.'), '/explore.html', 'Retry');
       categoryCount.textContent = 'Unavailable';
       articleCount.textContent = '';
     }
