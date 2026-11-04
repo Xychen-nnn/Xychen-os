@@ -6,6 +6,7 @@ Xychen OS is a personal digital platform for projects, selected public links, an
 
 - Home, About, Projects, Explore, Article, and Links pages
 - Shared responsive navigation and footer
+- English and Filipino interface with browser-language detection and a saved manual preference
 - Light and dark themes with a saved visitor preference
 - Category-based content discovery
 - Git-managed article content with metadata and source validation
@@ -35,10 +36,12 @@ Requires Node.js 22.x and npm.
 - `public/css/styles.css` — shared layout and component styling
 - `public/js/components.js` — shared header and footer
 - `public/js/pages/` — page-specific browser behavior
+- `public/js/i18n.js` — language detection, translation, and saved language preference
 - `content/categories.json` — canonical category registry
 - `content/articles/` — reviewed article content and metadata
 - `src/content/` — content validation and rendering
-- `src/routes/` — public API routes
+- `src/routes/` — public API and server-rendered article routes
+- `src/views/` — server-rendered page templates
 - `server.js` — Express app and static file serving
 
 ## Content standards
