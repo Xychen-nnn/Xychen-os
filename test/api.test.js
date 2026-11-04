@@ -44,7 +44,10 @@ test('site metadata describes only currently available features', async () => {
   assert.equal(response.status, 200);
   assert.equal(body.name, 'Xychen OS');
   assert.equal(body.features.projects, true);
-  assert.equal(body.features.browserTools, true);
+  assert.equal(body.features.informationHub, true);
+  assert.equal(body.features.browserTools, undefined);
+  assert.equal(body.links.explore, '/explore.html');
+  assert.equal(Object.hasOwn(body.links, 'tools'), false);
   assert.equal(body.features.accounts, false);
   assert.equal(body.features.communitySubmissions, false);
   assert.equal(body.features.admin, false);
@@ -53,7 +56,7 @@ test('site metadata describes only currently available features', async () => {
 });
 
 test('public pages are served successfully', async () => {
-  for (const page of ['/', '/about.html', '/projects.html', '/tools.html', '/links.html']) {
+  for (const page of ['/', '/about.html', '/projects.html', '/explore.html', '/article.html', '/links.html']) {
     const response = await fetch(baseUrl + page);
     const html = await response.text();
 
@@ -68,6 +71,18 @@ test('public pages are served successfully', async () => {
     assert.match(html, /<noscript><nav aria-label="Main navigation">/);
     assert.match(html, /src="\/js\/theme\.js" defer/);
   }
+});
+
+test('content API exposes categories and an honest empty published library', async () => {
+  const categoriesResponse = await fetch(baseUrl + '/api/content/categories');
+  const articlesResponse = await fetch(baseUrl + '/api/content/articles');
+  const categoriesBody = await categoriesResponse.json();
+  const articlesBody = await articlesResponse.json();
+
+  assert.equal(categoriesResponse.status, 200);
+  assert.ok(categoriesBody.categories.length > 0);
+  assert.equal(articlesResponse.status, 200);
+  assert.deepEqual(articlesBody.articles, []);
 });
 
 test('removed Playground page returns the not-found page without caching it', async () => {
@@ -98,7 +113,8 @@ test('robots and sitemap are publicly available', async () => {
   assert.equal(sitemap.status, 200);
   assert.match(sitemap.headers.get('content-type') || '', /xml/);
   assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/</loc>'));
-  assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/tools.html</loc>'));
+  assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/explore.html</loc>'));
+  assert.ok(!sitemapXml.includes('/tools.html'));
 });
 
 test('security headers are applied to API responses', async () => {
