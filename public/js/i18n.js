@@ -121,7 +121,7 @@
       // Browser storage may be unavailable; use language detection instead.
     }
 
-    const cookieMatch = document.cookie.match(/(?:^|;\\s*)xychen-os-language=(en|fil)(?:;|$)/);
+    const cookieMatch = document.cookie.match(/(?:^|;\s*)xychen-os-language=(en|fil)(?:;|$)/);
     if (cookieMatch) return cookieMatch[1];
 
     const browserLanguages = navigator.languages && navigator.languages.length
