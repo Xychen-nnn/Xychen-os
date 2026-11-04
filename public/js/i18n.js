@@ -101,7 +101,7 @@
       'explore.intro': 'Pumili ng paksang gusto mong basahin. Para ito sa malinaw na paliwanag, praktikal na gabay, at mga artikulong may sources—hindi filler o hindi pa nasusuring posts.',
       'explore.categoriesEyebrow': 'Mag-browse ayon sa paksa', 'explore.categoriesTitle': 'Mga Kategorya',
       'explore.articlesEyebrow': 'Koleksiyon ng babasahin', 'explore.articlesTitle': 'Mga Nailathalang Artikulo',
-      'explore.notice': 'Inilalathala ang mga artikulo matapos ang review. Maaaring available na ang kategorya bago maging handa ang unang artikulo nito.',\n      'explore.emptyTitle': 'Wala pang nailalathalang artikulo rito', 'explore.categoryEmpty': 'Wala pang na-review na artikulo sa kategoryang ito. Handa na ang kategorya at lalabas dito ang mga artikulo kapag nasaliksik at nailathala na.', 'explore.libraryEmpty': 'Inihahanda pa ang koleksiyon ng mga artikulo. Lalabas dito ang mga nailathalang artikulo kasama ang buod, petsa, at sources.', 'explore.invalidCategory': 'Walang ganitong kategorya. Bumalik sa buong listahan ng mga kategorya para pumili ng iba.', 'explore.loadCategoriesError': 'Hindi ma-load ang listahan ng mga kategorya. Subukan ulit mamaya.', 'explore.loadArticlesError': 'Hindi ma-load ang koleksiyon ng mga artikulo. Subukan ulit mamaya.', 'explore.browseCategory': 'Tingnan ang kategorya ↗', 'explore.readArticle': 'Basahin ang artikulo ↗', 'explore.articleFallback': 'Buksan ang artikulo para mabasa ang buong paliwanag at sources nito.', 'explore.viewAll': 'Tingnan ang lahat ng kategorya', 'explore.aboutPlatform': 'Tungkol sa platform'
+      'explore.notice': 'Inilalathala ang mga artikulo matapos ang review. Maaaring available na ang kategorya bago maging handa ang unang artikulo nito.',\n      'explore.emptyTitle': 'Wala pang nailalathalang artikulo rito', 'explore.categoryEmpty': 'Wala pang na-review na artikulo sa kategoryang ito. Handa na ang kategorya at lalabas dito ang mga artikulo kapag nasaliksik at nailathala na.', 'explore.libraryEmpty': 'Inihahanda pa ang koleksiyon ng mga artikulo. Lalabas dito ang mga nailathalang artikulo kasama ang buod, petsa, at sources.', 'explore.invalidCategory': 'Walang ganitong kategorya. Bumalik sa buong listahan ng mga kategorya para pumili ng iba.', 'explore.loadCategoriesError': 'Hindi ma-load ang listahan ng mga kategorya. Subukan ulit mamaya.', 'explore.loadArticlesError': 'Hindi ma-load ang koleksiyon ng mga artikulo. Subukan ulit mamaya.', 'explore.browseCategory': 'Tingnan ang kategorya ↗', 'explore.readArticle': 'Basahin ang artikulo ↗', 'explore.articleFallback': 'Buksan ang artikulo para mabasa ang buong paliwanag at sources nito.', 'explore.viewAll': 'Tingnan ang lahat ng kategorya', 'explore.aboutPlatform': 'Tungkol sa platform',
       'notfound.eyebrow': '404 · Hindi nahanap', 'notfound.title': 'Wala ang pahinang ito.',
       'notfound.lead': 'Maaaring luma na ang address o nailipat ang pahina. Bumalik sa homepage o tingnan ang mga kasalukuyang seksiyon.',
       'notfound.home': 'Bumalik sa home', 'notfound.explore': 'Tuklasin ang mga paksa', 'article.openTitle': 'Magbukas ng artikulo mula sa Explore.', 'article.openText': 'May sariling address ang bawat nailathalang artikulo. Mag-browse sa library para pumili ng babasahin.', 'article.browse': 'Buksan ang Explore'
@@ -152,13 +152,13 @@
       selector.setAttribute('aria-label', translate('language.label'));
     }
 
+    saveLanguageCookie(currentLanguage);
     if (savePreference) {
       try {
         localStorage.setItem(storageKey, currentLanguage);
       } catch (_) {
         // The language still changes for the current page if storage is unavailable.
       }
-      saveLanguageCookie(currentLanguage);
     }
 
     document.dispatchEvent(new CustomEvent('xychen-language-change', {
