@@ -1,13 +1,13 @@
 # Content directory
 
-This directory stores editorial content managed through Git.
+This directory stores editorial content managed through Git and served by the public Explore pages and content API.
 
-- `categories.json` is the canonical category registry.
+- `categories.json` is the canonical category registry, including each category's public description and display order.
 - `articles/<slug>/metadata.json` stores validated article metadata.
 - `articles/<slug>/content.md` stores the English article body.
 - `articles/<slug>/content.fil.md` is optional Filipino content when the metadata lists `fil` as an available language.
 
-No example or placeholder article is published by this foundation. Add an article only when its content, sources, verification status, and publication details are ready.
+No example or placeholder article is published. Add an article only when its content, sources, verification status, and publication details are ready.
 
 ## Article metadata
 
@@ -30,6 +30,6 @@ A published article must have a publication date. Source URLs must use HTTP or H
 
 ## Validation and rendering
 
-The content loader validates category and article metadata before returning content. Markdown is rendered with HTML input disabled; raw HTML in article files is escaped rather than executed. Markdown links are subject to the renderer's protocol validation.
+The content loader validates category and article metadata before returning content. Category descriptions are required so the public interface never falls back to generic placeholder copy. Markdown is rendered with HTML input disabled; raw HTML in article files is escaped rather than executed. Markdown links are subject to the renderer's protocol validation.
 
-The content foundation is not yet connected to public pages or API endpoints. That integration is a later implementation step, after this layer is tested.
+The public website reads categories and published articles through `/api/content/categories` and `/api/content/articles`. The article endpoint serves published content only.
