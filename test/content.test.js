@@ -16,6 +16,7 @@ const {
 } = require('../src/content/loader');
 
 const contentDir = path.join(__dirname, '..', 'content');
+const { renderArticlePage } = require('../src/views/article');
 
 test('category registry is valid, described, and sorted by configured order', () => {
   const categories = loadCategories(contentDir);
@@ -103,6 +104,28 @@ test('article metadata rejects unsafe source protocols and invalid calendar date
 
 test('article loader rejects traversal-like slugs', () => {
   assert.throws(() => loadArticle('../package', contentDir), ContentValidationError);
+});
+
+test('server-rendered article pages escape metadata and expose canonical URLs', () => {
+  const page = renderArticlePage({
+    metadata: {
+      slug: 'safe-article',
+      title: '<script>alert(1)</script>',
+      summary: 'A reviewed summary.',
+      category: 'technology',
+      tags: ['web-security'],
+      publishedAt: '2026-11-05',
+      updatedAt: '2026-11-05',
+      sources: [{ title: 'Reference source', url: 'https://example.com/reference?a=1&b=2' }]
+    },
+    html: '<p>Safe rendered content.</p>'
+  }, { id: 'technology', name: 'Technology' });
+
+  assert.match(page, /<title>&lt;script&gt;alert\(1\)&lt;\/script&gt; — Xychen OS<\/title>/);
+  assert.match(page, /rel="canonical" href="https:\/\/xychen-os\.vercel\.app\/articles\/safe-article"/);
+  assert.match(page, /Safe rendered content/);
+  assert.match(page, /Reference source/);
+  assert.doesNotMatch(page, /<script>alert\(1\)<\/script>/);
 });
 
 test('article listing does not invent or publish placeholder content', () => {
