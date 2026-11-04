@@ -16,7 +16,7 @@ before(async () => {
   });
 
   const address = server.address();
-  baseUrl = \`http://127.0.0.1:\${address.port}\`;
+  baseUrl = 'http://127.0.0.1:' + address.port;
 });
 
 after(async () => {
@@ -27,7 +27,7 @@ after(async () => {
 });
 
 test('health endpoint reports the current service version', async () => {
-  const response = await fetch(\`\${baseUrl}/api/health\`);
+  const response = await fetch(baseUrl + '/api/health');
   const body = await response.json();
 
   assert.equal(response.status, 200);
@@ -38,7 +38,7 @@ test('health endpoint reports the current service version', async () => {
 });
 
 test('site metadata describes only currently available features', async () => {
-  const response = await fetch(\`\${baseUrl}/api/site\`);
+  const response = await fetch(baseUrl + '/api/site');
   const body = await response.json();
 
   assert.equal(response.status, 200);
@@ -54,10 +54,10 @@ test('site metadata describes only currently available features', async () => {
 
 test('public pages are served successfully', async () => {
   for (const page of ['/', '/about.html', '/projects.html', '/tools.html', '/links.html']) {
-    const response = await fetch(\`\${baseUrl}\${page}\`);
+    const response = await fetch(baseUrl + page);
     const html = await response.text();
 
-    assert.equal(response.status, 200, \`\${page} should return 200\`);
+    assert.equal(response.status, 200, page + ' should return 200');
     assert.match(response.headers.get('content-type') || '', /text\/html/);
     assert.match(html, /<html lang="en"/);
     assert.match(html, /<title>[^<]+<\/title>/);
@@ -71,7 +71,7 @@ test('public pages are served successfully', async () => {
 });
 
 test('removed Playground page returns the not-found page without caching it', async () => {
-  const response = await fetch(\`\${baseUrl}/playground.html\`);
+  const response = await fetch(baseUrl + '/playground.html');
   const html = await response.text();
 
   assert.equal(response.status, 404);
@@ -81,7 +81,7 @@ test('removed Playground page returns the not-found page without caching it', as
 });
 
 test('unknown API routes return a JSON 404 response', async () => {
-  const response = await fetch(\`\${baseUrl}/api/does-not-exist\`);
+  const response = await fetch(baseUrl + '/api/does-not-exist');
   const body = await response.json();
 
   assert.equal(response.status, 404);
@@ -89,8 +89,8 @@ test('unknown API routes return a JSON 404 response', async () => {
 });
 
 test('robots and sitemap are publicly available', async () => {
-  const robots = await fetch(\`\${baseUrl}/robots.txt\`);
-  const sitemap = await fetch(\`\${baseUrl}/sitemap.xml\`);
+  const robots = await fetch(baseUrl + '/robots.txt');
+  const sitemap = await fetch(baseUrl + '/sitemap.xml');
   const sitemapXml = await sitemap.text();
 
   assert.equal(robots.status, 200);
@@ -102,7 +102,7 @@ test('robots and sitemap are publicly available', async () => {
 });
 
 test('security headers are applied to API responses', async () => {
-  const response = await fetch(\`\${baseUrl}/api/health\`, {
+  const response = await fetch(baseUrl + '/api/health', {
     headers: { 'x-forwarded-proto': 'https' }
   });
   const policy = response.headers.get('content-security-policy') || '';
@@ -117,8 +117,8 @@ test('security headers are applied to API responses', async () => {
 });
 
 test('HTML and static assets use deliberate cache policies', async () => {
-  const page = await fetch(\`\${baseUrl}/about.html\`);
-  const stylesheet = await fetch(\`\${baseUrl}/css/styles.css\`);
+  const page = await fetch(baseUrl + '/about.html');
+  const stylesheet = await fetch(baseUrl + '/css/styles.css');
 
   assert.match(page.headers.get('cache-control') || '', /max-age=0/);
   assert.match(page.headers.get('cache-control') || '', /must-revalidate/);
@@ -136,14 +136,14 @@ test('all local links and asset references in public HTML resolve to files', () 
     const references = [...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/g)];
 
     for (const [, reference] of references) {
-      const url = new URL(reference, \`\${origin}/\${file}\`);
+      const url = new URL(reference, origin + '/' + file);
       if (url.origin !== origin) continue;
 
       const pathname = decodeURIComponent(url.pathname);
       const requestedPath = path.normalize(path.join(publicDir, pathname));
       assert.ok(
         requestedPath === publicDir || requestedPath.startsWith(publicDir + path.sep),
-        \`Reference escapes public directory: \${reference} in \${file}\`
+        'Reference escapes public directory: ' + reference + ' in ' + file
       );
 
       const candidates = pathname === '/'
@@ -156,7 +156,7 @@ test('all local links and asset references in public HTML resolve to files', () 
 
       assert.ok(
         candidates.some((candidate) => fs.existsSync(candidate)),
-        \`Broken local reference: \${reference} in \${file}\`
+        'Broken local reference: ' + reference + ' in ' + file
       );
     }
   }
@@ -199,8 +199,8 @@ test('theme bootstrap is loaded from a same-origin script on every public page',
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
-    assert.match(html, /src="\/js\/theme-init\.js"/, \`\${file} should load the theme bootstrap\`);
-    assert.doesNotMatch(html, /<script>\s*\(\(\) =>/, \`\${file} should not contain an inline script\`);
-    assert.doesNotMatch(html, /\sstyle=["']/, \`\${file} should not contain inline style attributes\`);
+    assert.match(html, /src="\/js\/theme-init\.js"/, file + ' should load the theme bootstrap');
+    assert.doesNotMatch(html, /<script>\s*\(\(\) =>/, file + ' should not contain an inline script');
+    assert.doesNotMatch(html, /\sstyle=["']/, file + ' should not contain inline style attributes');
   }
 });
