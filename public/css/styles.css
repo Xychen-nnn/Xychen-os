@@ -41,6 +41,12 @@ nav a {
 }
 nav a:hover, nav a[aria-current="page"] { background: var(--accent-soft); color: var(--text); }
 .header-actions { display: flex; align-items: center; gap: 8px; }
+.language-select {
+  width: auto; min-width: 66px; min-height: 44px; padding: 8px 10px;
+  border: 1px solid var(--border); border-radius: 13px;
+  background: var(--surface-strong); color: var(--text);
+  font-size: .82rem; font-weight: 800; cursor: pointer;
+}
 .theme-toggle, .button, .button-secondary, button {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 44px; padding: 10px 16px; border: 1px solid var(--border);
