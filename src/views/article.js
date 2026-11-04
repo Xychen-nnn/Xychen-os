@@ -79,7 +79,7 @@ function renderArticlePage(article, category, language = 'en') {
         <p class="muted">${dateLine}</p>
         ${tags}
       </header>
-      <div class="article-body">${article.html}</div>
+      <div class="article-body" lang="${isFilipino ? 'fil' : 'en'}">${article.html}</div>
       ${sources}
     </article>
   </main>
