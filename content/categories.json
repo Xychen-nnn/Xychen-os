@@ -1,0 +1,11 @@
+{
+  "categories": [
+    { "id": "technology", "name": "Technology", "order": 1 },
+    { "id": "science", "name": "Science", "order": 2 },
+    { "id": "astronomy", "name": "Astronomy", "order": 3 },
+    { "id": "nature", "name": "Nature", "order": 4 },
+    { "id": "gaming", "name": "Gaming", "order": 5 },
+    { "id": "guides", "name": "Guides", "order": 6 },
+    { "id": "general-knowledge", "name": "General Knowledge", "order": 7 }
+  ]
+}
