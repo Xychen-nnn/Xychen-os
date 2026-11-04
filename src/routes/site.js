@@ -3,7 +3,7 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
   res.json({
     name: 'Xychen OS',
-    tagline: "A personal digital space for projects, tools, and experiments.',
+    tagline: "A personal digital space for projects, tools, and experiments.",
     version: '1.1.0',
     release: 'personal-platform',
     features: {
