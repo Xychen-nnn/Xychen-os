@@ -30,8 +30,11 @@ test('category registry is valid, described, and sorted by configured order', ()
     'general-knowledge'
   ]);
   for (const category of categories) {
+    assert.ok(category.nameFil.trim().length > 0);
     assert.ok(category.description.trim().length > 0);
+    assert.ok(category.descriptionFil.trim().length > 0);
     assert.ok(category.description.length <= 180);
+    assert.ok(category.descriptionFil.length <= 180);
   }
 });
 
@@ -126,6 +129,26 @@ test('server-rendered article pages escape metadata and expose canonical URLs', 
   assert.match(page, /Safe rendered content/);
   assert.match(page, /Reference source/);
   assert.doesNotMatch(page, /<script>alert\(1\)<\/script>/);
+
+  const filipinoPage = renderArticlePage({
+    metadata: {
+      slug: 'safe-article',
+      title: 'Sample title',
+      titleFil: 'Pamagat sa Filipino',
+      summary: 'English summary.',
+      summaryFil: 'Buod sa Filipino.',
+      category: 'technology',
+      tags: [],
+      publishedAt: '2026-11-05',
+      updatedAt: '2026-11-05'
+    },
+    html: '<p>Nilalaman sa Filipino.</p>'
+  }, { id: 'technology', name: 'Technology', nameFil: 'Teknolohiya' }, 'fil');
+
+  assert.match(filipinoPage, /<html lang="fil"/);
+  assert.match(filipinoPage, /<title>Pamagat sa Filipino — Xychen OS<\/title>/);
+  assert.match(filipinoPage, /<p class="eyebrow">Teknolohiya<\/p>/);
+  assert.match(filipinoPage, /Nilalaman sa Filipino/);
 });
 
 test('article listing does not invent or publish placeholder content', () => {
