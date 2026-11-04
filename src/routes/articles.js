@@ -33,7 +33,8 @@ router.get('/:slug', (req, res, next) => {
     }
 
     const category = loadCategories().find((item) => item.id === article.metadata.category);
-    res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+    res.setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
+    res.setHeader('Vary', 'Cookie');
     res.type('html').send(renderArticlePage(article, category, language));
   } catch (error) {
     if (error.name === 'ContentValidationError' || error.code === 'ENOENT') {
