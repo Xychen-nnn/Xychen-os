@@ -85,7 +85,7 @@
       const categoryDescription = (category) =>
         lang === 'fil' ? category.descriptionFil || category.description : category.description;
 
-      categoryCount.textContent = categories.length + (categories.length === 1 ? ' category' : ' categories');
+      categoryCount.textContent = categories.length + (lang === 'fil' ? ' kategorya' : (categories.length === 1 ? ' category' : ' categories'));
       categoryList.replaceChildren(...categories.map((category) =>
         createCard(
           categoryName(category),
@@ -110,7 +110,7 @@
           ? translate('explore.invalidCategory', 'Category not found')
           : translate('explore.articlesTitle', 'Published articles');
 
-      articleCount.textContent = visibleArticles.length + (visibleArticles.length === 1 ? ' article' : ' articles');
+      articleCount.textContent = visibleArticles.length + (lang === 'fil' ? ' artikulo' : (visibleArticles.length === 1 ? ' article' : ' articles'));
 
       if (!visibleArticles.length) {
         const message = selected
@@ -137,8 +137,8 @@
         )
       ));
     } catch {
-      showMessage(categoryList, translate('explore.loadCategoriesError', 'The category list could not be loaded.'), '/explore.html', 'Retry');
-      showMessage(articleList, translate('explore.loadArticlesError', 'The article library could not be loaded.'), '/explore.html', 'Retry');
+      showMessage(categoryList, translate('explore.loadCategoriesError', 'The category list could not be loaded.'), '/explore.html', translate('explore.retry', 'Retry'));
+      showMessage(articleList, translate('explore.loadArticlesError', 'The article library could not be loaded.'), '/explore.html', translate('explore.retry', 'Retry'));
       categoryCount.textContent = 'Unavailable';
       articleCount.textContent = '';
     }
