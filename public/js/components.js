@@ -92,6 +92,7 @@
     const social = document.createElement('div');
     social.className = 'footer-social';
     social.setAttribute('aria-label', 'Social profiles');
+    social.dataset.i18nAriaLabel = 'links.profilesTitle';
     [
       ['TikTok', 'https://www.tiktok.com/@x1ychen'],
       ['YouTube', 'https://www.youtube.com/@xychenxycz'],
