@@ -62,6 +62,8 @@ test('public pages are served successfully', async () => {
     assert.match(html, /rel="canonical"/);
     assert.match(html, /class="skip-link"/);
     assert.match(html, /id="main-content"/);
+    assert.match(html, /<noscript><nav aria-label="Main navigation">/);
+    assert.match(html, /src="\/js\/theme\.js" defer/);
   }
 });
 
