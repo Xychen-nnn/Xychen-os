@@ -21,54 +21,55 @@
   <script src="/js/theme-init.js"></script>
   <script src="/js/theme.js" defer></script>
   <script src="/js/components.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/explore.html">Explore</a><a href="/links.html">Links</a></nav></noscript></div>
   <main id="main-content">
     <section class="hero">
-      <p class="eyebrow">An independent digital space</p>
-      <h1>Projects, ideas, and things worth exploring.</h1>
-      <p class="lead">Xychen OS is a personal website that brings selected projects, public links, and an expanding library of topics together in one place.</p>
+      <p class="eyebrow" data-i18n="home.eyebrow">An independent digital space</p>
+      <h1 data-i18n="home.title">Projects, ideas, and things worth exploring.</h1>
+      <p class="lead" data-i18n="home.lead">Xychen OS is a personal website that brings selected projects, public links, and an expanding library of topics together in one place.</p>
       <div class="actions">
-        <a class="button" href="/explore.html">Explore topics <span aria-hidden="true">↗</span></a>
-        <a class="button-secondary" href="/projects.html">View the project</a>
+        <a class="button" href="/explore.html" data-i18n="home.ctaExplore">Explore topics ↗</a>
+        <a class="button-secondary" href="/projects.html" data-i18n="home.ctaProjects">View the project</a>
       </div>
-      <div class="tag-row hero-tags"><span class="tag">Personal website</span><span class="tag">Project space</span><span class="tag">Knowledge library</span></div>
+      <div class="tag-row hero-tags"><span class="tag" data-i18n="home.tagPersonal">Personal website</span><span class="tag" data-i18n="home.tagProjects">Project space</span><span class="tag" data-i18n="home.tagLibrary">Knowledge library</span></div>
     </section>
 
     <section class="section" aria-labelledby="discover-heading">
       <div class="section-heading">
-        <div><p class="eyebrow">Find your way around</p><h2 id="discover-heading">Explore the platform</h2></div>
-        <span class="muted">Three places to start</span>
+        <div><p class="eyebrow" data-i18n="home.sectionEyebrow">Find your way around</p><h2 id="discover-heading" data-i18n="home.sectionTitle">Explore the platform</h2></div>
+        <span class="muted" data-i18n="home.sectionMeta">Three places to start</span>
       </div>
       <div class="grid">
         <a class="card" href="/projects.html">
           <span class="card-icon" aria-hidden="true">◈</span>
-          <h3>Projects</h3>
-          <p>See the work currently being built, with real descriptions and links to its source.</p>
-          <span class="muted">View projects ↗</span>
+          <h3 data-i18n="home.projectsTitle">Projects</h3>
+          <p data-i18n="home.projectsText">See the work currently being built, with real descriptions and links to its source.</p>
+          <span class="muted" data-i18n="home.projectsLink">View projects ↗</span>
         </a>
         <a class="card" href="/explore.html">
           <span class="card-icon" aria-hidden="true">⌕</span>
-          <h3>Explore</h3>
-          <p>Browse categories covering technology, science, astronomy, nature, gaming, and more.</p>
-          <span class="muted">Browse topics ↗</span>
+          <h3 data-i18n="home.exploreTitle">Explore</h3>
+          <p data-i18n="home.exploreText">Browse categories covering technology, science, astronomy, nature, gaming, and more.</p>
+          <span class="muted" data-i18n="home.exploreLink">Browse topics ↗</span>
         </a>
         <a class="card" href="/about.html">
           <span class="card-icon" aria-hidden="true">◎</span>
-          <h3>About</h3>
-          <p>Understand what this website is for, what it includes, and how it is being developed.</p>
-          <span class="muted">About Xychen OS ↗</span>
+          <h3 data-i18n="home.aboutTitle">About</h3>
+          <p data-i18n="home.aboutText">Understand what this website is for, what it includes, and how it is being developed.</p>
+          <span class="muted" data-i18n="home.aboutLink">About Xychen OS ↗</span>
         </a>
       </div>
     </section>
 
     <section class="section panel">
-      <p class="eyebrow">Built with intention</p>
-      <h2>A useful website, not a collection of empty features.</h2>
-      <p class="muted">Each section should have a clear purpose. Projects should be real, articles should be reviewed, and links should lead somewhere useful. The platform will grow as its content and features are ready.</p>
-      <a class="button-secondary" href="/about.html">Read about the platform</a>
+      <p class="eyebrow" data-i18n="home.ideaEyebrow">Built with intention</p>
+      <h2 data-i18n="home.ideaTitle">A useful website, not a collection of empty features.</h2>
+      <p class="muted" data-i18n="home.ideaText">Each section should have a clear purpose. Projects should be real, articles should be reviewed, and links should lead somewhere useful. The platform will grow as its content and features are ready.</p>
+      <a class="button-secondary" href="/about.html" data-i18n="home.ideaLink">Read about the platform</a>
     </section>
   </main>
   <div data-site-footer></div>
