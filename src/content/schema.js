@@ -19,7 +19,7 @@ function isPlainObject(value) {
 }
 
 function isCalendarDate(value) {
-  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  if (typeof value !== 'string' || !/^\\d{4}-\\d{2}-\\d{2}$/.test(value)) return false;
   const date = new Date(value + 'T00:00:00.000Z');
   return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
@@ -33,6 +33,7 @@ function validateCategories(input) {
   }
 
   const ids = new Set();
+  const orders = new Set();
   categories.forEach((category, index) => {
     const prefix = 'categories[' + index + ']';
     if (!isPlainObject(category)) {
@@ -52,8 +53,18 @@ function validateCategories(input) {
       errors.push(prefix + '.name must be a non-empty string.');
     }
 
+    if (typeof category.description !== 'string' ||
+        !category.description.trim() ||
+        category.description.length > 180) {
+      errors.push(prefix + '.description must be a non-empty string of at most 180 characters.');
+    }
+
     if (!Number.isInteger(category.order) || category.order < 1) {
       errors.push(prefix + '.order must be a positive integer.');
+    } else if (orders.has(category.order)) {
+      errors.push(prefix + '.order must be unique.');
+    } else {
+      orders.add(category.order);
     }
   });
 
