@@ -95,6 +95,12 @@ test('removed Playground page returns the not-found page without caching it', as
   assert.match(html, /404|not found/i);
 });
 
+test('retired Tools page and its old API metadata are no longer exposed', async () => {
+  const response = await fetch(baseUrl + '/tools.html');
+  assert.equal(response.status, 404);
+  assert.equal(response.headers.get('cache-control'), 'no-store');
+});
+
 test('unknown API routes return a JSON 404 response', async () => {
   const response = await fetch(baseUrl + '/api/does-not-exist');
   const body = await response.json();
