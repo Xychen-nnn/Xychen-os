@@ -17,7 +17,7 @@ const {
 
 const contentDir = path.join(__dirname, '..', 'content');
 
-test('category registry is valid and sorted by configured order', () => {
+test('category registry is valid, described, and sorted by configured order', () => {
   const categories = loadCategories(contentDir);
   assert.deepEqual(categories.map((category) => category.id), [
     'technology',
@@ -28,14 +28,18 @@ test('category registry is valid and sorted by configured order', () => {
     'guides',
     'general-knowledge'
   ]);
+  for (const category of categories) {
+    assert.ok(category.description.trim().length > 0);
+    assert.ok(category.description.length <= 180);
+  }
 });
 
-test('category validation rejects duplicate IDs and invalid ordering', () => {
+test('category validation rejects duplicate IDs, duplicate ordering, and missing descriptions', () => {
   assert.throws(
     () => validateCategories({
       categories: [
-        { id: 'technology', name: 'Technology', order: 1 },
-        { id: 'technology', name: 'Duplicate', order: 0 }
+        { id: 'technology', name: 'Technology', description: 'A valid description.', order: 1 },
+        { id: 'technology', name: 'Duplicate', order: 1 }
       ]
     }),
     ContentValidationError
