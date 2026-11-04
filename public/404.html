@@ -19,17 +19,18 @@
   <script src="/js/theme-init.js"></script>
   <script src="/js/theme.js" defer></script>
   <script src="/js/components.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
 </head>
 <body data-page="not-found">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/explore.html">Explore</a><a href="/links.html">Links</a></nav></noscript></div>
   <main id="main-content" class="hero">
-    <p class="eyebrow">404 · Not found</p>
-    <h1>This page is not here.</h1>
-    <p class="lead">The address may be outdated, or the page may have moved. You can return to the homepage or browse the current sections.</p>
+    <p class="eyebrow" data-i18n="notfound.eyebrow">404 · Not found</p>
+    <h1 data-i18n="notfound.title">This page is not here.</h1>
+    <p class="lead" data-i18n="notfound.lead">The address may be outdated, or the page may have moved. You can return to the homepage or browse the current sections.</p>
     <div class="actions">
-      <a class="button" href="/">Back to home</a>
-      <a class="button-secondary" href="/explore.html">Explore topics</a>
+      <a class="button" href="/" data-i18n="notfound.home">Back to home</a>
+      <a class="button-secondary" href="/explore.html" data-i18n="notfound.explore">Explore topics</a>
     </div>
   </main>
   <div data-site-footer></div>
