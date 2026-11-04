@@ -133,7 +133,7 @@ test('all local links and asset references in public HTML resolve to files', () 
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
-    const references = [...html.matchAll(/\\b(?:href|src)=["']([^"']+)["']/g)];
+    const references = [...html.matchAll(/\b(?:href|src)=["']([^"']+)["']/g)];
 
     for (const [, reference] of references) {
       const url = new URL(reference, `${origin}/${file}`);
@@ -199,8 +199,8 @@ test('theme bootstrap is loaded from a same-origin script on every public page',
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
-    assert.match(html, /src="\\/js\\/theme-init\\.js"/, `${file} should load the theme bootstrap`);
-    assert.doesNotMatch(html, /<script>\\s*\\(\\(\\) =>/, `${file} should not contain an inline script`);
-    assert.doesNotMatch(html, /\\sstyle=["']/, `${file} should not contain inline style attributes`);
+    assert.match(html, /src="\/js\/theme-init\.js"/, `${file} should load the theme bootstrap`);
+    assert.doesNotMatch(html, /<script>\s*\(\(\) =>/, `${file} should not contain an inline script`);
+    assert.doesNotMatch(html, /\sstyle=["']/, `${file} should not contain inline style attributes`);
   }
 });
