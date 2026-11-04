@@ -88,9 +88,9 @@ test('robots and sitemap are publicly available', async () => {
   const sitemapXml = await sitemap.text();
 
   assert.equal(robots.status, 200);
-  assert.match(await robots.text(), /Sitemap:\\s*https:\\/\\/xychen-os\\.vercel\\.app\\/sitemap\\.xml/);
+  assert.ok((await robots.text()).includes('Sitemap: https://xychen-os.vercel.app/sitemap.xml'));
   assert.equal(sitemap.status, 200);
   assert.match(sitemap.headers.get('content-type') || '', /xml/);
-  assert.match(sitemapXml, /<loc>https:\\/\\/xychen-os\\.vercel\\.app\\//);
-  assert.match(sitemapXml, /<loc>https:\\/\\/xychen-os\\.vercel\\.app\\/tools\\.html<\\/loc>/);
+  assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/</loc>'));
+  assert.ok(sitemapXml.includes('<loc>https://xychen-os.vercel.app/tools.html</loc>'));
 });
