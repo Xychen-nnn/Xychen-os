@@ -1,8 +1,8 @@
 (() => {
   const messages = {
     en: {
-      'nav.home': 'Home', 'nav.about': 'About', 'nav.projects': 'Projects', 'nav.explore': 'Explore', 'nav.links': 'Links',
-      'language.label': 'Language', 'theme.darkMode': 'Dark mode', 'theme.lightMode': 'Light mode',
+      'nav.home': 'Home', 'nav.about': 'About', 'nav.projects': 'Projects', 'nav.explore': 'Explore', 'nav.links': 'Links', 'nav.main': 'Main navigation',
+      'language.label': 'Language', 'theme.darkMode': 'Dark mode', 'theme.lightMode': 'Light mode', 'theme.switchToLight': 'Switch to light theme', 'theme.switchToDark': 'Switch to dark theme',
       'home.eyebrow': 'An independent digital space',
       'home.title': 'Projects, ideas, and things worth exploring.',
       'home.lead': 'Xychen OS is a personal website that brings selected projects, public links, and an expanding library of topics together in one place.',
@@ -48,14 +48,14 @@
       'explore.intro': 'Choose a subject to browse. This library is designed for clear explainers, practical guides, and articles with sources—not filler or unreviewed posts.',
       'explore.categoriesEyebrow': 'Browse by subject', 'explore.categoriesTitle': 'Categories',
       'explore.articlesEyebrow': 'The reading library', 'explore.articlesTitle': 'Published articles',
-      'explore.notice': 'Articles are published after review. A category can be available before its first article is ready.',
+      'explore.notice': 'Articles are published after review. A category can be available before its first article is ready.',\n      'explore.emptyTitle': 'Nothing published here yet', 'explore.categoryEmpty': 'There are no reviewed articles in this category yet. The category is ready, and articles will appear here once they are researched and published.', 'explore.libraryEmpty': 'The article library is being prepared. Published articles will appear here with summaries, dates, and source information.', 'explore.invalidCategory': 'That category does not exist. Return to the full category list to choose another topic.', 'explore.loadCategoriesError': 'The category list could not be loaded. Please try again later.', 'explore.loadArticlesError': 'The article library could not be loaded. Please try again later.', 'explore.browseCategory': 'Browse category ↗', 'explore.readArticle': 'Read article ↗', 'explore.articleFallback': 'Open this article to read the full explanation and its sources.', 'explore.viewAll': 'View all categories', 'explore.aboutPlatform': 'About this platform',
       'notfound.eyebrow': '404 · Not found', 'notfound.title': 'This page is not here.',
       'notfound.lead': 'The address may be outdated, or the page may have moved. You can return to the homepage or browse the current sections.',
-      'notfound.home': 'Back to home', 'notfound.explore': 'Explore topics'
+      'notfound.home': 'Back to home', 'notfound.explore': 'Explore topics', 'article.openTitle': 'Open an article from Explore.', 'article.openText': 'Individual published articles use their own page address. Browse the library to choose an article.', 'article.browse': 'Browse Explore'
     },
     fil: {
-      'nav.home': 'Home', 'nav.about': 'Tungkol', 'nav.projects': 'Mga Proyekto', 'nav.explore': 'Tuklasin', 'nav.links': 'Mga Link',
-      'language.label': 'Wika', 'theme.darkMode': 'Dark mode', 'theme.lightMode': 'Light mode',
+      'nav.home': 'Home', 'nav.about': 'Tungkol', 'nav.projects': 'Mga Proyekto', 'nav.explore': 'Tuklasin', 'nav.links': 'Mga Link', 'nav.main': 'Pangunahing navigation',
+      'language.label': 'Wika', 'theme.darkMode': 'Dark mode', 'theme.lightMode': 'Light mode', 'theme.switchToLight': 'Lumipat sa light theme', 'theme.switchToDark': 'Lumipat sa dark theme',
       'home.eyebrow': 'Isang personal na digital space',
       'home.title': 'Mga proyekto, ideya, at paksang sulit tuklasin.',
       'home.lead': 'Ang Xychen OS ay isang personal na website na pinagsasama ang mga proyekto, pampublikong link, at lumalawak na koleksiyon ng mga paksa sa iisang lugar.',
@@ -101,10 +101,10 @@
       'explore.intro': 'Pumili ng paksang gusto mong basahin. Para ito sa malinaw na paliwanag, praktikal na gabay, at mga artikulong may sources—hindi filler o hindi pa nasusuring posts.',
       'explore.categoriesEyebrow': 'Mag-browse ayon sa paksa', 'explore.categoriesTitle': 'Mga Kategorya',
       'explore.articlesEyebrow': 'Koleksiyon ng babasahin', 'explore.articlesTitle': 'Mga Nailathalang Artikulo',
-      'explore.notice': 'Inilalathala ang mga artikulo matapos ang review. Maaaring available na ang kategorya bago maging handa ang unang artikulo nito.',
+      'explore.notice': 'Inilalathala ang mga artikulo matapos ang review. Maaaring available na ang kategorya bago maging handa ang unang artikulo nito.',\n      'explore.emptyTitle': 'Wala pang nailalathalang artikulo rito', 'explore.categoryEmpty': 'Wala pang na-review na artikulo sa kategoryang ito. Handa na ang kategorya at lalabas dito ang mga artikulo kapag nasaliksik at nailathala na.', 'explore.libraryEmpty': 'Inihahanda pa ang koleksiyon ng mga artikulo. Lalabas dito ang mga nailathalang artikulo kasama ang buod, petsa, at sources.', 'explore.invalidCategory': 'Walang ganitong kategorya. Bumalik sa buong listahan ng mga kategorya para pumili ng iba.', 'explore.loadCategoriesError': 'Hindi ma-load ang listahan ng mga kategorya. Subukan ulit mamaya.', 'explore.loadArticlesError': 'Hindi ma-load ang koleksiyon ng mga artikulo. Subukan ulit mamaya.', 'explore.browseCategory': 'Tingnan ang kategorya ↗', 'explore.readArticle': 'Basahin ang artikulo ↗', 'explore.articleFallback': 'Buksan ang artikulo para mabasa ang buong paliwanag at sources nito.', 'explore.viewAll': 'Tingnan ang lahat ng kategorya', 'explore.aboutPlatform': 'Tungkol sa platform'
       'notfound.eyebrow': '404 · Hindi nahanap', 'notfound.title': 'Wala ang pahinang ito.',
       'notfound.lead': 'Maaaring luma na ang address o nailipat ang pahina. Bumalik sa homepage o tingnan ang mga kasalukuyang seksiyon.',
-      'notfound.home': 'Bumalik sa home', 'notfound.explore': 'Tuklasin ang mga paksa'
+      'notfound.home': 'Bumalik sa home', 'notfound.explore': 'Tuklasin ang mga paksa', 'article.openTitle': 'Magbukas ng artikulo mula sa Explore.', 'article.openText': 'May sariling address ang bawat nailathalang artikulo. Mag-browse sa library para pumili ng babasahin.', 'article.browse': 'Buksan ang Explore'
     }
   };
 
