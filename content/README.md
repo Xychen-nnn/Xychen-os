@@ -2,7 +2,7 @@
 
 This directory stores editorial content managed through Git and served by the public Explore pages and content API.
 
-- `categories.json` is the canonical category registry, including each category's public description and display order.
+- `categories.json` is the canonical category registry, including English and Filipino names and descriptions plus display order.
 - `articles/<slug>/metadata.json` stores validated article metadata.
 - `articles/<slug>/content.md` stores the English article body.
 - `articles/<slug>/content.fil.md` is optional Filipino content when the metadata lists `fil` as an available language.
@@ -15,7 +15,6 @@ Required fields:
 
 - `id`: stable unique identifier using lowercase letters, numbers, and hyphens.
 - `title`: human-readable English title.
-- `titleFil`: optional Filipino title; English is used when it is unavailable.
 - `slug`: URL-safe identifier; must match the article directory.
 - `category`: an ID from `categories.json`.
 - `tags`: unique lowercase tags.
@@ -25,7 +24,7 @@ Required fields:
 - `status`: `draft`, `published`, or `archived`.
 - `updatedAt`: date in `YYYY-MM-DD` format.
 
-Optional fields include `summary`, `summaryFil`, `sources`, `publishedAt`, `reviewAt`, and `relatedContent`. Filipino article text is stored in `content.fil.md` and is used only when the article metadata lists `fil` as an available language.
+Optional fields include `titleFil`, `summary`, `summaryFil`, `sources`, `publishedAt`, `reviewAt`, and `relatedContent`. English is used whenever a Filipino title or summary is not available. Filipino article text is stored in `content.fil.md` and is used only when the article metadata lists `fil` as an available language.
 
 A published article must have a publication date. Source URLs must use HTTP or HTTPS. Dates are calendar dates, not timestamps.
 
