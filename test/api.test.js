@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const { after, before, test } = require('node:test');
 const app = require('../server');
 const { errorHandler } = require('../src/middleware/errors');
+const { requestedLanguage } = require('../src/routes/articles');
 
 let server;
 let baseUrl;
@@ -25,6 +26,26 @@ after(async () => {
   await new Promise((resolve, reject) => {
     server.close((error) => error ? reject(error) : resolve());
   });
+});
+
+test('article language prefers a saved cookie over browser language headers', () => {
+  assert.equal(requestedLanguage({
+    headers: {
+      cookie: 'xychen-os-language=en',
+      'accept-language': 'fil-PH,fil;q=0.9,en-US;q=0.8'
+    }
+  }), 'en');
+});
+
+test('article language detects Filipino and Tagalog browser preferences', () => {
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'fil-PH,fil;q=0.9,en-US;q=0.8' } }), 'fil');
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'tl-PH,tl;q=0.9,en;q=0.8' } }), 'fil');
+});
+
+test('article language respects quality values and falls back to English', () => {
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'en-US,en;q=0.9,fil;q=0.8' } }), 'en');
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'fil;q=0,en;q=0.5' } }), 'en');
+  assert.equal(requestedLanguage({ headers: {} }), 'en');
 });
 
 test('health endpoint reports the current service version', async () => {
