@@ -16,7 +16,7 @@
   ],
   "verificationStatus": "preliminary",
   "status": "draft",
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-06",
   "summary": "Explore biodiversity at the genetic, species, and ecosystem levels, and see how ecological relationships connect living things.",
   "sources": [
     {
@@ -26,6 +26,10 @@
     {
       "title": "NOAA — Aquatic food webs",
       "url": "https://www.noaa.gov/education/resource-collections/marine-life/aquatic-food-webs"
+    },
+    {
+      "title": "U.S. Geological Survey — Ecosystems, Ecosystem Services, and Biodiversity",
+      "url": "https://www.usgs.gov/publications/ecosystems-ecosystem-services-and-biodiversity"
     }
   ]
 }
