@@ -20,7 +20,7 @@ The browser or operating system may already have a cached answer. Otherwise, the
 
 After it has the information needed to reach the host, the browser establishes a network connection. The details depend on the protocol being used.
 
-For an HTTPS website, the connection also includes a TLS handshake. This helps authenticate the server and establish encryption for data sent between the browser and server. The exact connection process differs across HTTP versions and network configurations, so it is not always one identical sequence.
+For an HTTPS website, the connection is secured with Transport Layer Security (TLS). During the TLS handshake, the browser and server agree on security settings and establish keys for the connection. TLS protects data in transit through encryption and integrity checks; the server also normally authenticates itself to the browser. The exact connection process differs across HTTP versions and network configurations, so it is not always one identical sequence.
 
 ## 4. The browser sends an HTTP request
 
@@ -64,4 +64,5 @@ The browser's Network panel helps you inspect requests, response codes, and load
 ## Further reading
 
 - [MDN: How the web works](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works) explains clients and servers, DNS, HTTP, packets, URLs, and response codes.
+- [MDN: Transport Layer Security (TLS)](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Transport_Layer_Security) explains how HTTPS protects connections through encryption, integrity, and authentication.
 - [MDN: Critical rendering path](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path) explains how browsers turn HTML, CSS, and JavaScript into pixels on the screen.
