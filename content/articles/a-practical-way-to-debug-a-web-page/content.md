@@ -1,51 +1,61 @@
 # A Practical Way to Debug a Web Page
 
-When a website behaves unexpectedly, changing several files at once can make the problem harder to understand. A better approach is to reproduce the issue, collect evidence, isolate one likely cause, and verify the result.
+When a website behaves unexpectedly, changing several files at once can make the problem harder to understand. A more reliable approach is to reproduce the issue, collect evidence, isolate a likely cause, make a focused change, and test again.
 
-This workflow is useful for common HTML, CSS, and JavaScript problems.
+This workflow is useful for common HTML, CSS, JavaScript, and network problems.
 
-## 1. Describe the problem precisely
+## 1. Describe the problem
 
-Write down what you expected and what actually happened. Include the page URL, the action that triggers the issue, the browser, and whether the problem happens every time.
+Write down what you expected and what actually happened. Include the page, the action that triggers the issue, the browser, and whether the problem happens every time.
 
-“Button is broken” is vague. “On the Explore page, selecting a category changes the URL but the article list does not update” is much easier to investigate.
+“Button is broken” is vague. “On the Explore page, selecting a category changes the URL but the article list stays the same” gives you a specific behavior to investigate.
 
-## 2. Reproduce it consistently
+## 2. Reproduce the issue
 
-Reload the page and repeat the same steps. If the issue happens only sometimes, note what changes: network connection, screen size, selected theme, or stored browser state.
+Repeat the same steps and note whether the result is consistent. If it happens only sometimes, check whether screen size, network conditions, browser state, or selected settings make a difference.
 
-A reliable reproduction gives you a way to tell whether a fix worked.
+A reliable reproduction gives you a way to compare behavior before and after a change.
 
 ## 3. Check the Console
 
-Open the browser's developer tools and inspect the Console for errors. A message such as a missing variable or failed script can point to the relevant file and line.
+Open the browser's developer tools and inspect the Console. JavaScript errors can identify a problem such as a missing variable, an invalid operation, or a failed script.
 
-Read the full message before editing code. The first error may cause several later errors.
+Read the full message and note the file and line number when available. An early error can cause several later errors, so start with the first relevant message rather than trying to fix every line at once.
 
-## 4. Check the Network panel
+## 4. Inspect Network requests
 
-The Network panel shows requests made by the page. Look for failed requests, unexpected status codes, incorrect URLs, or responses that do not contain the data the page expects.
+Open the Network panel, reload the page, and reproduce the issue. Look for failed requests, unexpected status codes, incorrect request URLs, and responses that do not contain the data the page expects.
 
-If an image is missing, inspect its request path. If an API-powered section is empty, inspect the API request and response before assuming the rendering code is responsible.
+For example:
+- A missing image may point to an incorrect file path or filename.
+- An API request returning an error may explain why a data-driven section is empty.
+- A successful request with unexpected response data may indicate a mismatch between the API and the page code.
 
-## 5. Inspect layout and styles
+A status code alone may not explain the cause. Inspect the request, response headers, and response body where appropriate.
 
-For visual problems, use the Elements or Inspector panel to examine the affected element. Check its computed styles, dimensions, parent layout, and responsive rules.
+## 5. Inspect the page structure and styles
 
-Temporarily toggling a CSS declaration in developer tools can help identify which rule causes the issue. These temporary changes do not edit the source file.
+For a layout problem, use the Elements or Inspector panel. Select the affected element and examine its HTML, computed CSS, dimensions, and parent elements.
 
-## 6. Change one cause at a time
+You can temporarily toggle a CSS declaration in developer tools to test whether it causes the problem. These edits are temporary and do not change the source file.
 
-Once you have a likely explanation, make the smallest relevant change. Then repeat the same reproduction steps.
+## 6. Form a hypothesis and make one focused change
 
-Avoid unrelated cleanup during a bug fix. Keeping the change focused makes it easier to review and roll back if needed.
+Use the evidence you collected to identify a likely cause. Change the smallest relevant part of the code, then repeat the same steps that originally reproduced the issue.
 
-## 7. Verify the fix in context
+Avoid unrelated refactoring during a bug fix. Keeping the change focused makes it easier to understand, review, and reverse if necessary.
 
-Test the original scenario again, then check nearby behavior: another screen size, another category, keyboard interaction, and the browser console.
+## 7. Verify the fix and check for regressions
 
-A fix is not complete merely because the page looks correct once. It should also avoid introducing a regression elsewhere.
+Test the original scenario again. Then check nearby behavior that could be affected, such as another category, a smaller screen, keyboard navigation, or a different page using the same component.
+
+Also check the Console and Network panel for new errors. A fix is not complete just because one screenshot looks correct; it should work across the relevant states and not break related functionality.
 
 ## A useful debugging habit
 
-Treat error messages, network responses, and computed styles as evidence. The goal is not to guess the right line of code—it is to find the reason the current behavior occurs.
+Treat console messages, network responses, and computed styles as evidence. Debugging is a process of narrowing down causes—not guessing which line of code looks suspicious.
+
+## Further reading
+
+- [MDN — What are browser developer tools?](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Tools_and_setup/What_are_browser_developer_tools)
+- [MDN — Your first website](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website)
