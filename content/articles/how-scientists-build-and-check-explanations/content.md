@@ -43,4 +43,4 @@ Science is reliable not because scientists never make mistakes, but because scie
 ## Further reading
 
 - [NASA — The scientific method and climate change: How scientists know](https://science.nasa.gov/earth/climate-change/the-scientific-method-and-climate-change-how-scientists-know/)
-- [National Academies — Understanding and Addressing Misinformation About Science](https://www.nationalacademies.org/read/27894/chapter/4)
+- [National Academies — Reproducibility and Replicability in Science](https://www.nationalacademies.org/read/25303)

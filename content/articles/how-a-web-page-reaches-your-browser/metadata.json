@@ -25,6 +25,10 @@
       "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
     },
     {
+      "title": "MDN — Transport Layer Security (TLS)",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Transport_Layer_Security"
+    },
+    {
       "title": "MDN — Critical rendering path",
       "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"
     }

@@ -16,7 +16,7 @@ A statistic based on daily use would answer a different question and could produ
 
 Our World in Data presents internet-use indicators using data from the ITU's World Telecommunication/ICT Indicators Database, made available through the World Bank's World Development Indicators.
 
-It is useful to distinguish the original data producer from the organization that republishes or visualizes the data. A chart publisher may process, combine, or explain figures from another source.
+It is useful to distinguish the original data producer from the organization that republishes or visualizes the data. A chart publisher may process, combine, or explain figures from another source. For example, the World Bank indicator `IT.NET.USER.ZS` is explicitly a percentage of the population, while Our World in Data's “Number of people using the Internet” chart reports an estimated count of people. Check the unit shown on the specific chart rather than assuming that two indicators with similar names measure the same thing.
 
 ## Check the year and unit
 
@@ -55,4 +55,5 @@ Good data literacy is not about memorizing large numbers. It is about understand
 ## Further reading
 
 - [Our World in Data — Number of people using the Internet](https://ourworldindata.org/grapher/number-of-internet-users)
+- [World Bank — Individuals using the Internet (% of population): Indicator metadata](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.USER.ZS/~/~/~/~/home)
 - [International Telecommunication Union — Statistics](https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx)

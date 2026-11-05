@@ -14,7 +14,7 @@ Astronomers record these changes in a graph called a **light curve**. A repeatin
 
 A transit light curve can provide several useful measurements:
 
-- **Planet radius:** The depth of the brightness dip is related to the planet's size compared with the star. Estimating the planet's actual radius also requires an estimate of the star's radius.
+- **Planet radius:** The depth of the brightness dip is related to the planet's size compared with the star. In a simplified model, the transit depth is approximately the square of the planet-to-star radius ratio: \(\delta \approx (R_p/R_s)^2\). Estimating the planet's actual radius therefore also requires an estimate of the star's radius. Detailed analyses account for factors such as the star's non-uniform brightness and the transit geometry.
 - **Orbital period:** The time between repeated transits gives the planet's orbital period. With information about the star, astronomers can estimate the orbit's size.
 - **Atmospheric clues:** During a transit, a small amount of starlight can pass through the planet's atmosphere. Comparing the light at different wavelengths can reveal clues about gases in that atmosphere.
 
@@ -36,3 +36,4 @@ The transit method shows how careful measurements can reveal objects that cannot
 
 - [NASA — What's a transit?](https://science.nasa.gov/exoplanets/whats-a-transit/)
 - [NASA — How we find and characterize exoplanets](https://science.nasa.gov/exoplanets/how-we-find-and-characterize/)
+- [NASA — Light curve of a planet transiting its star](https://science.nasa.gov/resource/light-curve-of-a-planet-transiting-its-star/)
