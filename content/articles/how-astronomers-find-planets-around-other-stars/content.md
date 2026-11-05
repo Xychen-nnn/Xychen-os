@@ -1,37 +1,38 @@
 # How Astronomers Find Planets Around Other Stars
 
-A planet orbiting a distant star is usually too faint to see directly beside the star's bright light. Astronomers have therefore developed methods that detect a planet through the effect it has on its surroundings.
+Planets outside our Solar System are called **exoplanets**. Most are too far away and too faint to appear as clear images next to the bright stars they orbit. Astronomers often find them indirectly by measuring how a planet affects the light or motion of its host star.
 
-One of the most successful approaches is called the **transit method**.
+One widely used technique is the **transit method**.
 
 ## What is a transit?
 
-A transit happens when a planet passes between its star and the observer. From our viewpoint, the planet briefly blocks a small fraction of the star's light.
+A transit occurs when a planet passes between its star and the observer. From our viewpoint, the planet blocks a small fraction of the star's light. The star does not switch off; its measured brightness dips slightly and then rises again.
 
-The star does not switch off. Its measured brightness drops by a tiny amount, then returns toward its usual level as the planet moves across and away from the star's apparent disk.
+Astronomers record these changes in a graph called a **light curve**. A repeating pattern can be evidence that a planet is passing in front of the star.
 
-Astronomers record brightness over time. This measurement is often shown as a light curve.
+## What can a transit reveal?
 
-## What can a light curve tell us?
+A transit light curve can provide several useful measurements:
 
-A repeating dip can provide several clues:
+- **Planet radius:** The depth of the brightness dip is related to the planet's size compared with the star. Estimating the planet's actual radius also requires an estimate of the star's radius.
+- **Orbital period:** The time between repeated transits gives the planet's orbital period. With information about the star, astronomers can estimate the orbit's size.
+- **Atmospheric clues:** During a transit, a small amount of starlight can pass through the planet's atmosphere. Comparing the light at different wavelengths can reveal clues about gases in that atmosphere.
 
-- **Planet size:** the depth of the dip is related to how much of the star's visible disk is blocked. Interpreting it requires information about the star.
-- **Orbital period:** the time between repeated transits helps estimate how long the planet takes to orbit its star.
-- **Atmosphere clues:** during a transit, some starlight can pass through the planet's atmosphere. Studying how the light changes at different wavelengths can reveal information about atmospheric gases.
+These measurements have limits. A transit alone does not provide a complete description of a planet, and atmospheric measurements can be difficult because the signal is small.
 
-These measurements do not reveal everything about a planet, and they depend on the quality of the observations and knowledge of the host star.
+## Why are some planets missed?
 
-## Why don't all planets transit?
+The planet's orbit must be aligned so that it crosses the star's visible disk from our viewpoint. If the orbit is tilted differently, the planet may never transit from Earth's perspective.
 
-The orbit must be aligned in a way that lets the planet cross in front of its star from our viewpoint. Many planetary systems are tilted differently, so their planets never pass across the visible face of the star from Earth.
+Transit surveys are therefore biased toward systems with favorable alignment. They can also be more sensitive to larger planets and planets that orbit close to their stars, because those planets can produce deeper or more frequent signals.
 
-This means transit surveys naturally miss some planets. Astronomers combine different detection techniques to build a more complete picture.
+Astronomers use other techniques, such as measuring a star's motion caused by a planet's gravity, to find planets that transit surveys may miss.
 
-## A small signal, a large discovery
+## From a small dip to a new world
 
-The transit method is a good example of how astronomy uses indirect evidence. Scientists may not see a distant planet as a clear image, but a carefully measured change in starlight can reveal its presence and help estimate some of its properties.
+The transit method shows how careful measurements can reveal objects that cannot easily be seen directly. A tiny, repeating change in starlight can provide evidence of an exoplanet and help researchers estimate some of its properties—but every measurement must be interpreted with its limits in mind.
 
 ## Further reading
 
-NASA's exoplanet resources explain transit observations, light curves, and other techniques used to find planets beyond our Solar System.
+- [NASA — What's a transit?](https://science.nasa.gov/exoplanets/whats-a-transit/)
+- [NASA — How we find and characterize exoplanets](https://science.nasa.gov/exoplanets/how-we-find-and-characterize/)
