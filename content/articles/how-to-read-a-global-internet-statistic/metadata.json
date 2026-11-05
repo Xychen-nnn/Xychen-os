@@ -1,0 +1,25 @@
+{
+  "id": "article-how-to-read-a-global-internet-statistic",
+  "slug": "how-to-read-a-global-internet-statistic",
+  "title": "How to Read a Global Internet Statistic",
+  "category": "general-knowledge",
+  "tags": [
+    "internet",
+    "statistics",
+    "data-literacy"
+  ],
+  "type": "article",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "A number is only useful when its definition, source, time period, and limitations are clear. Use internet-user estimates as an example.",
+  "sources": [
+    {
+      "title": "Our World in Data — Number of people using the Internet",
+      "url": "https://ourworldindata.org/grapher/number-of-internet-users"
+    }
+  ]
+}

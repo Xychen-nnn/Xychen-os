@@ -1,0 +1,29 @@
+{
+  "id": "article-a-practical-way-to-debug-a-web-page",
+  "slug": "a-practical-way-to-debug-a-web-page",
+  "title": "A Practical Way to Debug a Web Page",
+  "category": "guides",
+  "tags": [
+    "debugging",
+    "browser-devtools",
+    "javascript"
+  ],
+  "type": "guide",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "A repeatable browser-first debugging workflow: reproduce the problem, inspect the console and network requests, isolate the cause, and verify the fix.",
+  "sources": [
+    {
+      "title": "MDN — Your first website",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website"
+    },
+    {
+      "title": "MDN — Web developer guides",
+      "url": "https://developer.mozilla.org/en-US/docs/MDN/Guides"
+    }
+  ]
+}
