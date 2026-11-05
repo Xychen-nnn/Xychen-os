@@ -6,7 +6,8 @@
   "tags": [
     "exoplanets",
     "transit-method",
-    "stars"
+    "light-curves",
+    "astronomy"
   ],
   "type": "article",
   "languages": [
@@ -15,15 +16,15 @@
   "verificationStatus": "preliminary",
   "status": "draft",
   "updatedAt": "2026-11-05",
-  "summary": "Many exoplanets are detected indirectly. Learn how a tiny, repeating dip in starlight can reveal a planet orbiting a distant star.",
+  "summary": "Learn how astronomers use small, repeating changes in starlight to detect exoplanets and estimate some of their properties.",
   "sources": [
     {
       "title": "NASA — What's a transit?",
       "url": "https://science.nasa.gov/exoplanets/whats-a-transit/"
     },
     {
-      "title": "NASA — Exoplanet facts",
-      "url": "https://science.nasa.gov/exoplanets/facts/"
+      "title": "NASA — How we find and characterize exoplanets",
+      "url": "https://science.nasa.gov/exoplanets/how-we-find-and-characterize/"
     }
   ]
 }
