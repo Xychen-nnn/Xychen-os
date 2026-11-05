@@ -16,14 +16,14 @@ function sendNotFound(res) {
 function requestedLanguage(req) {
   const headers = req.headers || {};
   const cookie = String(headers.cookie || '');
-  const cookieMatch = cookie.match(/(?:^|;\\s*)xychen-os-language=(en|fil)(?:;|$)/);
+  const cookieMatch = cookie.match(/(?:^|;\s*)xychen-os-language=(en|fil)(?:;|$)/);
   if (cookieMatch) return cookieMatch[1];
 
   const preferences = String(headers['accept-language'] || '')
     .split(',')
     .map((entry, index) => {
       const [tag, ...parameters] = entry.trim().split(';');
-      const qualityParameter = parameters.find((parameter) => /^\\s*q=/i.test(parameter));
+      const qualityParameter = parameters.find((parameter) => /^\s*q=/i.test(parameter));
       const quality = qualityParameter ? Number(qualityParameter.split('=')[1]) : 1;
 
       return {
