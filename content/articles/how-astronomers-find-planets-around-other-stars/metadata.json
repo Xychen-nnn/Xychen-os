@@ -14,7 +14,7 @@
     "en"
   ],
   "verificationStatus": "preliminary",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-11-06",
   "summary": "Learn how astronomers use small, repeating changes in starlight to detect exoplanets and estimate some of their properties.",
   "sources": [
@@ -30,5 +30,6 @@
       "title": "NASA — Light curve of a planet transiting its star",
       "url": "https://science.nasa.gov/resource/light-curve-of-a-planet-transiting-its-star/"
     }
-  ]
+  ],
+  "publishedAt": "2026-11-06"
 }
