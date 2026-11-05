@@ -372,3 +372,28 @@ test('article retry reloads only the failed article endpoint while categories re
   assert.equal(articleCalls, 2);
   assert.equal(articleList.children.length, 3);
 });
+
+test('initial URL filters and browser history restore search and category state', async () => {
+  const fixture = await startExplore(async (url) => {
+    if (url.endsWith('/categories')) return okJson({ categories });
+    return okJson({ articles });
+  }, '?category=technology&q=dns');
+
+  const { elements, window } = fixture;
+  const search = elements.get('explore-search');
+  const categoryList = elements.get('category-list');
+  const articleList = elements.get('article-list');
+
+  assert.equal(search.value, 'dns');
+  assert.equal(articleList.children.length, 1);
+  assert.equal(categoryList.children[0].attributes['aria-current'], 'true');
+
+  window.location.search = '?q=exoplanets';
+  window.location.href = 'https://xychen-os.vercel.app/explore.html?q=exoplanets';
+  window.listeners.get('popstate')();
+
+  assert.equal(search.value, 'exoplanets');
+  assert.equal(articleList.children.length, 1);
+  assert.match(articleList.textContent, /Astronomers Observe Distant Worlds/);
+  assert.equal(categoryList.children[0].attributes['aria-current'], undefined);
+});
