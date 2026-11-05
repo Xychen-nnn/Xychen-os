@@ -270,7 +270,12 @@
     renderExplore();
   });
 
-  clearSearch.addEventListener('click', resetFilters);
+  clearSearch.addEventListener('click', () => {
+    const current = getFilters();
+    searchInput.value = '';
+    updateUrl({ categoryId: current.categoryId, query: '' });
+    renderExplore();
+  });
 
   articleList.addEventListener('click', (event) => {
     const clearLink = event.target.closest('a[href="/explore.html"]');
