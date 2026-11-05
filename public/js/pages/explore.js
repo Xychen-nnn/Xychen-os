@@ -94,6 +94,7 @@
 
     const lang = language();
     const filters = getFilters();
+    searchInput.placeholder = translate('explore.searchPlaceholder', 'Search by title, summary, or tag');
     const categoryName = (category) =>
       lang === 'fil' ? category.nameFil || category.name : category.name;
     const categoryDescription = (category) =>
@@ -124,6 +125,7 @@
 
     const normalizedQuery = filters.query.toLocaleLowerCase();
     let visibleArticles = loadedArticles.filter((article) => {
+      if (invalidCategory) return false;
       if (selected && article.category !== selected.id) return false;
       if (!normalizedQuery) return true;
       const searchable = [
@@ -163,11 +165,14 @@
             ? translate('explore.categoryEmpty', 'There are no reviewed articles in this category yet.')
             : translate('explore.libraryEmpty', 'The article library is being prepared.');
 
+      const hasActiveFilters = Boolean(filters.categoryId || filters.query);
       showMessage(
         articleList,
         message,
-        '/explore.html',
-        translate('explore.clearFilters', 'Clear filters'),
+        hasActiveFilters ? '/explore.html' : '/about.html',
+        hasActiveFilters
+          ? translate('explore.clearFilters', 'Clear filters')
+          : translate('explore.aboutPlatform', 'About this platform'),
         invalidCategory ? translate('explore.invalidCategoryTitle', 'Category not found') : undefined
       );
       return;
