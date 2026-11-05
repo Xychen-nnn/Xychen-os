@@ -6,9 +6,9 @@ Xychen OS is a personal digital platform for projects, selected public links, an
 
 - Home, About, Projects, Explore, Article, and Links pages
 - Shared responsive navigation and footer
-- English and Filipino interface with browser-language detection and a saved manual preference
+- English and Filipino interface with browser language detection and a saved manual preference
 - Light and dark themes with a saved visitor preference
-- Category-based content discovery
+- Category based content discovery
 - Git-managed article content with metadata and source validation
 - Lightweight health, site metadata, and content API endpoints
 - No user accounts, community submissions, or external integrations
