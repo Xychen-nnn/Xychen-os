@@ -14,9 +14,33 @@ function sendNotFound(res) {
 }
 
 function requestedLanguage(req) {
-  const cookie = String(req.headers.cookie || '');
-  const match = cookie.match(/(?:^|;\s*)xychen-os-language=(en|fil)(?:;|$)/);
-  return match ? match[1] : 'en';
+  const headers = req.headers || {};
+  const cookie = String(headers.cookie || '');
+  const cookieMatch = cookie.match(/(?:^|;\\s*)xychen-os-language=(en|fil)(?:;|$)/);
+  if (cookieMatch) return cookieMatch[1];
+
+  const preferences = String(headers['accept-language'] || '')
+    .split(',')
+    .map((entry, index) => {
+      const [tag, ...parameters] = entry.trim().split(';');
+      const qualityParameter = parameters.find((parameter) => /^\\s*q=/i.test(parameter));
+      const quality = qualityParameter ? Number(qualityParameter.split('=')[1]) : 1;
+
+      return {
+        language: tag.trim().toLowerCase().split('-')[0],
+        quality: Number.isFinite(quality) && quality >= 0 && quality <= 1 ? quality : 0,
+        index
+      };
+    })
+    .filter((preference) => preference.quality > 0)
+    .sort((a, b) => b.quality - a.quality || a.index - b.index);
+
+  for (const preference of preferences) {
+    if (preference.language === 'fil' || preference.language === 'tl') return 'fil';
+    if (preference.language === 'en') return 'en';
+  }
+
+  return 'en';
 }
 
 router.get('/:slug', (req, res, next) => {
@@ -34,7 +58,7 @@ router.get('/:slug', (req, res, next) => {
 
     const category = loadCategories().find((item) => item.id === article.metadata.category);
     res.setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
-    res.setHeader('Vary', 'Cookie');
+    res.setHeader('Vary', 'Cookie, Accept-Language');
     res.type('html').send(renderArticlePage(article, category, language));
   } catch (error) {
     if (error.name === 'ContentValidationError' || error.code === 'ENOENT') {
@@ -44,4 +68,4 @@ router.get('/:slug', (req, res, next) => {
   }
 });
 
-module.exports = router;
+module.exports = { router, requestedLanguage };
