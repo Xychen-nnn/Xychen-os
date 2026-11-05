@@ -16,7 +16,7 @@
   ],
   "verificationStatus": "preliminary",
   "status": "draft",
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-06",
   "summary": "Understand how repeated player actions, feedback, and progression form a game's core loop—and how designers can test it.",
   "sources": [
     {
@@ -26,6 +26,14 @@
     {
       "title": "Roblox Creator Hub — Onboarding",
       "url": "https://create.roblox.com/docs/production/game-design/onboarding"
+    },
+    {
+      "title": "Roblox Creator Hub — Onboarding techniques",
+      "url": "https://create.roblox.com/docs/production/game-design/onboarding-techniques"
+    },
+    {
+      "title": "Roblox Creator Hub — Prototyping",
+      "url": "https://create.roblox.com/docs/production/game-design/prototyping"
     }
   ]
 }
