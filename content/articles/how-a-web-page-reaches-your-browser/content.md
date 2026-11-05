@@ -1,49 +1,67 @@
 # How a Web Page Reaches Your Browser
 
-Typing a URL and pressing Enter feels instant. Behind that small action, several systems cooperate: the browser, the network, name-resolution services, web servers, and the code that turns a response into a page.
+Typing a web address and pressing Enter feels almost instant. Behind that action, your browser and several internet systems work together to locate a server, request files, and turn the response into a page you can use.
 
-Understanding the sequence makes web development less mysterious and helps when something goes wrong.
+Knowing the main stages makes web development easier to understand—and gives you a better starting point when a page does not load as expected.
 
-## 1. The browser interprets the address
+## 1. The browser reads the URL
 
-A URL identifies a resource. Its parts can specify a scheme such as `https`, a host name, an optional port, and a path. The browser uses these details to determine where and how to request the resource.
+A URL identifies a resource. It can contain a scheme such as `https`, a host name such as `example.com`, an optional port, and a path such as `/about`.
 
-## 2. DNS helps find the server
+The browser uses these parts to decide how to request the resource and which host it needs to contact. The exact steps can vary depending on the browser, network, and whether information is already cached.
 
-People use domain names because they are easier to remember than numeric network addresses. The Domain Name System (DNS) helps resolve a host name to the network address needed to contact the destination.
+## 2. DNS helps locate the host
 
-DNS is not the website itself. It is one of the systems that helps the browser find where the website is hosted.
+People use domain names because they are easier to remember than IP addresses. The Domain Name System (DNS) helps translate a host name, such as `example.com`, into IP address information that allows the browser to reach the right network destination.
 
-## 3. The browser sends an HTTP request
+The browser or operating system may already have a cached answer. Otherwise, the device uses a DNS resolver to look up the information. DNS does not contain the website's page; it helps the device locate the host that can provide it.
 
-After it has the information needed to connect, the browser sends an HTTP request. A request includes a method—commonly `GET` when retrieving a page—and a path, along with headers that provide additional context.
+## 3. The browser establishes a connection
 
-The server receives the request and decides how to respond. The response includes a status code, headers, and usually a body containing the requested resource or an explanation of why it could not be provided.
+After it has the information needed to reach the host, the browser establishes a network connection. The details depend on the protocol being used.
 
-## 4. The response is turned into a page
+For an HTTPS website, the connection also includes a TLS handshake. This helps authenticate the server and establish encryption for data sent between the browser and server. The exact connection process differs across HTTP versions and network configurations, so it is not always one identical sequence.
 
-For a typical website, the browser receives HTML and may discover additional files such as CSS, JavaScript, fonts, and images. It requests those resources and uses them to construct and display the page.
+## 4. The browser sends an HTTP request
 
-HTML describes structure, CSS controls presentation, and JavaScript can add behavior. These parts work together, but they have different responsibilities.
+The browser sends an HTTP request for the resource. A request includes a method—commonly `GET` when retrieving a page—and information such as the path and headers.
 
-## 5. Status codes help explain the result
+The server processes the request and sends an HTTP response. A response contains a status code, headers, and usually a body. The body might contain HTML, another resource, or information explaining why the request could not be fulfilled.
 
-A few familiar HTTP status codes are:
+## 5. The browser builds and displays the page
+
+For a typical website, the response includes HTML. As the browser parses that HTML, it can discover other resources such as stylesheets, JavaScript files, fonts, and images, and request them when needed.
+
+The browser then performs several rendering steps:
+
+- **DOM:** HTML is parsed into the Document Object Model, a structured representation of the page.
+- **CSSOM:** CSS is processed into the CSS Object Model, which describes how elements should be styled.
+- **Render tree:** The browser combines the page structure and applicable styles to determine what should be displayed.
+- **Layout:** It calculates the size and position of visible elements.
+- **Paint:** It draws the page's visual output to the screen.
+
+JavaScript can also run during loading and change the page's content or behavior. These stages can overlap or repeat as more resources load and the page changes.
+
+## 6. Status codes describe the response
+
+HTTP status codes give a broad indication of what happened to a request. Common examples include:
 
 - **200 OK:** the request succeeded.
-- **301 or 302:** the resource has been redirected.
-- **403 Forbidden:** the server understood the request but refuses access.
-- **404 Not Found:** the requested resource could not be found.
-- **500 Internal Server Error:** the server encountered an unexpected problem.
+- **301 Moved Permanently:** the resource has a permanent new location.
+- **302 Found:** the resource is temporarily available at another location.
+- **403 Forbidden:** the server refuses access to the requested resource.
+- **404 Not Found:** the server cannot find the requested resource.
+- **500 Internal Server Error:** the server encountered an unexpected condition.
 
-A status code is a clue, not always the complete explanation. Response headers, server logs, and browser developer tools can provide more context.
+A status code is useful evidence, but it does not always explain the entire problem. Response headers, server logs, and browser developer tools can provide more context.
 
 ## Why this matters when building websites
 
-When a page fails to load, identify which stage is failing before changing code. A DNS problem is different from a missing file, and a server error is different from a JavaScript error after the page has loaded.
+When a page fails to load, identify which part of the process is failing before changing code. A DNS lookup problem is different from a failed connection, an HTTP error, a missing image, or a JavaScript error after the page has loaded.
 
-The useful habit is to inspect the request and response rather than guessing. The browser's Network panel is often the best place to begin.
+The browser's Network panel helps you inspect requests, response codes, and loaded resources. The Console can reveal JavaScript errors. Looking at this evidence is usually more reliable than guessing.
 
 ## Further reading
 
-The MDN guide linked in the sources explains clients and servers, DNS, TCP/IP, HTTP requests, and common response codes in more detail.
+- [MDN: How the web works](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works) explains clients and servers, DNS, HTTP, packets, URLs, and response codes.
+- [MDN: Critical rendering path](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path) explains how browsers turn HTML, CSS, and JavaScript into pixels on the screen.
