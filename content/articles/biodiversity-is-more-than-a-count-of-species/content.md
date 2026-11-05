@@ -1,37 +1,36 @@
 # Biodiversity Is More Than a Count of Species
 
-Biodiversity is often described as the variety of life on Earth. That definition includes more than the number of animal and plant species in a place. It also includes variation within species and the different ecosystems where life exists.
+Biodiversity means the variety of life. It includes more than the number of different species in one place: it also includes genetic differences within species and the variety of ecosystems where organisms live.
 
-Looking at biodiversity as a connected system helps explain why changes to one population can affect other parts of an environment.
+These levels are connected. Understanding biodiversity means looking at living things and the relationships between them and their environments.
 
-## Three useful levels
+## Three levels of biodiversity
 
-**Genetic diversity** is variation in inherited characteristics within a species. Differences among individuals can influence how populations respond to changing conditions.
+**Genetic diversity** is the variation in inherited characteristics among individuals and populations of the same species. This variation can affect how populations respond to disease, environmental change, and other pressures.
 
-**Species diversity** refers to the variety of species in an area. A forest, reef, wetland, or grassland may support many different forms of life.
+**Species diversity** describes the variety of species in an area. Scientists may consider both how many species are present (richness) and how evenly individuals are distributed among those species (evenness). Two places can have the same number of species but very different species distributions.
 
-**Ecosystem diversity** describes the range of habitats and ecological systems in a region, including the interactions among organisms and their physical environment.
+**Ecosystem diversity** refers to the variety of ecosystems, habitats, and ecological communities across a region. Forests, wetlands, grasslands, rivers, and reefs provide different conditions and support different forms of life.
 
-These levels are connected. A species is part of a population, populations interact with other organisms, and those relationships take place within ecosystems.
+## Food webs connect organisms
 
-## Food webs show those connections
+A food chain is a simplified path showing how energy moves from one organism to another. A food web combines many connected feeding relationships.
 
-A food chain is a simplified path showing who eats whom. A food web combines many feeding relationships.
+For example, aquatic producers such as algae can support small organisms, which may be eaten by fish and then by larger predators. Arrows in a food web point in the direction energy moves—from the organism being eaten to the organism that consumes it.
 
-In an aquatic food web, for example, microscopic algae and other producers can support small animals. Those animals may be eaten by fish, which can then be eaten by larger predators. The arrows in a food web show the direction energy moves—from the organism being eaten to the organism that consumes it.
-
-If one population changes, the effects can spread. Removing a predator may affect prey populations; changes in nutrients can influence algae and the organisms that depend on them.
+A change in one population can affect other parts of the web. The effects depend on the species involved and the wider ecosystem; they are not always simple or predictable.
 
 ## Why biodiversity matters
 
-Living things contribute to processes that people and ecosystems rely on. These include food production, pollination, decomposition, nutrient cycling, and the maintenance of habitats.
+Biodiversity contributes to ecological processes such as pollination, decomposition, nutrient cycling, and the formation and maintenance of habitats. People also depend on healthy ecosystems for food, materials, and other benefits.
 
-Biodiversity does not mean every ecosystem has the same number of species or that one simple measurement can describe its condition. Scientists examine several kinds of evidence, including species composition, population trends, habitat condition, and ecological relationships.
+No single number describes every aspect of biodiversity. Scientists may examine species richness, population trends, genetic variation, habitat condition, and ecological interactions. The most useful measures depend on the question being studied.
 
-## A connected view of nature
+## Look beyond the species count
 
-Thinking about biodiversity as a network—not just a checklist—makes environmental change easier to understand. Protecting one species can matter, but so can protecting its habitat and the relationships that allow the wider ecosystem to function.
+Counting species is useful, but it is only one part of understanding biodiversity. A fuller picture includes variation within species, the habitats they depend on, and the relationships that connect organisms in an ecosystem.
 
 ## Further reading
 
-The National Park Service introduces biodiversity at the genetic, species, and ecosystem levels. NOAA's guide to aquatic food webs explains how feeding relationships connect organisms and move energy through ecosystems.
+- [U.S. National Park Service — What is biodiversity?](https://www.nps.gov/subjects/biodiversity/what-is-biodiversity.htm)
+- [NOAA — Aquatic food webs](https://www.noaa.gov/education/resource-collections/marine-life/aquatic-food-webs)
