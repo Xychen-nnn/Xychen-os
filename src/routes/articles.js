@@ -68,4 +68,5 @@ router.get('/:slug', (req, res, next) => {
   }
 });
 
-module.exports = { router, requestedLanguage };
+router.requestedLanguage = requestedLanguage;
+module.exports = router;
