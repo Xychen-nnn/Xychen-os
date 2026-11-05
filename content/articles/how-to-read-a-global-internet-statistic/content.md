@@ -1,46 +1,58 @@
 # How to Read a Global Internet Statistic
 
-A headline might say that billions of people use the internet. The number sounds straightforward, but a statistic is only meaningful when you know exactly what was measured.
+A headline might say that billions of people use the internet. Before repeating the number, ask what it actually measures. A statistic becomes meaningful when its definition, source, time period, unit, and limitations are clear.
 
-Before repeating a figure, check its definition, source, time period, and limitations.
+Internet-use estimates provide a useful example.
 
 ## Start with the definition
 
-Our World in Data's internet-user indicator defines an internet user as someone who used the internet from any location during the previous three months.
+The International Telecommunication Union (ITU) defines an internet user as a person who accessed the internet from any location during the previous three months.
 
-That definition matters. It does not mean the person is online every day, has a home broadband connection, or uses the same kind of device as everyone else.
+That definition does not mean the person is online every day, has a home broadband connection, or uses a particular device. Someone who connects through a mobile phone or another internet-capable device can still meet the definition.
 
-A different definition could produce a different number.
+A statistic based on daily use would answer a different question and could produce a different result.
 
-## Check the source
+## Identify the source and how the data is presented
 
-The indicator is based on data from the International Telecommunication Union, with the World Bank providing the underlying World Development Indicators used in the presentation.
+Our World in Data presents internet-use indicators using data from the ITU's World Telecommunication/ICT Indicators Database, made available through the World Bank's World Development Indicators.
 
-A trustworthy data page should identify where the information came from. It should also explain whether the publisher collected the data directly or processed figures from another organization.
+It is useful to distinguish the original data producer from the organization that republishes or visualizes the data. A chart publisher may process, combine, or explain figures from another source.
 
-## Check the year and the unit
+## Check the year and unit
 
-A global total should always be read alongside its year. Population and internet access change over time, so an older estimate should not be presented as a current count.
+Always read a value alongside its reference year. Internet access changes over time, so an older estimate should not be described as a current count.
 
-Also check the unit. A chart may show people, a percentage of the population, or a rate per 100 people. Those measurements answer different questions.
+Also check the unit:
+- **Number of people** is an estimated count.
+- **Share of the population** is a percentage.
+- **Subscriptions per 100 people** measures subscriptions, not necessarily unique individuals.
 
-## Understand the limitations
+These measures are related, but they are not interchangeable. One person may have more than one subscription, and a subscription count does not directly tell you how many individuals use the internet.
 
-Data coverage can vary by country and year. Some regional estimates may involve calculations or assumptions when direct observations are incomplete.
+## Understand gaps and estimates
 
-That does not make the statistic useless. It means readers should understand how the figure was produced before making comparisons.
+Country data may not be available for every year. Regional totals and comparisons can use different methods depending on the source and data coverage.
+
+For example, Our World in Data explains that some continental estimates are calculated from available country data and are shown only when coverage reaches a stated threshold. Its chart notes also describe how missing years may be handled.
+
+These methods do not make the data unusable. They mean that readers should consult the notes before comparing regions or treating an estimate as an exact headcount.
 
 ## A quick checklist
 
-When you see a number in an article, ask:
+When you see a statistic, ask:
 
 - What exactly is being counted?
 - Who produced the original data?
-- What year or period does it describe?
-- Is the unit a count, percentage, or rate?
-- Are there gaps, estimates, or assumptions?
+- Which year or period does it describe?
+- Is the unit a count, percentage, or subscription rate?
+- Are there missing values, estimates, or assumptions?
 - Does the conclusion go beyond what the data can show?
 
 ## The takeaway
 
-Good data literacy is not about memorizing large numbers. It is about reading the notes behind them. A clear definition and transparent source make a statistic much more useful—and much harder to misunderstand.
+Good data literacy is not about memorizing large numbers. It is about understanding the definition and method behind them. Clear sources and transparent notes make statistics more useful—and harder to misinterpret.
+
+## Further reading
+
+- [Our World in Data — Number of people using the Internet](https://ourworldindata.org/grapher/number-of-internet-users)
+- [International Telecommunication Union — Statistics](https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx)
