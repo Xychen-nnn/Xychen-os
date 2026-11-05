@@ -33,7 +33,7 @@ These measures are related, but they are not interchangeable. One person may hav
 
 Country data may not be available for every year. Regional totals and comparisons can use different methods depending on the source and data coverage.
 
-For example, Our World in Data explains that some continental estimates are calculated from available country data and are shown only when coverage reaches a stated threshold. Its chart notes also describe how missing years may be handled.
+For example, Our World in Data reports world totals and World Bank regional or income-group figures using World Bank data. It separately calculates estimates for continents from available country data and displays a continental estimate only when the countries with data cover at least 90% of that continent's population. Its chart notes also explain the source and treatment of missing years. These are different aggregation approaches, so check which geographic grouping a chart actually shows.
 
 These methods do not make the data unusable. They mean that readers should consult the notes before comparing regions or treating an estimate as an exact headcount.
 
