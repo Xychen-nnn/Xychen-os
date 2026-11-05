@@ -264,6 +264,13 @@ test('search filters published articles by title, summary, and tags and updates 
   assert.equal(articleList.children.length, 1);
   assert.match(articleList.textContent, /How a Browser Loads a Page/);
 
+  search.value = 'developer tools';
+  search.dispatch('input');
+
+  assert.equal(window.location.search, '?q=developer+tools');
+  assert.equal(articleList.children.length, 1);
+  assert.match(articleList.textContent, /Debugging Browser Layout/);
+
   search.value = 'browser';
   search.dispatch('input');
 
@@ -290,7 +297,7 @@ test('category selection toggles without navigation and preserves the active sea
   assert.equal(window.location.pathname, '/explore.html');
   assert.equal(window.location.search, '?category=technology&q=browser');
   assert.equal(elements.get('article-list').children.length, 2);
-  assert.equal(technologyCard.attributes['aria-current'], 'true');
+  assert.equal(categoryList.children[0].attributes['aria-current'], 'true');
 
   const selectedTechnologyCard = categoryList.children[0];
   selectedTechnologyCard.click();
