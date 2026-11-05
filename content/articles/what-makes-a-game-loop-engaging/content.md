@@ -1,40 +1,50 @@
 # What Makes a Game Loop Engaging?
 
-A game can have detailed graphics, a large map, and many features but still feel confusing if players do not understand what to do or why their actions matter.
+A game can have detailed graphics and many features but still feel confusing if players do not understand what they are doing or how their actions move the experience forward.
 
-A useful way to examine game design is through the **core loop**: the repeated pattern of actions that forms the main activity of a game.
+A useful way to study game design is through the **core loop**: the central pattern of repeated player actions and progression that gives a game its main structure.
 
-## The basic pattern
+## What makes up a core loop?
 
-A simple loop can be described in four parts:
+The exact structure varies by genre, but a core loop often connects three layers:
 
-1. **Goal:** the player understands what they are trying to achieve.
-2. **Action:** the player makes a choice or performs an activity.
-3. **Feedback:** the game communicates what happened.
-4. **Progress or a new decision:** the result changes the player's options, resources, or next objective.
+1. **Moment-to-moment interaction:** What the player repeatedly does, such as exploring, aiming, building, solving, or collecting.
+2. **Repeated action pattern:** The main activity that turns those interactions into a recognizable gameplay cycle.
+3. **Progression:** How those actions change the player's abilities, resources, choices, or access to new goals.
 
-For example, a building game might ask a player to gather materials, use them to construct something, see the result, and then unlock a more ambitious building task.
+Consider a building game: a player gathers materials, uses them to construct something, sees the result, and then takes on a larger building goal. The loop connects an immediate action to a longer-term reason to continue.
 
-The details vary by genre, but the important feature is the connection between action and understandable feedback.
+## Feedback makes actions understandable
 
-## Why feedback matters
+Feedback tells players what happened after an action. It can be visual, audio, written, or reflected in the game state.
 
-Feedback tells players whether an action worked. It can be visual, audio, textual, or mechanical. A clear progress indicator, an animation, or a changed game state can help players understand the result of a decision.
+For example, a resource counter changing after a successful collection action confirms that the game registered it. A clear animation or sound can reinforce the result, while a progress indicator can show how close the player is to a goal.
 
-When feedback is missing or delayed, players may not know whether the game registered an action or what they should do next.
+Feedback should be informative. Effects that are unclear, delayed, or unrelated to the action can make a game harder to understand.
 
-## Introduce complexity gradually
+## Progression gives the loop direction
 
-New players need enough information to begin, but a long explanation before they can interact may make the experience feel difficult to enter.
+Progression can introduce new abilities, areas, challenges, customization, or goals. It gives repeated actions a wider purpose.
 
-A short first task can teach one mechanic at a time. Later challenges can combine those mechanics and introduce more choices. This is one reason onboarding—the first experience a player has with a game—is an important design consideration.
+A useful progression system does not need to reward every action with an item. It should make the relationship between effort and progress understandable, while leaving room for meaningful decisions and challenge.
 
-## Test the loop, not just the feature list
+## Teach the loop without overwhelming new players
 
-A feature may sound interesting on paper but still interrupt the main experience. Designers can observe whether players understand the goal, notice feedback, and know what to do next.
+Onboarding is the first experience a player has with a game. It should help players understand the controls, interface, and central gameplay loop.
 
-Roblox's creator documentation discusses core loops, prototyping, onboarding, and user-interface design as parts of game development. These principles also apply to games built on other platforms.
+A short, contextual instruction can teach a mechanic while the player is using it. A long tutorial that delays interaction may make the game harder to enter. The appropriate approach depends on the game's complexity and audience.
+
+## Test the experience with players
+
+Designers should not judge a loop only by its feature list. Playtesting can reveal whether players understand the goal, notice feedback, and know what choices are available next.
+
+If players repeatedly get stuck or ignore a feature, the design may need clearer communication or a different relationship between actions and progression. Feedback from playtests is evidence for iteration, not a guarantee that every player will respond the same way.
 
 ## The takeaway
 
-An engaging game loop is not simply a reward repeated forever. It is a readable relationship between goals, player decisions, feedback, and progress. When those parts fit together, players can understand the experience and make meaningful choices.
+An engaging core loop connects understandable actions, useful feedback, and meaningful progression. The goal is not simply to repeat rewards, but to create a gameplay pattern players can understand and choose to continue.
+
+## Further reading
+
+- [Roblox Creator Hub — Core loops](https://create.roblox.com/docs/production/game-design/core-loops)
+- [Roblox Creator Hub — Onboarding](https://create.roblox.com/docs/production/game-design/onboarding)
