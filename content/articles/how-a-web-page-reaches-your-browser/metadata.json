@@ -16,7 +16,7 @@
     "en"
   ],
   "verificationStatus": "preliminary",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-11-06",
   "summary": "Follow the journey from a URL and DNS lookup to an HTTP response and the browser's rendering process.",
   "sources": [
@@ -36,5 +36,6 @@
       "title": "MDN — HTTP response status codes",
       "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status"
     }
-  ]
+  ],
+  "publishedAt": "2026-11-06"
 }
