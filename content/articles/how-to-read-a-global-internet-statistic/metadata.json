@@ -23,6 +23,10 @@
       "url": "https://ourworldindata.org/grapher/number-of-internet-users"
     },
     {
+      "title": "World Bank — Individuals using the Internet (% of population): Indicator metadata",
+      "url": "https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.NET.USER.ZS/~/~/~/~/home"
+    },
+    {
       "title": "International Telecommunication Union — Statistics",
       "url": "https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx"
     }
