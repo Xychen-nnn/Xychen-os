@@ -14,7 +14,7 @@
     "en"
   ],
   "verificationStatus": "preliminary",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-11-06",
   "summary": "Learn to evaluate an internet-use statistic by checking its definition, original data source, reference year, unit, and limitations.",
   "sources": [
@@ -30,5 +30,6 @@
       "title": "International Telecommunication Union — Statistics",
       "url": "https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx"
     }
-  ]
+  ],
+  "publishedAt": "2026-11-06"
 }
