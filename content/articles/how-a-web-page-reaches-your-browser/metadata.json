@@ -1,0 +1,32 @@
+{
+  "id": "article-how-a-web-page-reaches-your-browser",
+  "slug": "how-a-web-page-reaches-your-browser",
+  "title": "How a Web Page Reaches Your Browser",
+  "category": "technology",
+  "tags": [
+    "web",
+    "http",
+    "dns",
+    "https",
+    "browser",
+    "rendering"
+  ],
+  "type": "article",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "Follow the journey from a URL and DNS lookup to an HTTP response and the browser's rendering process.",
+  "sources": [
+    {
+      "title": "MDN — How the web works",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+    },
+    {
+      "title": "MDN — Critical rendering path",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"
+    }
+  ]
+}

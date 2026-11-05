@@ -1,0 +1,31 @@
+{
+  "id": "article-biodiversity-is-more-than-a-count-of-species",
+  "slug": "biodiversity-is-more-than-a-count-of-species",
+  "title": "Biodiversity Is More Than a Count of Species",
+  "category": "nature",
+  "tags": [
+    "biodiversity",
+    "genetic-diversity",
+    "species-diversity",
+    "ecosystems",
+    "food-webs"
+  ],
+  "type": "article",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "Explore biodiversity at the genetic, species, and ecosystem levels, and see how ecological relationships connect living things.",
+  "sources": [
+    {
+      "title": "U.S. National Park Service — What is biodiversity?",
+      "url": "https://www.nps.gov/subjects/biodiversity/what-is-biodiversity.htm"
+    },
+    {
+      "title": "NOAA — Aquatic food webs",
+      "url": "https://www.noaa.gov/education/resource-collections/marine-life/aquatic-food-webs"
+    }
+  ]
+}

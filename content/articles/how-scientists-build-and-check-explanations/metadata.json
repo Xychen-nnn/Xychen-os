@@ -1,0 +1,31 @@
+{
+  "id": "article-how-scientists-build-and-check-explanations",
+  "slug": "how-scientists-build-and-check-explanations",
+  "title": "How Scientists Build and Check Explanations",
+  "category": "science",
+  "tags": [
+    "scientific-method",
+    "evidence",
+    "research",
+    "hypothesis",
+    "uncertainty"
+  ],
+  "type": "article",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "How researchers use questions, evidence, reasoning, peer review, and repeated checks to develop and revise scientific explanations.",
+  "sources": [
+    {
+      "title": "NASA — The scientific method and climate change: How scientists know",
+      "url": "https://science.nasa.gov/earth/climate-change/the-scientific-method-and-climate-change-how-scientists-know/"
+    },
+    {
+      "title": "National Academies — Understanding and Addressing Misinformation About Science",
+      "url": "https://www.nationalacademies.org/read/27894/chapter/4"
+    }
+  ]
+}

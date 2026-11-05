@@ -1,0 +1,31 @@
+{
+  "id": "article-what-makes-a-game-loop-engaging",
+  "slug": "what-makes-a-game-loop-engaging",
+  "title": "What Makes a Game Loop Engaging?",
+  "category": "gaming",
+  "tags": [
+    "game-design",
+    "core-loop",
+    "player-feedback",
+    "progression",
+    "onboarding"
+  ],
+  "type": "article",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "Understand how repeated player actions, feedback, and progression form a game's core loop—and how designers can test it.",
+  "sources": [
+    {
+      "title": "Roblox Creator Hub — Core loops",
+      "url": "https://create.roblox.com/docs/production/game-design/core-loops"
+    },
+    {
+      "title": "Roblox Creator Hub — Onboarding",
+      "url": "https://create.roblox.com/docs/production/game-design/onboarding"
+    }
+  ]
+}

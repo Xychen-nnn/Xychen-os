@@ -1,0 +1,30 @@
+{
+  "id": "article-how-to-read-a-global-internet-statistic",
+  "slug": "how-to-read-a-global-internet-statistic",
+  "title": "How to Read a Global Internet Statistic",
+  "category": "general-knowledge",
+  "tags": [
+    "internet",
+    "statistics",
+    "data-literacy",
+    "data-sources"
+  ],
+  "type": "article",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "Learn to evaluate an internet-use statistic by checking its definition, original data source, reference year, unit, and limitations.",
+  "sources": [
+    {
+      "title": "Our World in Data — Number of people using the Internet",
+      "url": "https://ourworldindata.org/grapher/number-of-internet-users"
+    },
+    {
+      "title": "International Telecommunication Union — Statistics",
+      "url": "https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx"
+    }
+  ]
+}

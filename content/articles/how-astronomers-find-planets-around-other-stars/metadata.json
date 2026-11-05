@@ -1,0 +1,30 @@
+{
+  "id": "article-how-astronomers-find-planets-around-other-stars",
+  "slug": "how-astronomers-find-planets-around-other-stars",
+  "title": "How Astronomers Find Planets Around Other Stars",
+  "category": "astronomy",
+  "tags": [
+    "exoplanets",
+    "transit-method",
+    "light-curves",
+    "astronomy"
+  ],
+  "type": "article",
+  "languages": [
+    "en"
+  ],
+  "verificationStatus": "preliminary",
+  "status": "draft",
+  "updatedAt": "2026-11-05",
+  "summary": "Learn how astronomers use small, repeating changes in starlight to detect exoplanets and estimate some of their properties.",
+  "sources": [
+    {
+      "title": "NASA — What's a transit?",
+      "url": "https://science.nasa.gov/exoplanets/whats-a-transit/"
+    },
+    {
+      "title": "NASA — How we find and characterize exoplanets",
+      "url": "https://science.nasa.gov/exoplanets/how-we-find-and-characterize/"
+    }
+  ]
+}
