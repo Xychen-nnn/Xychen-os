@@ -75,7 +75,7 @@ function renderArticlePage(article, category, language = 'en') {
       <header class="page-heading">
         <p class="eyebrow">${categoryName}</p>
         <h1>${title}</h1>
-        ${(isFilipino ? metadata.summaryFil : metadata.summary) || (!isFilipino && metadata.summary) ? '<p class="page-intro">' + description + '</p>' : ''}
+        ${(isFilipino ? (metadata.summaryFil || metadata.summary) : metadata.summary) ? '<p class="page-intro">' + description + '</p>' : ''}
         <p class="muted">${dateLine}</p>
         ${tags}
       </header>
