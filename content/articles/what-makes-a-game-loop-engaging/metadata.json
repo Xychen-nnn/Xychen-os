@@ -6,7 +6,9 @@
   "tags": [
     "game-design",
     "core-loop",
-    "player-experience"
+    "player-feedback",
+    "progression",
+    "onboarding"
   ],
   "type": "article",
   "languages": [
@@ -15,15 +17,15 @@
   "verificationStatus": "preliminary",
   "status": "draft",
   "updatedAt": "2026-11-05",
-  "summary": "A game loop connects player actions to feedback and new goals. Clear loops help explain why a game feels understandable and rewarding.",
+  "summary": "Understand how repeated player actions, feedback, and progression form a game's core loop—and how designers can test it.",
   "sources": [
     {
-      "title": "Roblox Creator Hub — Design games",
-      "url": "https://create.roblox.com/docs/production/game-design"
+      "title": "Roblox Creator Hub — Core loops",
+      "url": "https://create.roblox.com/docs/production/game-design/core-loops"
     },
     {
-      "title": "Roblox Creator Hub — Design for Roblox",
-      "url": "https://create.roblox.com/docs/production/game-design/design-for-roblox"
+      "title": "Roblox Creator Hub — Onboarding",
+      "url": "https://create.roblox.com/docs/production/game-design/onboarding"
     }
   ]
 }
