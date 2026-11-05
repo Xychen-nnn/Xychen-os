@@ -32,6 +32,16 @@
       <h1 data-i18n="explore.title">Explore</h1>
       <p class="page-intro" data-i18n="explore.intro">Choose a subject to browse. This library is designed for clear explainers, practical guides, and articles with sources—not filler or unreviewed posts.</p>
     </header>
+    <section class="explore-controls panel" aria-label="Article search and filters">
+      <form id="explore-search-form" role="search">
+        <label class="field-label" for="explore-search" data-i18n="explore.searchLabel">Search articles</label>
+        <div class="explore-search-row">
+          <input id="explore-search" name="q" type="search" autocomplete="off" placeholder="Search by title, summary, or tag" data-i18n-placeholder="explore.searchPlaceholder">
+          <button class="button-secondary" id="clear-search" type="button" data-i18n="explore.clearSearch">Clear</button>
+        </div>
+      </form>
+      <p class="muted explore-filter-status" id="explore-filter-status" aria-live="polite"></p>
+    </section>
     <section class="section" aria-labelledby="categories-heading">
       <div class="section-heading">
         <div><p class="eyebrow" data-i18n="explore.categoriesEyebrow">Browse by subject</p><h2 id="categories-heading" data-i18n="explore.categoriesTitle">Categories</h2></div>
