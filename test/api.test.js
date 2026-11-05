@@ -113,21 +113,59 @@ test('unknown article routes return a non-cacheable not-found page', async () =>
   assert.match(html, /404|not found/i);
 });
 
-test('content API exposes categories and an honest empty published library', async () => {
+test('content API exposes all seven published articles, category filters, and article pages', async () => {
+  const expectedSlugs = [
+    'how-a-web-page-reaches-your-browser',
+    'how-scientists-build-and-check-explanations',
+    'how-astronomers-find-planets-around-other-stars',
+    'biodiversity-is-more-than-a-count-of-species',
+    'what-makes-a-game-loop-engaging',
+    'a-practical-way-to-debug-a-web-page',
+    'how-to-read-a-global-internet-statistic'
+  ];
   const categoriesResponse = await fetch(baseUrl + '/api/content/categories');
   const articlesResponse = await fetch(baseUrl + '/api/content/articles');
   const categoriesBody = await categoriesResponse.json();
   const articlesBody = await articlesResponse.json();
 
   assert.equal(categoriesResponse.status, 200);
-  assert.ok(categoriesBody.categories.length > 0);
+  assert.equal(categoriesBody.categories.length, 7);
   assert.ok(categoriesBody.categories.every((category) =>
     typeof category.description === 'string' && category.description.trim().length > 0 &&
     typeof category.nameFil === 'string' && category.nameFil.trim().length > 0 &&
     typeof category.descriptionFil === 'string' && category.descriptionFil.trim().length > 0
   ));
+
   assert.equal(articlesResponse.status, 200);
-  assert.deepEqual(articlesBody.articles, []);
+  assert.equal(articlesBody.articles.length, expectedSlugs.length);
+  assert.deepEqual(
+    articlesBody.articles.map((article) => article.slug).sort(),
+    expectedSlugs.slice().sort()
+  );
+  assert.ok(articlesBody.articles.every((article) => article.status === 'published'));
+  assert.ok(articlesBody.articles.every((article) => article.verificationStatus === 'preliminary'));
+  assert.ok(articlesBody.articles.every((article) => article.publishedAt === '2026-11-06'));
+
+  for (const category of categoriesBody.categories) {
+    const response = await fetch(
+      baseUrl + '/api/content/articles?category=' + encodeURIComponent(category.id)
+    );
+    const body = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(body.articles.length, 1, category.id + ' should have one published article');
+    assert.equal(body.articles[0].category, category.id);
+  }
+
+  for (const article of articlesBody.articles) {
+    const response = await fetch(baseUrl + '/articles/' + encodeURIComponent(article.slug));
+    const html = await response.text();
+    assert.equal(response.status, 200, article.slug + ' should have a public article page');
+    assert.match(response.headers.get('content-type') || '', /text\/html/);
+    assert.ok(html.includes(article.title), article.slug + ' should render its title');
+    assert.ok(html.includes('Published ' + article.publishedAt), article.slug + ' should render its publication date');
+    assert.match(html, /class="article-body"/);
+    assert.match(html, /<section class="article-sources section">/);
+  }
 });
 
 test('removed Playground page returns the not-found page without caching it', async () => {
