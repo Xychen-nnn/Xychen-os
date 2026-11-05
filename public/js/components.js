@@ -1,18 +1,19 @@
 (() => {
   const page = document.body.dataset.page || '';
   const navigation = [
-    ['home', 'Home', '/'],
-    ['about', 'About', '/about.html'],
-    ['projects', 'Projects', '/projects.html'],
-    ['explore', 'Explore', '/explore.html'],
-    ['links', 'Links', '/links.html']
+    ['home', 'Home', '/', 'nav.home'],
+    ['about', 'About', '/about.html', 'nav.about'],
+    ['projects', 'Projects', '/projects.html', 'nav.projects'],
+    ['explore', 'Explore', '/explore.html', 'nav.explore'],
+    ['links', 'Links', '/links.html', 'nav.links']
   ];
 
-  function createLink(label, href, className) {
+  function createLink(label, href, className, translationKey) {
     const link = document.createElement('a');
     link.href = href;
     link.textContent = label;
     if (className) link.className = className;
+    if (translationKey) link.dataset.i18n = translationKey;
     return link;
   }
 
@@ -31,20 +32,38 @@
 
     const nav = document.createElement('nav');
     nav.setAttribute('aria-label', 'Main navigation');
-    navigation.forEach(([key, label, href]) => {
-      const link = createLink(label, href);
-      if (page === key) link.setAttribute('aria-current', 'page');
+    nav.dataset.i18nAriaLabel = 'nav.main';
+    navigation.forEach(([key, label, href, translationKey]) => {
+      const link = createLink(label, href, '', translationKey);
+      if (page === key || (page === 'article' && key === 'explore')) {
+        link.setAttribute('aria-current', 'page');
+      }
       nav.append(link);
     });
 
     const actions = document.createElement('div');
     actions.className = 'header-actions';
+
     const themeButton = document.createElement('button');
     themeButton.type = 'button';
     themeButton.className = 'theme-toggle';
     themeButton.dataset.themeToggle = '';
-    themeButton.textContent = 'Toggle theme';
-    actions.append(themeButton);
+    themeButton.textContent = 'Dark mode';
+
+    const languageSelect = document.createElement('select');
+    languageSelect.className = 'language-select';
+    languageSelect.dataset.languageSelect = '';
+    languageSelect.setAttribute('aria-label', 'Language');
+    languageSelect.dataset.i18nAriaLabel = 'language.label';
+    languageSelect.title = 'Language';
+    [['en', 'EN'], ['fil', 'FIL']].forEach(([value, label]) => {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = label;
+      languageSelect.append(option);
+    });
+
+    actions.append(themeButton, languageSelect);
     header.append(brand, nav, actions);
     headerMount.replaceWith(header);
   }
@@ -61,15 +80,34 @@
     const links = document.createElement('div');
     links.className = 'footer-links';
     links.append(
-      createLink('About', '/about.html'),
-      createLink('Projects', '/projects.html'),
-      createLink('Explore', '/explore.html'),
-      createLink('Links', '/links.html'),
+      createLink('About', '/about.html', '', 'nav.about'),
+      createLink('Projects', '/projects.html', '', 'nav.projects'),
+      createLink('Explore', '/explore.html', '', 'nav.explore'),
+      createLink('Links', '/links.html', '', 'nav.links'),
       createLink('GitHub ↗', 'https://github.com/Xychen-nnn/Xychen-os')
     );
     links.lastElementChild.target = '_blank';
     links.lastElementChild.rel = 'noopener noreferrer';
-    footer.append(copyright, links);
+
+    const social = document.createElement('div');
+    social.className = 'footer-social';
+    social.setAttribute('aria-label', 'Social profiles');
+    social.dataset.i18nAriaLabel = 'links.profilesTitle';
+    [
+      ['TikTok', 'https://www.tiktok.com/@x1ychen'],
+      ['YouTube', 'https://www.youtube.com/@xychenxycz'],
+      ['Instagram', 'https://www.instagram.com/xychen.n'],
+      ['Facebook', 'https://www.facebook.com/share/r/1J6D51VMqP/'],
+      ['X', 'https://x.com/Xychen1nx'],
+      ['Discord', 'https://discord.com/invite/xychen-server-1417846380432719915']
+    ].forEach(([label, href]) => {
+      const item = createLink(label, href, 'footer-social-link');
+      item.target = '_blank';
+      item.rel = 'noopener noreferrer';
+      social.append(item);
+    });
+
+    footer.append(copyright, links, social);
     footerMount.replaceWith(footer);
   }
 })();

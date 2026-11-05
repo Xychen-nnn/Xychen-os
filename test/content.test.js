@@ -16,8 +16,9 @@ const {
 } = require('../src/content/loader');
 
 const contentDir = path.join(__dirname, '..', 'content');
+const { renderArticlePage } = require('../src/views/article');
 
-test('category registry is valid and sorted by configured order', () => {
+test('category registry is valid, described, and sorted by configured order', () => {
   const categories = loadCategories(contentDir);
   assert.deepEqual(categories.map((category) => category.id), [
     'technology',
@@ -28,14 +29,21 @@ test('category registry is valid and sorted by configured order', () => {
     'guides',
     'general-knowledge'
   ]);
+  for (const category of categories) {
+    assert.ok(category.nameFil.trim().length > 0);
+    assert.ok(category.description.trim().length > 0);
+    assert.ok(category.descriptionFil.trim().length > 0);
+    assert.ok(category.description.length <= 180);
+    assert.ok(category.descriptionFil.length <= 180);
+  }
 });
 
-test('category validation rejects duplicate IDs and invalid ordering', () => {
+test('category validation rejects duplicate IDs, duplicate ordering, and missing descriptions', () => {
   assert.throws(
     () => validateCategories({
       categories: [
-        { id: 'technology', name: 'Technology', order: 1 },
-        { id: 'technology', name: 'Duplicate', order: 0 }
+        { id: 'technology', name: 'Technology', description: 'A valid description.', order: 1 },
+        { id: 'technology', name: 'Duplicate', order: 1 }
       ]
     }),
     ContentValidationError
@@ -99,6 +107,66 @@ test('article metadata rejects unsafe source protocols and invalid calendar date
 
 test('article loader rejects traversal-like slugs', () => {
   assert.throws(() => loadArticle('../package', contentDir), ContentValidationError);
+});
+
+test('server-rendered article pages escape metadata and expose canonical URLs', () => {
+  const page = renderArticlePage({
+    metadata: {
+      slug: 'safe-article',
+      title: '<script>alert(1)</script>',
+      summary: 'A reviewed summary.',
+      category: 'technology',
+      tags: ['web-security'],
+      publishedAt: '2026-11-05',
+      updatedAt: '2026-11-05',
+      sources: [{ title: 'Reference source', url: 'https://example.com/reference?a=1&b=2' }]
+    },
+    html: '<p>Safe rendered content.</p>'
+  }, { id: 'technology', name: 'Technology' });
+
+  assert.match(page, /<title>&lt;script&gt;alert\(1\)&lt;\/script&gt; — Xychen OS<\/title>/);
+  assert.match(page, /rel="canonical" href="https:\/\/xychen-os\.vercel\.app\/articles\/safe-article"/);
+  assert.match(page, /Safe rendered content/);
+  assert.match(page, /Reference source/);
+  assert.doesNotMatch(page, /<script>alert\(1\)<\/script>/);
+
+  const filipinoPage = renderArticlePage({
+    metadata: {
+      slug: 'safe-article',
+      title: 'Sample title',
+      titleFil: 'Pamagat sa Filipino',
+      summary: 'English summary.',
+      summaryFil: 'Buod sa Filipino.',
+      category: 'technology',
+      tags: [],
+      publishedAt: '2026-11-05',
+      updatedAt: '2026-11-05'
+    },
+    html: '<p>Nilalaman sa Filipino.</p>'
+  }, { id: 'technology', name: 'Technology', nameFil: 'Teknolohiya' }, 'fil');
+
+  assert.match(filipinoPage, /<html lang="fil"/);
+  assert.match(filipinoPage, /<title>Pamagat sa Filipino — Xychen OS<\/title>/);
+  assert.match(filipinoPage, /<p class="eyebrow">Teknolohiya<\/p>/);
+  assert.match(filipinoPage, /Nilalaman sa Filipino/);
+});
+
+
+test('Filipino article pages fall back to the English summary when no translation exists', () => {
+  const page = renderArticlePage({
+    metadata: {
+      slug: 'summary-fallback',
+      title: 'Sample title',
+      summary: 'English summary remains available.',
+      category: 'technology',
+      tags: [],
+      updatedAt: '2026-11-05'
+    },
+    html: '<p>Article content.</p>'
+  }, { id: 'technology', name: 'Technology', nameFil: 'Teknolohiya' }, 'fil');
+
+  assert.match(page, /<meta name="description" content="English summary remains available\."\s*\/>|<meta name="description" content="English summary remains available\."/);
+  assert.match(page, /<p class="page-intro">English summary remains available\.<\/p>/);
 });
 
 test('article listing does not invent or publish placeholder content', () => {

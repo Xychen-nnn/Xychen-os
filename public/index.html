@@ -1,44 +1,78 @@
 <!doctype html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Xychen OS is a personal digital platform for projects, ideas, and topics worth exploring.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Xychen OS is a personal website for projects, selected links, and topics worth exploring.">
   <link rel="canonical" href="https://xychen-os.vercel.app/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="Xychen OS">
-  <meta property="og:title" content="Xychen OS — Your personal digital space">
-  <meta property="og:description" content="A personal digital platform for projects, ideas, and topics worth exploring.">
+  <meta name="theme-color" content="#f3f5fb">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Xychen OS">
+  <meta property="og:title" content="Xychen OS — A personal digital space">
+  <meta property="og:description" content="Projects, selected links, and topics worth exploring.">
   <meta property="og:url" content="https://xychen-os.vercel.app/">
-  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Xychen OS — Your personal digital space">
-  <meta name="twitter:description" content="A personal digital platform for projects, ideas, and topics worth exploring.">
-  <meta name="theme-color" content="#f4f6fb"><title>Xychen OS — Your personal digital space</title>
-  <link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/styles.css"><script src="/js/theme-init.js"></script>
-  <script src="/js/theme.js" defer></script><script src="/js/components.js" defer></script>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Xychen OS — A personal digital space">
+  <meta name="twitter:description" content="Projects, selected links, and topics worth exploring.">
+  <title>Xychen OS — A personal digital space</title>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script src="/js/theme.js" defer></script>
+  <script src="/js/components.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
 </head>
 <body data-page="home">
-<a class="skip-link" href="#main-content">Skip to content</a>
-<div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/explore.html">Explore</a><a href="/links.html">Links</a></nav></noscript></div>
-<main id="main-content">
-  <section class="hero">
-    <p class="eyebrow">A personal digital platform</p>
-    <h1>A little corner of the internet, built by Xychen.</h1>
-    <p class="lead">A place for projects, personal interests, and useful things worth exploring. Built gradually, with care.</p>
-    <div class="actions"><a class="button" href="/projects.html">Explore projects <span aria-hidden="true">↗</span></a><a class="button-secondary" href="/explore.html">Browse topics</a></div>
-    <div class="tag-row hero-tags"><span class="tag">Personal</span><span class="tag">Curious</span><span class="tag">Always evolving</span></div>
-  </section>
-  <section class="section">
-    <div class="section-heading"><h2>Explore the space</h2><span class="muted">Choose where to begin</span></div>
-    <div class="grid">
-      <a class="card" href="/projects.html"><span class="card-icon" aria-hidden="true">✳</span><h3>Projects</h3><p>See what I’m building, what’s in progress, and where to find the source.</p><span class="muted">View projects ↗</span></a>
-      <a class="card" href="/explore.html"><span class="card-icon" aria-hidden="true">⌕</span><h3>Explore</h3><p>Browse topics across technology, science, astronomy, nature, gaming, and more.</p><span class="muted">Explore topics ↗</span></a>
-      <a class="card" href="/about.html"><span class="card-icon" aria-hidden="true">◈</span><h3>About</h3><p>Learn about this platform, its direction, and the principles behind it.</p><span class="muted">About this space ↗</span></a>
-    </div>
-  </section>
-  <section class="section panel">
-    <p class="eyebrow">The idea</p><h2>A personal space that has room to grow.</h2>
-    <p class="muted">Xychen OS brings projects and interests together in one organized website. New sections should have a clear purpose and real content—not just take up space.</p>
-    <a class="button-secondary" href="/about.html">Learn about the platform</a>
-  </section>
-</main>
-<div data-site-footer></div>
-</body></html>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div data-site-header><noscript><nav aria-label="Main navigation"><a href="/">Home</a><a href="/about.html">About</a><a href="/projects.html">Projects</a><a href="/explore.html">Explore</a><a href="/links.html">Links</a></nav></noscript></div>
+  <main id="main-content">
+    <section class="hero">
+      <img class="hero-banner" src="/assets/xychen-home-banner.webp" alt="" fetchpriority="high" decoding="async">
+      <p class="eyebrow" data-i18n="home.eyebrow">An independent digital space</p>
+      <h1 data-i18n="home.title">Projects, ideas, and things worth exploring.</h1>
+      <p class="lead" data-i18n="home.lead">Xychen OS is a personal website that brings selected projects, public links, and an expanding library of topics together in one place.</p>
+      <div class="actions">
+        <a class="button" href="/explore.html" data-i18n="home.ctaExplore">Explore topics ↗</a>
+        <a class="button-secondary" href="/projects.html" data-i18n="home.ctaProjects">View the project</a>
+      </div>
+      <div class="tag-row hero-tags"><span class="tag" data-i18n="home.tagPersonal">Personal website</span><span class="tag" data-i18n="home.tagProjects">Project space</span><span class="tag" data-i18n="home.tagLibrary">Knowledge library</span></div>
+    </section>
+
+    <section class="section" aria-labelledby="discover-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow" data-i18n="home.sectionEyebrow">Find your way around</p><h2 id="discover-heading" data-i18n="home.sectionTitle">Explore the platform</h2></div>
+        <span class="muted" data-i18n="home.sectionMeta">Three places to start</span>
+      </div>
+      <div class="grid">
+        <a class="card" href="/projects.html">
+          <span class="card-icon" aria-hidden="true">◈</span>
+          <h3 data-i18n="home.projectsTitle">Projects</h3>
+          <p data-i18n="home.projectsText">See the work currently being built, with real descriptions and links to its source.</p>
+          <span class="muted" data-i18n="home.projectsLink">View projects ↗</span>
+        </a>
+        <a class="card" href="/explore.html">
+          <span class="card-icon" aria-hidden="true">⌕</span>
+          <h3 data-i18n="home.exploreTitle">Explore</h3>
+          <p data-i18n="home.exploreText">Browse categories covering technology, science, astronomy, nature, gaming, and more.</p>
+          <span class="muted" data-i18n="home.exploreLink">Browse topics ↗</span>
+        </a>
+        <a class="card" href="/about.html">
+          <span class="card-icon" aria-hidden="true">◎</span>
+          <h3 data-i18n="home.aboutTitle">About</h3>
+          <p data-i18n="home.aboutText">Understand what this website is for, what it includes, and how it is being developed.</p>
+          <span class="muted" data-i18n="home.aboutLink">About Xychen OS ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <p class="eyebrow" data-i18n="home.ideaEyebrow">Built with intention</p>
+      <h2 data-i18n="home.ideaTitle">A useful website, not a collection of empty features.</h2>
+      <p class="muted" data-i18n="home.ideaText">Each section should have a clear purpose. Projects should be real, articles should be reviewed, and links should lead somewhere useful. The platform will grow as its content and features are ready.</p>
+      <a class="button-secondary" href="/about.html" data-i18n="home.ideaLink">Read about the platform</a>
+    </section>
+  </main>
+  <div data-site-footer></div>
+</body>
+</html>

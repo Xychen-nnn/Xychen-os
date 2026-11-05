@@ -1,9 +1,11 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const { after, before, test } = require('node:test');
 const app = require('../server');
 const { errorHandler } = require('../src/middleware/errors');
+const { requestedLanguage } = require('../src/routes/articles');
 
 let server;
 let baseUrl;
@@ -24,6 +26,26 @@ after(async () => {
   await new Promise((resolve, reject) => {
     server.close((error) => error ? reject(error) : resolve());
   });
+});
+
+test('article language prefers a saved cookie over browser language headers', () => {
+  assert.equal(requestedLanguage({
+    headers: {
+      cookie: 'xychen-os-language=en',
+      'accept-language': 'fil-PH,fil;q=0.9,en-US;q=0.8'
+    }
+  }), 'en');
+});
+
+test('article language detects Filipino and Tagalog browser preferences', () => {
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'fil-PH,fil;q=0.9,en-US;q=0.8' } }), 'fil');
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'tl-PH,tl;q=0.9,en;q=0.8' } }), 'fil');
+});
+
+test('article language respects quality values and falls back to English', () => {
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'en-US,en;q=0.9,fil;q=0.8' } }), 'en');
+  assert.equal(requestedLanguage({ headers: { 'accept-language': 'fil;q=0,en;q=0.5' } }), 'en');
+  assert.equal(requestedLanguage({ headers: {} }), 'en');
 });
 
 test('health endpoint reports the current service version', async () => {
@@ -65,12 +87,30 @@ test('public pages are served successfully', async () => {
     assert.match(html, /<html lang="en"/);
     assert.match(html, /<title>[^<]+<\/title>/);
     assert.match(html, /<meta name="description"/);
-    assert.match(html, /rel="canonical"/);
+    if (page === '/article.html') {
+      assert.match(html, /<meta name="robots" content="noindex,follow"/);
+    } else {
+      assert.match(html, /rel="canonical"/);
+    }
     assert.match(html, /class="skip-link"/);
     assert.match(html, /id="main-content"/);
     assert.match(html, /<noscript><nav aria-label="Main navigation">/);
     assert.match(html, /src="\/js\/theme\.js" defer/);
   }
+});
+
+test('legacy article URLs redirect to the crawlable article route', async () => {
+  const response = await fetch(baseUrl + '/article.html?slug=sample-article', { redirect: 'manual' });
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get('location'), '/articles/sample-article');
+});
+
+test('unknown article routes return a non-cacheable not-found page', async () => {
+  const response = await fetch(baseUrl + '/articles/not-a-published-article');
+  const html = await response.text();
+  assert.equal(response.status, 404);
+  assert.equal(response.headers.get('cache-control'), 'no-store');
+  assert.match(html, /404|not found/i);
 });
 
 test('content API exposes categories and an honest empty published library', async () => {
@@ -81,6 +121,11 @@ test('content API exposes categories and an honest empty published library', asy
 
   assert.equal(categoriesResponse.status, 200);
   assert.ok(categoriesBody.categories.length > 0);
+  assert.ok(categoriesBody.categories.every((category) =>
+    typeof category.description === 'string' && category.description.trim().length > 0 &&
+    typeof category.nameFil === 'string' && category.nameFil.trim().length > 0 &&
+    typeof category.descriptionFil === 'string' && category.descriptionFil.trim().length > 0
+  ));
   assert.equal(articlesResponse.status, 200);
   assert.deepEqual(articlesBody.articles, []);
 });
@@ -212,6 +257,32 @@ test('error handler returns safe JSON for API failures and HTML for page failure
     assert.doesNotMatch(pageResponse.body, /private internal detail/);
   } finally {
     console.error = originalConsoleError;
+  }
+});
+
+test('browser scripts parse and every page translation key has a fallback', () => {
+  const publicDir = path.join(__dirname, '..', 'public');
+  const scriptFiles = [
+    'js/components.js',
+    'js/theme.js',
+    'js/i18n.js',
+    'js/pages/explore.js'
+  ];
+
+  for (const file of scriptFiles) {
+    const source = fs.readFileSync(path.join(publicDir, file), 'utf8');
+    assert.doesNotThrow(() => new vm.Script(source), file + ' should parse');
+  }
+
+  const dictionary = fs.readFileSync(path.join(publicDir, 'js/i18n.js'), 'utf8');
+  const keys = new Set([...dictionary.matchAll(/'([^']+)'\s*:/g)].map((match) => match[1]));
+  const htmlFiles = fs.readdirSync(publicDir).filter((file) => file.endsWith('.html'));
+
+  for (const file of htmlFiles) {
+    const html = fs.readFileSync(path.join(publicDir, file), 'utf8');
+    for (const [, key] of html.matchAll(/data-i18n(?:-aria-label)?="([^"]+)"/g)) {
+      assert.ok(keys.has(key), 'Missing translation key ' + key + ' in ' + file);
+    }
   }
 });
 

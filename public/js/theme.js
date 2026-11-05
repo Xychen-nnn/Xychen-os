@@ -7,8 +7,13 @@
     if (!button) return;
 
     const dark = root.dataset.theme === 'dark';
-    button.textContent = dark ? 'Light mode' : 'Dark mode';
-    button.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    const label = dark ? 'theme.lightMode' : 'theme.darkMode';
+    button.textContent = window.XychenI18n
+      ? window.XychenI18n.t(label)
+      : (dark ? 'Light mode' : 'Dark mode');
+    button.setAttribute('aria-label', window.XychenI18n
+      ? window.XychenI18n.t(dark ? 'theme.switchToLight' : 'theme.switchToDark')
+      : (dark ? 'Switch to light theme' : 'Switch to dark theme'));
     button.setAttribute('aria-pressed', String(dark));
   }
 
@@ -31,4 +36,6 @@
     const year = document.querySelector('[data-current-year]');
     if (year) year.textContent = new Date().getFullYear();
   });
+
+  document.addEventListener('xychen-language-change', updateButton);
 })();

@@ -1,2 +1,40 @@
-:root{color-scheme:light;--bg:#f4f6fb;--bg-glow:rgba(151,178,255,.28);--text:#202438;--muted:#687087;--surface:rgba(255,255,255,.66);--surface-strong:rgba(255,255,255,.84);--border:rgba(255,255,255,.92);--line:rgba(93,111,151,.16);--accent:#5e73dc;--accent-strong:#4358c4;--accent-soft:rgba(112,132,237,.13);--shadow:0 18px 55px rgba(71,82,127,.12);--shadow-small:0 7px 24px rgba(71,82,127,.09);--input:rgba(255,255,255,.78);--success:#23866a;--radius:24px}
-:root[data-theme=dark]{color-scheme:dark;--bg:#10121b;--bg-glow:rgba(92,83,198,.22);--text:#f2f3ff;--muted:#a4a8c0;--surface:rgba(34,37,55,.67);--surface-strong:rgba(38,42,62,.9);--border:rgba(255,255,255,.13);--line:rgba(210,214,255,.12);--accent:#a5b0ff;--accent-strong:#c1c8ff;--accent-soft:rgba(144,155,255,.15);--shadow:0 18px 55px rgba(0,0,0,.25);--shadow-small:0 7px 24px rgba(0,0,0,.18);--input:rgba(20,23,37,.76);--success:#72d8b5}
+:root {
+  color-scheme: light;
+  --bg: #f3f5fb;
+  --bg-glow: rgba(119, 139, 244, .22);
+  --page-overlay: rgba(243, 245, 251, .88);
+  --text: #1d2337;
+  --muted: #68718a;
+  --surface: rgba(255, 255, 255, .72);
+  --surface-strong: rgba(255, 255, 255, .94);
+  --border: rgba(255, 255, 255, .88);
+  --line: rgba(73, 87, 133, .16);
+  --accent: #6578e8;
+  --accent-strong: #4659c8;
+  --accent-soft: rgba(101, 120, 232, .12);
+  --shadow: 0 24px 70px rgba(49, 61, 111, .13);
+  --shadow-small: 0 9px 28px rgba(49, 61, 111, .08);
+  --input: rgba(255, 255, 255, .86);
+  --success: #23866a;
+  --radius: 26px;
+  --content-width: 1120px;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c1020;
+  --bg-glow: rgba(91, 103, 220, .24);
+  --page-overlay: rgba(8, 12, 27, .78);
+  --text: #f0f2ff;
+  --muted: #a5abc4;
+  --surface: rgba(25, 30, 51, .76);
+  --surface-strong: rgba(31, 37, 62, .96);
+  --border: rgba(221, 226, 255, .12);
+  --line: rgba(210, 216, 255, .14);
+  --accent: #aab5ff;
+  --accent-strong: #c6ceff;
+  --accent-soft: rgba(144, 157, 255, .16);
+  --shadow: 0 24px 70px rgba(0, 0, 0, .3);
+  --shadow-small: 0 9px 28px rgba(0, 0, 0, .2);
+  --input: rgba(17, 22, 40, .88);
+  --success: #72d8b5;
+}
