@@ -43,7 +43,10 @@ class FakeElement {
   }
 
   append(...nodes) {
-    this.children.push(...nodes);
+    for (const node of nodes) {
+      node.parentNode = this;
+      this.children.push(node);
+    }
   }
 
   replaceChildren(...nodes) {
@@ -54,6 +57,7 @@ class FakeElement {
 
   insertBefore(node, referenceNode) {
     const index = this.children.indexOf(referenceNode);
+    node.parentNode = this;
     if (index < 0) this.children.push(node);
     else this.children.splice(index, 0, node);
   }
@@ -82,7 +86,11 @@ class FakeElement {
       },
       ...overrides
     };
-    for (const callback of this.listeners.get(type) || []) callback(event);
+    let current = this;
+    while (current) {
+      for (const callback of current.listeners.get(type) || []) callback(event);
+      current = current.parentNode || null;
+    }
     return event;
   }
 
