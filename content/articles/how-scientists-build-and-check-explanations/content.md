@@ -32,7 +32,7 @@ A single study rarely settles a broad question. Repeated observations, independe
 
 ## Share and examine the work
 
-Researchers communicate their methods and findings so others can evaluate them. Peer review is one form of expert assessment before publication, but it is not a guarantee that a study is correct. Published work can still contain mistakes or limitations.
+Researchers communicate their methods and findings so others can evaluate them. Peer review is one form of expert assessment before publication, but reviewers do not usually repeat the entire study themselves, and their assessment is not a guarantee that a study is correct. Published work can still contain mistakes or limitations. Independent replication and follow-up research provide different checks on whether results hold up.
 
 Replication, follow-up studies, open methods, and critical discussion help a research community check whether findings hold up. Scientific explanations can change when stronger evidence becomes available.
 
