@@ -151,6 +151,24 @@ test('server-rendered article pages escape metadata and expose canonical URLs', 
   assert.match(filipinoPage, /Nilalaman sa Filipino/);
 });
 
+
+test('Filipino article pages fall back to the English summary when no translation exists', () => {
+  const page = renderArticlePage({
+    metadata: {
+      slug: 'summary-fallback',
+      title: 'Sample title',
+      summary: 'English summary remains available.',
+      category: 'technology',
+      tags: [],
+      updatedAt: '2026-11-05'
+    },
+    html: '<p>Article content.</p>'
+  }, { id: 'technology', name: 'Technology', nameFil: 'Teknolohiya' }, 'fil');
+
+  assert.match(page, /<meta name="description" content="English summary remains available\."\s*\/>|<meta name="description" content="English summary remains available\."/);
+  assert.match(page, /<p class="page-intro">English summary remains available\.<\/p>/);
+});
+
 test('article listing does not invent or publish placeholder content', () => {
   assert.deepEqual(listArticles(contentDir), []);
 });
