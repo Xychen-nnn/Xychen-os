@@ -5,8 +5,10 @@
   "category": "nature",
   "tags": [
     "biodiversity",
+    "genetic-diversity",
+    "species-diversity",
     "ecosystems",
-    "wildlife"
+    "food-webs"
   ],
   "type": "article",
   "languages": [
@@ -15,11 +17,11 @@
   "verificationStatus": "preliminary",
   "status": "draft",
   "updatedAt": "2026-11-05",
-  "summary": "Biodiversity includes variation in genes, species, and ecosystems—and the relationships that connect living things.",
+  "summary": "Explore biodiversity at the genetic, species, and ecosystem levels, and see how ecological relationships connect living things.",
   "sources": [
     {
       "title": "U.S. National Park Service — What is biodiversity?",
-      "url": "https://home.nps.gov/subjects/biodiversity/what-is-biodiversity.htm"
+      "url": "https://www.nps.gov/subjects/biodiversity/what-is-biodiversity.htm"
     },
     {
       "title": "NOAA — Aquatic food webs",
