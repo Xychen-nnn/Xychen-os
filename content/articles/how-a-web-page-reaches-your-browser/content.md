@@ -53,7 +53,7 @@ HTTP status codes give a broad indication of what happened to a request. Common 
 - **404 Not Found:** the server cannot find the requested resource.
 - **500 Internal Server Error:** the server encountered an unexpected condition.
 
-A status code is useful evidence, but it does not always explain the entire problem. Response headers, server logs, and browser developer tools can provide more context.
+A status code is useful evidence, but it does not always explain the entire problem. HTTP defines five broad status-code classes: informational, successful, redirection, client error, and server error. Response headers, server logs, and browser developer tools can provide more context.
 
 ## Why this matters when building websites
 
@@ -66,3 +66,4 @@ The browser's Network panel helps you inspect requests, response codes, and load
 - [MDN: How the web works](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works) explains clients and servers, DNS, HTTP, packets, URLs, and response codes.
 - [MDN: Transport Layer Security (TLS)](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Transport_Layer_Security) explains how HTTPS protects connections through encryption, integrity, and authentication.
 - [MDN: Critical rendering path](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path) explains how browsers turn HTML, CSS, and JavaScript into pixels on the screen.
+- [MDN: HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) explains the five status-code classes and individual response codes.

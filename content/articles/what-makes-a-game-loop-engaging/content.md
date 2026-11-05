@@ -48,3 +48,5 @@ An engaging core loop connects understandable actions, useful feedback, and mean
 
 - [Roblox Creator Hub — Core loops](https://create.roblox.com/docs/production/game-design/core-loops)
 - [Roblox Creator Hub — Onboarding](https://create.roblox.com/docs/production/game-design/onboarding)
+- [Roblox Creator Hub — Onboarding techniques](https://create.roblox.com/docs/production/game-design/onboarding-techniques)
+- [Roblox Creator Hub — Prototyping](https://create.roblox.com/docs/production/game-design/prototyping)

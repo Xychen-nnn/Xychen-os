@@ -34,3 +34,4 @@ Counting species is useful, but it is only one part of understanding biodiversit
 
 - [U.S. National Park Service — What is biodiversity?](https://www.nps.gov/subjects/biodiversity/what-is-biodiversity.htm)
 - [NOAA — Aquatic food webs](https://www.noaa.gov/education/resource-collections/marine-life/aquatic-food-webs)
+- [U.S. Geological Survey — Ecosystems, Ecosystem Services, and Biodiversity](https://www.usgs.gov/publications/ecosystems-ecosystem-services-and-biodiversity)
