@@ -252,7 +252,8 @@
     if (target.origin !== window.location.origin || target.pathname !== '/explore.html') return;
     event.preventDefault();
     const current = getFilters();
-    const nextCategory = target.searchParams.get('category') || '';
+    const requestedCategory = target.searchParams.get('category') || '';
+    const nextCategory = requestedCategory === current.categoryId ? '' : requestedCategory;
     updateUrl({ categoryId: nextCategory, query: current.query });
     renderExplore();
   });
