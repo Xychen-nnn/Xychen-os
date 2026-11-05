@@ -201,3 +201,29 @@ main[id] { scroll-margin-top: 24px; }
   .hero-banner { width: 100%; height: 58%; object-position: center 30%; opacity: .3; mask-image: linear-gradient(180deg, #000 0%, transparent 100%); }
   .hero h1 { font-size: clamp(2.55rem, 12vw, 4.4rem); }
 }
+
+
+/* Explore search and live filters */
+.explore-controls { margin-top: 30px; }
+.explore-search-row { display: flex; align-items: center; gap: 10px; }
+.explore-search-row input { min-width: 0; flex: 1; }
+.explore-filter-status { min-height: 1.5em; margin: 10px 0 0; font-size: .9rem; }
+#category-list .card.is-selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft), var(--shadow);
+}
+#category-list .card[aria-current="true"]::after {
+  content: "Selected";
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: .75rem;
+  font-weight: 800;
+}
+@media (max-width: 540px) {
+  .explore-search-row { align-items: stretch; flex-direction: column; }
+  .explore-search-row .button-secondary { width: 100%; }
+}
