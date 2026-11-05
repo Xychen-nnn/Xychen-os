@@ -17,7 +17,7 @@
   ],
   "verificationStatus": "preliminary",
   "status": "draft",
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-06",
   "summary": "Follow the journey from a URL and DNS lookup to an HTTP response and the browser's rendering process.",
   "sources": [
     {
@@ -31,6 +31,10 @@
     {
       "title": "MDN — Critical rendering path",
       "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"
+    },
+    {
+      "title": "MDN — HTTP response status codes",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status"
     }
   ]
 }
