@@ -7,7 +7,9 @@
     "web",
     "http",
     "dns",
-    "browser"
+    "https",
+    "browser",
+    "rendering"
   ],
   "type": "article",
   "languages": [
@@ -16,11 +18,15 @@
   "verificationStatus": "preliminary",
   "status": "draft",
   "updatedAt": "2026-11-05",
-  "summary": "A practical look at what happens between entering a URL and seeing a page, from DNS lookup to the browser rendering the response.",
+  "summary": "Follow the journey from a URL and DNS lookup to an HTTP response and the browser's rendering process.",
   "sources": [
     {
       "title": "MDN — How the web works",
       "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+    },
+    {
+      "title": "MDN — Critical rendering path",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"
     }
   ]
 }
