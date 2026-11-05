@@ -6,7 +6,9 @@
   "tags": [
     "debugging",
     "browser-devtools",
-    "javascript"
+    "javascript",
+    "network-inspector",
+    "console"
   ],
   "type": "guide",
   "languages": [
@@ -15,15 +17,15 @@
   "verificationStatus": "preliminary",
   "status": "draft",
   "updatedAt": "2026-11-05",
-  "summary": "A repeatable browser-first debugging workflow: reproduce the problem, inspect the console and network requests, isolate the cause, and verify the fix.",
+  "summary": "A repeatable debugging workflow: reproduce the issue, inspect console and network evidence, isolate a cause, and verify the fix.",
   "sources": [
+    {
+      "title": "MDN — What are browser developer tools?",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Tools_and_setup/What_are_browser_developer_tools"
+    },
     {
       "title": "MDN — Your first website",
       "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website"
-    },
-    {
-      "title": "MDN — Web developer guides",
-      "url": "https://developer.mozilla.org/en-US/docs/MDN/Guides"
     }
   ]
 }
