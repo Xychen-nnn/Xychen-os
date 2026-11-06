@@ -40,7 +40,7 @@ Requires Node.js 22.x and npm.
 - `content/categories.json` — canonical category registry
 - `content/articles/` — reviewed article content and metadata
 - `src/content/` — content validation and rendering
-- `src/routes/` — public API and server-rendered article routes
+- `src/routes/` — public API and server rendered article routes
 - `src/views/` — server-rendered page templates
 - `server.js` — Express app and static file serving
 
@@ -52,4 +52,4 @@ Do not publish placeholder articles or unsupported claims. Each article should h
 
 This release is a website, not a full operating system or connected app ecosystem. Features should be added only when they serve a real visitor need and can be maintained properly. Do not add dead buttons, invented project entries, or integrations that are not configured.
 
-User accounts, dashboards, public submissions, database-backed community features, and external Discord integrations are not part of the current release.
+User accounts, dashboards, public submissions, database backed community features, and external Discord integrations are not part of the current release.
