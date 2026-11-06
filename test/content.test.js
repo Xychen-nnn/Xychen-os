@@ -169,8 +169,26 @@ test('Filipino article pages fall back to the English summary when no translatio
   assert.match(page, /<p class="page-intro">English summary remains available\.<\/p>/);
 });
 
-test('article listing does not invent or publish placeholder content', () => {
-  assert.deepEqual(listArticles(contentDir), []);
+test('article listing exposes the seven published articles without changing their verification status', () => {
+  const articles = listArticles(contentDir);
+  const expectedSlugs = [
+    'how-a-web-page-reaches-your-browser',
+    'how-scientists-build-and-check-explanations',
+    'how-astronomers-find-planets-around-other-stars',
+    'biodiversity-is-more-than-a-count-of-species',
+    'what-makes-a-game-loop-engaging',
+    'a-practical-way-to-debug-a-web-page',
+    'how-to-read-a-global-internet-statistic'
+  ];
+
+  assert.equal(articles.length, expectedSlugs.length);
+  assert.deepEqual(
+    articles.map((article) => article.slug).sort(),
+    expectedSlugs.slice().sort()
+  );
+  assert.ok(articles.every((article) => article.status === 'published'));
+  assert.ok(articles.every((article) => article.verificationStatus === 'preliminary'));
+  assert.ok(articles.every((article) => article.publishedAt === '2026-11-06'));
 });
 
 test('Markdown rendering escapes raw HTML and blocks javascript links', () => {

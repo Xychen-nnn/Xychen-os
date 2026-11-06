@@ -15,7 +15,7 @@
     "en"
   ],
   "verificationStatus": "preliminary",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-11-06",
   "summary": "Explore biodiversity at the genetic, species, and ecosystem levels, and see how ecological relationships connect living things.",
   "sources": [
@@ -31,5 +31,6 @@
       "title": "U.S. Geological Survey — Ecosystems, Ecosystem Services, and Biodiversity",
       "url": "https://www.usgs.gov/publications/ecosystems-ecosystem-services-and-biodiversity"
     }
-  ]
+  ],
+  "publishedAt": "2026-11-06"
 }

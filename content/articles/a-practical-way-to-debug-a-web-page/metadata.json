@@ -15,7 +15,7 @@
     "en"
   ],
   "verificationStatus": "preliminary",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-11-06",
   "summary": "A repeatable debugging workflow: reproduce the issue, inspect console and network evidence, isolate a cause, and verify the fix.",
   "sources": [
@@ -35,5 +35,6 @@
       "title": "MDN — Debugging HTML",
       "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Debugging_HTML"
     }
-  ]
+  ],
+  "publishedAt": "2026-11-06"
 }

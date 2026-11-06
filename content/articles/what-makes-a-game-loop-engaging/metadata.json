@@ -15,7 +15,7 @@
     "en"
   ],
   "verificationStatus": "preliminary",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-11-06",
   "summary": "Understand how repeated player actions, feedback, and progression form a game's core loop—and how designers can test it.",
   "sources": [
@@ -35,5 +35,6 @@
       "title": "Roblox Creator Hub — Prototyping",
       "url": "https://create.roblox.com/docs/production/game-design/prototyping"
     }
-  ]
+  ],
+  "publishedAt": "2026-11-06"
 }

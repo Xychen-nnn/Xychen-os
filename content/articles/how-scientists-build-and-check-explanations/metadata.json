@@ -15,7 +15,7 @@
     "en"
   ],
   "verificationStatus": "preliminary",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-11-06",
   "summary": "How researchers use questions, evidence, reasoning, peer review, and repeated checks to develop and revise scientific explanations.",
   "sources": [
@@ -27,5 +27,6 @@
       "title": "National Academies — Reproducibility and Replicability in Science",
       "url": "https://www.nationalacademies.org/read/25303"
     }
-  ]
+  ],
+  "publishedAt": "2026-11-06"
 }
